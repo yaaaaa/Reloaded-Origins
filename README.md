@@ -1,12 +1,12 @@
-# OpenRA Red Alert 2 Yuri's Revenge
+# OpenRA Reload Origins
 
 ## Introduction
-A Red Alert 2 Yuri's Revenge mod for OpenRA Engine
+Lets Reload and Mix our lovely RTS games
 
 ## Screenshots
 
-![Yuri faction](https://media.moddb.com/images/members/4/3399/3398047/openra-yr.1.PNG)
-![Mirage tank](https://media.moddb.com/images/members/4/3399/3398047/openra-yr.PNG)
+![Yuri faction](http://s017.radikal.ru/i438/1611/fb/cd52579b3ee2.jpg)
+![Mirage tank](https://d.radikal.ru/d06/1909/13/1a23136e0b6f.png)
 
 ## Version
 playtest-20190825
@@ -17,12 +17,12 @@ Run "make.cmd" or "make.sh" and type "all" in the terminal
 ## Install the content
 Note: Normally installing the content from the ingame content installer is enough.
 
-The mod expects the original Red Alert 2 game assets and original Yuri's Revenge assets in place. Put the .mix archives in the following directory depending on your operating system.
+The mod expects the original Red Alert 2, Yuri's Revenge, Tiberian Sun, Dune 2000 game assets in place. Put them in the following directory depending on your operating system.
 
-Windows: `My Documents\OpenRA\Content\yr\`  
-Mac OSX: `~/Library/Application Support/OpenRA/Content/yr/`  
-Linux: `~/.openra/Content/yr/`  
-Create the `yr` directory if it does not exist.  
+Windows: `My Documents\OpenRA\Content\yr\`, `My Documents\OpenRA\Content\ts\`, `My Documents\OpenRA\Content\d2k\`
+Mac OSX: `~/Library/Application Support/OpenRA/Content/yr/`, `~/Library/Application Support/OpenRA/Content/ts/`, `~/Library/Application Support/OpenRA/Content/d2k/`
+Linux: `~/.openra/Content/yr/`, `~/.openra/Content/ts/`, `~/.openra/Content/d2k/`
+Create this directoryes if it does not exist.  
 
 ### Download  
 The game can be bought and downloaded from the following official places:  
