@@ -1,0 +1,12 @@
+hatchery:
+	Defaults:
+		AddExtension: false
+	idle: bits/sc/z/zh.png
+		Tick: 200
+		Length: 6
+		FlipX: true
+	make: bits/sc/z/zh.png
+		Length: 6
+	icon: bits/sc/icons1.png
+		Start: 131
+

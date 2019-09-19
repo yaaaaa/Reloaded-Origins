@@ -1,0 +1,782 @@
+engineer:
+	Inherits: ^Infantry
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Infantry
+		Prerequisites: ~barracks
+		BuildPaletteOrder: 30
+		Description: Captures enemy structures and netural vehicles.\n  Unarmed
+	Valued:
+		Cost: 500
+	DeliversCash:
+		Payload: 250
+		PlayerExperience: 25
+		Voice: Move
+	Tooltip:
+		Name: Engineer
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 75
+	Mobile:
+		Speed: 56
+	Passenger:
+		PipType: Blue
+	EngineerRepair:
+	RepairsBridges:
+		RepairNotification: BridgeRepaired
+	Captures:
+		Sabotage: false
+		CaptureTypes: building, husk
+	RevealsShroud:
+		Range: 4c0
+	Voiced:
+		VoiceSet: EngineerVoice
+	Guard:
+		Voice: Action
+	AttackMove:
+		Voice: Action
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	WithInfantryBody:
+		DefaultAttackSequence: stand
+	CaptureManager:
+
+dog:
+	Inherits: ^Infantry
+	Buildable:
+		Queue: Infantry
+		Prerequisites: ~barracks
+		BuildPaletteOrder: 40
+		Description: Anti-infantry unit.\nCan detect cloaked units and spies.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 200
+	DeliversCash:
+		Payload: 100
+		PlayerExperience: 10
+		Voice: Move
+	Tooltip:
+		Name: Attack Dog
+	Selectable:
+		Bounds: 30, 24, 0, -5
+	Health:
+		HP: 100
+	Mobile:
+		Speed: 120
+	Passenger:
+		PipType: Yellow
+	RevealsShroud:
+		Range: 5c0
+	Armament:
+		Weapon: DogJaw
+		ReloadingCondition: attack-cooldown
+	AttackLeap:
+		Voice: Attack
+		PauseOnCondition: attacking || attack-cooldown
+	AutoTarget:
+		InitialStance: AttackAnything
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: Infantry
+	RenderSprites:
+		Image: adog
+		FactionImages:
+			soviet: dog
+			cuba: dog
+			libya: dog
+			iraq: dog
+			russia: dog
+	IgnoresDisguise:
+	DetectCloaked:
+		Range: 5c0
+	Voiced:
+		VoiceSet: DogVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.infiltrated
+	-TakeCover:
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	WithDeathAnimation@normal:
+		DeathTypes:
+			ExplosionDeath: 1
+			BulletDeath: 2
+			RadiationDeath: 1
+			PsychicDeath: 1
+			ElectroDeath: 2
+	-WithDeathAnimation@effect:
+
+e1:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Parachutable
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Infantry
+		Prerequisites: ~gapile
+		BuildPaletteOrder: 10
+		Description: General-purpose infantry.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Valued:
+		Cost: 200
+	DeliversCash:
+		Payload: 100
+		PlayerExperience: 10
+		Voice: Move
+	Tooltip:
+		Name: G.I.
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 125
+	Mobile:
+		Speed: 31
+		RequiresCondition: !chronodisable && undeployed
+	Passenger:
+		PipType: Green
+	RevealsShroud:
+		Range: 5c0
+	Armament@primary:
+		Weapon: M60
+		RequiresCondition: !rank-elite && !deployed
+	Armament@elite:
+		Weapon: M60E
+		RequiresCondition: rank-elite && !deployed
+	Armament@deployed:
+		Weapon: para
+		Name: deployed
+		RequiresCondition: !rank-elite && deployed
+	Armament@elite-deployed:
+		Weapon: paraE
+		Name: deployed
+		RequiresCondition: rank-elite && deployed
+	GrantConditionOnDeploy:
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		CanDeployOnRamps: True
+		Facing: 128
+		RequiresCondition: !parachute
+	GrantCondition:
+		Condition: editorhack
+	WithInfantryBody@Editor: # HACK: negative conditions don't count in EnabledByDefault, we can use this duplicate WIB to render it on map editor
+		DefaultAttackSequence: shoot
+		RequiresCondition: !editorhack
+	WithInfantryBody:
+		RequiresCondition: undeployed
+	WithMakeAnimation:
+		Sequence: deploy
+		BodyNames: dot
+	Turreted:
+		RealignDelay: -1
+		TurnSpeed: 50
+		InitialFacing: 128
+	WithSpriteTurret@idle:
+		Sequence: deployed
+		RequiresCondition: deployed && !animate-turret
+	WithSpriteTurret@animated:
+		RequiresCondition: deployed && animate-turret
+		Sequence: shoot-deployed
+	WithSpriteBody:
+		Sequence: dot
+		Name: dot
+	AttackFrontal:
+		Voice: Attack
+		RequiresCondition: undeployed
+	AttackTurreted@deployed:
+		Armaments: deployed
+		Voice: Attack
+		RequiresCondition: deployed
+	GrantConditionOnAttack:
+		Condition: animate-turret
+		RevokeDelay: 10
+		ArmamentNames: deployed
+	RejectsOrders@deployment:
+		Reject: Move, EnterTransport, EnterTransports
+		RequiresCondition: deployed
+	-TakeCover: # TODO: needs to be conditional so we can disable when deployed
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	Voiced:
+		VoiceSet: GIVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.infiltrated
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	BunkerPassenger:
+		Voice: Move
+		CargoType: Infantry
+		GrantBunkerCondition: bunkered
+		Accepter: nabnkr, bfrt, garrisonable-building
+
+ggi:
+	Inherits@1: ^Infantry
+	Inherits@2: ^Parachutable
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Infantry
+		Prerequisites: ~gapile
+		BuildPaletteOrder: 10
+		Description: General-purpose Anti-vehicle infantry.\n  Strong vs Vehicles, Aircraft\n  Weak vs Infantry
+	Valued:
+		Cost: 200
+	DeliversCash:
+		Payload: 100
+		PlayerExperience: 10
+		Voice: Move
+	Tooltip:
+		Name: Guardian GI
+	Selectable:
+		Bounds: 39, 37, 0, -11
+	Health:
+		HP: 125
+	Mobile:
+		Speed: 31
+		RequiresCondition: !chronodisable && undeployed
+	Passenger:
+		PipType: Green
+	RevealsShroud:
+		Range: 5c0
+	AttackFrontal:
+		Voice: Attack
+	Armament@primary:
+		Weapon: M60
+		RequiresCondition: !rank-elite && !deployed
+	Armament@elite:
+		Weapon: M60E
+		RequiresCondition: rank-elite && !deployed
+	Armament@deployed:
+		Weapon: MissileLauncher
+		Name: deployed
+		LocalOffset: 0, 0, 750
+		RequiresCondition: (!rank-elite && deployed) || bunkered
+	Armament@elite-deployed:
+		Weapon: MissileLauncherE
+		Name: deployed
+		RequiresCondition: (rank-elite && deployed) || bunkered
+	GrantConditionOnDeploy:
+		DeployedCondition: deployed
+		UndeployedCondition: undeployed
+		CanDeployOnRamps: True
+		Facing: 128
+		RequiresCondition: !parachute
+	GrantCondition:
+		Condition: editorhack
+	WithInfantryBody@Editor: # HACK: negative conditions don't count in EnabledByDefault, we can use this duplicate WIB to render it on map editor
+		DefaultAttackSequence: shoot
+		RequiresCondition: !editorhack
+	WithInfantryBody:
+		RequiresCondition: undeployed
+	WithMakeAnimation:
+		Sequence: deploy
+		BodyNames: dot
+	Turreted:
+		RealignDelay: -1
+		TurnSpeed: 50
+		InitialFacing: 128
+	WithSpriteTurret@idle:
+		Sequence: deployed
+		RequiresCondition: deployed && !animate-turret
+	WithSpriteTurret@animated:
+		RequiresCondition: deployed && animate-turret
+		Sequence: shoot-deployed
+	WithSpriteBody:
+		Sequence: dot
+		Name: dot
+	AttackFrontal:
+		Voice: Attack
+		RequiresCondition: undeployed
+	AttackTurreted@deployed:
+		Armaments: deployed
+		Voice: Attack
+		RequiresCondition: deployed
+	GrantConditionOnAttack:
+		Condition: animate-turret
+		RevokeDelay: 10
+		ArmamentNames: deployed
+	RejectsOrders@deployment:
+		Reject: Move, EnterTransport, EnterTransports
+		RequiresCondition: deployed
+	-TakeCover: # TODO: needs to be conditional so we can disable when deployed    
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	Voiced:
+		VoiceSet: GGIVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.infiltrated
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	BunkerPassenger:
+		Voice: Move
+		CargoType: Infantry
+		GrantBunkerCondition: bunkered
+		Accepter: nabnkr, bfrt, garrisonable-building
+		Armaments: deployed
+
+snipe:
+	Inherits: ^Infantry
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Valued:
+		Cost: 600
+	DeliversCash:
+		Payload: 300
+		PlayerExperience: 30
+		Voice: Move
+	Tooltip:
+		Name: Sniper
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 80
+		Prerequisites: radar, ~infantry.england
+		Description: Special anti-infantry unit.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Mobile:
+		Speed: 35
+	Health:
+		HP: 125
+	Passenger:
+		PipType: Red
+	RevealsShroud:
+		Range: 8c0
+	Armor:
+		Type: None
+	Armament@primary:
+		Weapon: awp
+		RequiresCondition: !rank-elite
+	Armament@primary-elite:
+		Weapon: awpE
+		RequiresCondition: rank-elite
+	AttackFrontal:
+		Voice: Attack
+	Voiced:
+		VoiceSet: SniperVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.infiltrated
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	BunkerPassenger:
+		Voice: Move
+		CargoType: Infantry
+		GrantBunkerCondition: bunkered
+		Accepter: bfrt
+
+spy:
+	Inherits: ^Infantry
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Infantry
+		BuildPaletteOrder: 130
+		Prerequisites: gatech, ~gapile
+		Description: Infiltrates enemy structures for intel or\nsabotage. Exact effect depends on the\nbuilding infiltrated.\n  Unarmed\nSpecial Ability: Disguises
+	Valued:
+		Cost: 500
+	DeliversCash:
+		Payload: 250
+		PlayerExperience: 25
+		Voice: Move
+	DisguiseTooltip:
+		Name: Spy
+		GenericName: Soldier
+	Selectable:
+		Bounds: 24, 28, -1, -8
+	Health:
+		HP: 25
+	Mobile:
+		Speed: 56
+	RevealsShroud:
+		Range: 5c0
+	Passenger:
+		PipType: Yellow
+	TakeCover:
+	Disguise:
+		DisguisedCondition: disguise
+	Infiltrates:
+		Types: SpyInfiltrate
+	-WithInfantryBody:
+	WithDisguisingInfantryBody:
+		IdleSequences: idle1,idle2
+		StandSequences: stand
+	WithDecoration@disguise:
+		Image: pips
+		Sequence: pip-disguise
+		Palette: pips
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		RequiresCondition: disguise
+	Voiced:
+		VoiceSet: SpyVoice
+	Guard:
+		Voice: Action
+	AttackMove:
+		Voice: Action
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	-BunkerPassenger:
+
+ghost:
+	Inherits: ^Infantry
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@SWIMSUIT: ^WithSwimSuit
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Infantry
+		BuildPaletteOrder: 100
+		Prerequisites: ~disabled
+		Description: Elite commando infantry, armed with\na sub machine gun and C4.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\nSpecial Ability: Destroy Building with C4
+	Valued:
+		Cost: 1000
+	DeliversCash:
+		Payload: 500
+		PlayerExperience: 50
+		Voice: Move
+	Tooltip:
+		Name: Navy SEAL
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 125
+	GrantConditionOnTerrain:
+		Condition: water-borne
+		TerrainTypes: Water
+	Targetable@WaterBorne:
+		TargetTypes: Underwater
+		RequiresCondition: water-borne
+	Mobile:
+		Speed: 71
+		Locomotor: swimsuit
+	RevealsShroud:
+		Range: 8c0
+	Demolition:
+		Voice: SpecialAttack
+	Armor:
+		Type: Flak
+	Passenger:
+		PipType: Red
+	Armament@primary:
+		Weapon: MP5
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: MP5E
+		RequiresCondition: rank-elite
+	AttackFrontal:
+		Voice: Attack
+	RenderSprites:
+		Image: seal
+	Voiced:
+		VoiceSet: SealVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.infiltrated
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	-TakeCover: # TODO: allow multiple sequence modifiers
+	BunkerPassenger:
+		Voice: Move
+		CargoType: Infantry
+		GrantBunkerCondition: bunkered
+		Accepter: bfrt
+
+ccomand:
+	Inherits: ghost
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		BuildPaletteOrder: 170
+		Prerequisites: ~gapile, ~allies.tech.infiltrated
+		Description: Elite commando infantry, armed with\na sub machine gun and C4.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\nSpecial Ability: Destroy Building with C4
+	Tooltip:
+		Name: Chrono Commando
+	Valued:
+		Cost: 2000
+	DeliversCash:
+		Payload: 1000
+		PlayerExperience: 100
+	Health:
+		HP: 100
+	Mobile:
+		Locomotor: foot
+	PortableChrono:
+		ChronoshiftSound: ichrmova.wav
+		DeployCursor: chronosphere
+		DeployBlockedCursor: chronosphere
+		Voice: Move
+		ChargeDelay: 300
+		TargetCursor: chronosphere
+	WithInfantryBody:
+		-RequiresCondition:
+	WithDeathAnimation@normal:
+		-RequiresCondition:
+	WithDeathAnimation@effect:
+		-RequiresCondition:
+	-GrantConditionOnTerrain@Water:
+	-WithInfantryBody@Water:
+	-WithDeathAnimation@Water:
+	-Targetable@WaterBorne:
+	TakeCover:
+		DamageModifiers:
+			Prone50Percent: 50
+			Prone70Percent: 70
+			Prone100Percent: 100
+		DamageTriggers: TriggerProne
+	RenderSprites:
+		Image: ccomand
+	-Crushable:
+
+ptroop:
+	Inherits: ccomand
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		BuildPaletteOrder: 180
+		Prerequisites: ~gapile, ~soviets.tech.infiltrated
+		Description: Psychic infantry. Can mind control enemy units.\n  Strong vs Infantry, Vehicles, Buildings\n  Weak vs Dogs, Terror Drones, Aircraft\nSpecial Ability: Destroy Building with C4
+	Valued:
+		Cost: 1000
+	DeliversCash:
+		Payload: 500
+		PlayerExperience: 50
+	Tooltip:
+		Name: Psi Commando
+	-PortableChrono:
+	Armament@primary:
+		Weapon: MindControl
+		MuzzleSequence: muzzle
+		LocalOffset: 0,0,960
+	-Armament@elite:
+	Demolition:
+		Voice: Attack
+	WithMuzzleOverlay:
+	MindController:
+		ControllingCondition: controlling
+		Sounds: iyurat1a.wav
+	WithMindControlArc:
+		UsePlayerColor: true
+		Offset: 0,0,960
+	AttackMove:
+		-AssaultMoveScanCondition:
+	AutoTarget:
+		-AttackAnythingCondition:
+	AutoTargetPriority@DEFAULT:
+		ValidTargets: MindControl
+		RequiresCondition: !controlling
+	-AutoTargetPriority@ATTACKANYTHING:
+	Voiced:
+		VoiceSet: YuriVoice
+	RenderSprites:
+		Image: ptroop
+	
+tany:
+	Inherits: ^Infantry
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@SWIMSUIT: ^WithSwimSuit
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Infantry
+		BuildPaletteOrder: 140
+		Prerequisites: gatech, ~gapile
+		BuildLimit: 1
+		Description: Elite commando infantry, armed with \ndual pistols and C4.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\nSpecial Ability: Destroy Building with C4\n\nMaximum 1 can be trained.
+	Valued:
+		Cost: 1000
+	DeliversCash:
+		Payload: 500
+		PlayerExperience: 50
+		Voice: Move
+	Tooltip:
+		Name: Tanya
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 125
+	GrantConditionOnTerrain:
+		Condition: water-borne
+		TerrainTypes: Water
+	Targetable@WaterBorne:
+		TargetTypes: Underwater
+		RequiresCondition: water-borne
+	Mobile:
+		Speed: 71
+		Locomotor: swimsuit
+	RevealsShroud:
+		Range: 6c0
+	Demolition:
+		Voice: Attack
+	Armor:
+		Type: Flak
+	Passenger:
+		PipType: Red
+	Armament@primary:
+		Weapon: DoublePistols
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: DoublePistolsE
+		RequiresCondition: rank-elite
+	AttackFrontal:
+		Voice: Attack
+	VoiceAnnouncement:
+		Voice: Build
+	Voiced:
+		VoiceSet: TanyaVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.infiltrated
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	-TakeCover: # TODO: allow multiple sequence modifiers
+
+jumpjet:
+	Inherits: ^Infantry
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	HiddenUnderFog:
+		Type: CenterPosition
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Infantry
+		BuildPaletteOrder: 60
+		Prerequisites: ~gapile, radar
+		Description: Airborne soldier.\n  Strong vs Infantry, Aircraft\n  Weak vs Vehicles
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Rocketeer
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 125
+	-TimedConditionBar@ChronoDisable:
+	-ExternalCondition@CHRONODISABLE:
+	-Mobile:
+	RevealsShroud:
+		Range: 8c0
+		Type: CenterPosition
+	Armor:
+		Type: None
+	Armament@primary:
+		Weapon: 20mm
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: 20mmE
+		RequiresCondition: rank-elite
+	AttackFrontal:
+		Voice: Attack
+	Aircraft:
+		CruiseAltitude: 3072
+		LandWhenIdle: false
+		InitialFacing: 20
+		TurnSpeed: 255
+		Speed: 140
+		AltitudeVelocity: 83
+		Voice: Move
+		AirborneCondition: airborne
+		CanHover: True
+		IdealSeparation: 512
+		TakeOffOnResupply: true
+		VTOL: true
+	WithInfantryBody:
+		StandSequences: fly
+		MoveSequence: fly
+		DefaultAttackSequence: shoot-air
+		IdleSequences: idle-air
+	Hovers:
+		OffsetModifier: -45
+	-Crushable:
+	-TakeCover:
+	-Targetable:
+	-WithDeathAnimation@normal:
+	-WithDeathAnimation@effect:
+	Targetable@airborne:
+		TargetTypes: Air, Disguise
+		RequiresCondition: airborne
+	WithShadow:
+	Voiced:
+		VoiceSet: RocketeerVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.infiltrated
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	Targetable@ground:
+		TargetTypes: Ground, Infantry, DetonateAttack, Disguise
+		RequiresCondition: !airborne
+	-Passenger:
+	-BunkerPassenger:
+	SpawnActorOnDeath:
+		Actor: jumpjet.husk
+	Repairable:
+		RepairBuildings:
+		Voice: Move
+	Rearmable:
+		RearmActors:
+
+jumpjet.husk:
+	Inherits: ^HelicopterHusk
+	Inherits@1: ^SpriteActor
+	WithFacingSpriteBody:
+	-RenderVoxels:
+	-WithVoxelBody:
+	Tooltip:
+		Name: Rocketeer
+	Aircraft:
+		TurnSpeed: 10
+		Speed: 140
+	FallsToEarth:
+		Explosion: UnitExplodeSmall
+	RevealsShroud:
+		Range: 8c0
+		Type: CenterPosition
+	WithShadow:
+
+cleg:
+	Inherits: ^Infantry
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Tooltip:
+		Name: Chrono Legionnaire
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Infantry
+		BuildPaletteOrder: 150
+		Prerequisites: ~gapile, gatech
+		Description: High-tech soldier.\n Strong vs Infantry, Vehicles\n Weak vs Aircraft
+	ProducibleWithLevel:
+		Prerequisites: barracks.infiltrated
+	Valued:
+		Cost: 1500
+	DeliversCash:
+		Payload: 750
+		PlayerExperience: 75
+		Voice: Move
+	Health:
+		HP: 125
+	RevealsShroud:
+		Range: 8c0
+	Passenger:
+		PipType: Red
+	-Crushable:
+	-TakeCover:
+	PortableChrono:
+		ChronoshiftSound: ichrmova.wav
+		DeployCursor: chronosphere
+		DeployBlockedCursor: chronosphere
+		Voice: Move
+		ChargeDelay: 300
+		TargetCursor: chronosphere
+	Voiced:
+		VoiceSet: ChronoLegionnaireVoice
+	Armament@Temporal:
+		Weapon: NeutronRifle
+	AttackFrontal:
+		Voice: Attack
+	WithInfantryBody:
+		DefaultAttackSequence: shoot

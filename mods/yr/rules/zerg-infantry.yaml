@@ -1,0 +1,113 @@
+lechinka:
+	ConditionManager:
+	AlwaysVisible:
+   	WithFacingSpriteBody:
+	Tooltip:
+		Name: Zerg
+	Production:
+		Produces: ZergUnits
+	Mobile:
+		Locomotor: foot
+		Speed: 10
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 100
+			Rail: 90
+			Road: 100
+			Bridge: 100
+			DirtRoad: 100
+			Ore: 90
+			Gems: 80
+	Selectable:
+	Health:
+		HP: 1500
+	Exit:
+	RevealsShroud:
+		Range: 4c0
+	Voiced:
+		VoiceSet: larvaVoice
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	ProvidesPrerequisite:
+		Prerequisite: lavra
+	WithProductionOverlay@WELDING:
+		Sequence: mutation
+	GrantConditionOnPrerequisite:
+		Prerequisites: drone
+		Condition: drone
+	RenderSprites:
+		Image: drone
+		RequiresCondition: drone
+	HitShape:
+	BodyOrientation:
+		UseClassicPerspectiveFudge: false
+
+drone:
+	Inherits: ^Infantry
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Prerequisites: lavra
+		Queue: ZergUnits
+		BuildPaletteOrder: 20
+		Description: Basic Yuri Infantry.\n Strong vs Infantry and Vehicle\n Weak vs aircraft
+		IconPalette: ts-chrome
+	Valued:
+		Cost: 200
+	Tooltip:
+		Name: Initiate
+	DeliversCash:
+		Payload: 100
+		PlayerExperience: 5
+		Voice: Move
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 100
+	Mobile:
+		Speed: 60
+	Passenger:
+		PipType: Green
+	RevealsShroud:
+		Range: 5c0
+	AttackFrontal:
+		Voice: Attack
+	Armament@primary:
+		Weapon: PsychicJab
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: PsychicJabE
+		RequiresCondition: rank-elite
+	Voiced:
+		VoiceSet: InitiateVoice
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	Bunkerable:
+	QuantizeFacingsFromSequence:
+		Sequence: idle
+	BunkerPassenger:
+		Voice: Move
+		CargoType: Infantry
+		GrantBunkerCondition: bunkered
+		Accepter: nabnkr, bfrt, garrisonable-building
+
+drone2:
+	AlwaysVisible:
+	Tooltip:
+		Name: Drone2
+	Interactable:
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: lavra
+		Queue: ZergUnits
+		BuildDuration: 590
+		BuildDurationModifier: 40
+		Description: Harvester2
+		IconPalette: ts-chrome
+	Valued:
+		Cost: 50
+	RenderSprites:
+		Image: drone
+	ProvidesPrerequisite@upgradename:

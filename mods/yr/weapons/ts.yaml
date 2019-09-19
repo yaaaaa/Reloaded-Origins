@@ -1,0 +1,1134 @@
+# Baalistic
+^Cannon:
+	ReloadDelay: 50
+	Range: 6c768
+	Report: 120mmf.aud
+	Projectile: Bullet
+		Speed: 682
+		Image: 120mm
+		Shadow: true
+		LaunchAngle: 75
+		Palette: ra
+	Warhead@1Dam: SpreadDamage
+		Spread: 108
+		Falloff: 100, 50, 25, 12, 6, 3, 0
+		Damage: 3600
+		Versus:
+			None: 25
+			Wood: 65
+			Light: 75
+			Heavy: 100
+			Concrete: 60
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: medium_clsn
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		ImpactSounds: expnew14.aud
+		ValidTargets: Ground, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: small_watersplash
+		ExplosionPalette: player
+		ImpactSounds: ssplash3.aud
+		ValidTargets: Water
+		InvalidTargets: Vehicle
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: MediumCrater
+		InvalidTargets: Vehicle, Building, Wall
+
+90mm:
+	Inherits: ^Cannon
+	Warhead@2Eff: CreateEffect
+		Explosions: small_clsn
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: SmallCrater
+
+120mm:
+	Inherits: ^Cannon
+	ReloadDelay: 80
+	Projectile: Bullet
+		-Image:
+		Speed: 1c512
+		Blockable: false
+		LaunchAngle: 0
+	Warhead@1Dam: SpreadDamage
+		Damage: 7000
+
+120mmx:
+	Inherits: ^Cannon
+	ReloadDelay: 80
+	Burst: 2
+	BurstDelays: 5
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+RPGTower:
+	Inherits: ^Cannon
+	ReloadDelay: 80
+	Range: 8c0
+	Report: glnch4.aud
+	Projectile: Bullet
+		Speed: 384
+		Blockable: false
+		Image: canister
+		Palette: player
+	Warhead@1Dam: SpreadDamage
+		Damage: 11000
+		Versus:
+			None: 30
+			Wood: 75
+			Light: 90
+			Heavy: 100
+			Concrete: 70
+		DamageTypes: Prone100Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: large_clsn
+
+^ArtilleryWeapon:
+	Inherits: ^Cannon
+	Projectile: Bullet
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 216
+		Versus:
+			None: 100
+			Wood: 85
+			Light: 68
+			Heavy: 35
+			Concrete: 35
+		DamageTypes: Prone100Percent, TriggerProne, ExplosionDeath
+
+155mm:
+	Inherits: ^ArtilleryWeapon
+	ReloadDelay: 110
+	Range: 18c0
+	TargetActorCenter: true
+	Projectile: Bullet
+		Speed: 384
+		LaunchAngle: 165
+	MinRange: 5c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 15000
+	Warhead@2Eff: CreateEffect
+		Explosions: large_explosion
+		ImpactSounds: expnew06.aud
+
+Jugg90mm:
+	Inherits: ^ArtilleryWeapon
+	ReloadDelay: 150
+	Range: 18c0
+	MinRange: 5c0
+	Burst: 3
+	BurstDelays: 3, 5
+	Report: jugger1-single.aud
+	TargetActorCenter: true
+	Projectile: Bullet
+		Speed: 384
+		LaunchAngle: 165
+		Inaccuracy: 2c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 7500
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion
+		ImpactSounds: expnew13.aud
+
+Grenade:
+	Inherits: ^ArtilleryWeapon
+	ReloadDelay: 60
+	Range: 4c512
+	-Report:
+	Projectile: Bullet
+		Speed: 226
+		Blockable: true
+		Shadow: true
+		LaunchAngle: 60
+		Inaccuracy: 0
+		Image: DISCUS
+		Palette: effect
+		BounceCount: 2
+	Warhead@1Dam: SpreadDamage
+		Spread: 154
+		Damage: 4000
+		Versus:
+			Light: 70
+			Concrete: 28
+		DamageTypes: Prone70Percent, TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_grey_explosion
+		ImpactSounds: expnew13.aud
+
+#Energy
+^Railgun:
+	ReloadDelay: 60
+	Range: 6c0
+	Report: bigggun1.aud
+	Projectile: Railgun
+		Speed: 20c0
+		Duration: 15
+		Width: 80
+		Blockable: true
+		DamageActorsInLine: true
+		BeamColor: 0080FFC8
+	Warhead@1Dam: SpreadDamage
+		Range: 0, 32
+		Falloff: 100, 100
+		Damage: 15000
+		AffectsParent: false
+		Versus:
+			None: 100
+			Wood: 130
+			Light: 150
+			Heavy: 110
+			Concrete: 5
+		DamageTypes: Prone100Percent, TriggerProne, ExplosionDeath
+
+LtRail:
+	Inherits: ^Railgun
+	Warhead@1Dam: SpreadDamage
+		ValidStances: Neutral, Enemy
+	Warhead@2Dam: SpreadDamage
+		Range: 0, 32
+		Falloff: 50, 50 # Only does half damage to friendly units
+		Damage: 15000
+		InfDeath: 6
+		AffectsParent: false
+		ValidStances: Ally
+		Versus:
+			None: 100
+			Wood: 130
+			Light: 150
+			Heavy: 110
+			Concrete: 5
+		DamageTypes: Prone100Percent, TriggerProne, ExplosionDeath
+
+MechRailgun:
+	Inherits: ^Railgun
+	Range: 8c0
+	Report: railuse5.aud
+	Projectile: Railgun
+		BeamColor: 00FFFFC8
+	Warhead@1Dam: SpreadDamage
+		Damage: 20000
+		Versus:
+			None: 200
+			Wood: 175
+			Light: 160
+			Heavy: 100
+			Concrete: 25
+
+SonicZap:
+	ReloadDelay: 180
+	Range: 6c0
+	Report: sonic4.aud
+	Projectile: AreaBeam
+		Speed: 0c128
+		Duration: 90
+		DamageInterval: 5 # Roughly 18 impacts.
+		Width: 384
+		Shape: Flat
+		ZOffset: 2047
+		BeyondTargetRange: 0c256
+		Blockable: true
+		TrackTarget: true
+		Color: 50F5FF45
+	Warhead@1Dam: SpreadDamage
+		Range: 0, 32
+		Falloff: 100, 100
+		Damage: 800
+		AffectsParent: false
+		ValidStances: Neutral, Enemy
+		Versus:
+			Heavy: 80
+			Concrete: 60
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Dam: SpreadDamage
+		Range: 0, 32
+		Falloff: 50, 50
+		Damage: 800
+		InvalidTargets: Disruptor # Does not affect friendly disruptors at all
+		AffectsParent: false
+		ValidStances: Ally
+		Versus:
+			Heavy: 80
+			Concrete: 60
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+
+^EnergyBlast:
+	ReloadDelay: 50
+	Range: 7c0
+	Report: scrin5b.aud
+	ValidTargets: Ground
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: Ground
+	Warhead@2Eff: CreateEffect
+		Explosions: large_explosion
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		ImpactSounds: expnew12.aud
+		ValidTargets: Ground, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: small_watersplash
+		ExplosionPalette: player
+		ImpactSounds: ssplash3.aud
+		ValidTargets: Water
+		InvalidTargets: Vehicle
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: SmallScorch
+		InvalidTargets: Vehicle, Building, Wall
+
+CyCannon:
+	Inherits: ^EnergyBlast
+	Projectile: Missile
+		MaximumLaunchSpeed: 192
+		Blockable: false
+		HorizontalRateOfTurn: 2
+		Shadow: true
+		Image: TORPEDO
+		MinimumLaunchSpeed: 75
+		Speed: 384
+		RangeLimit: 8c0
+		TerrainHeightAware: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 43
+		Damage: 12000
+		Versus:
+			None: 350
+			Wood: 260
+			Light: 205
+			Heavy: 150
+			Concrete: 80
+		DamageTypes: Prone350Percent, TriggerProne, EnergyDeath
+
+Proton:
+	Inherits: ^EnergyBlast
+	Range: 5c0
+	Burst: 5
+	BurstDelays: 3
+	Projectile: Bullet
+		Speed: 341
+		Blockable: false
+		Shadow: true
+		Inaccuracy: 128
+		Image: TORPEDO
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 2000
+		Versus:
+			None: 25
+			Wood: 65
+			Light: 75
+			Heavy: 100
+			Concrete: 60
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_bang
+
+^Laser:
+	Projectile: LaserZap
+		Width: 72
+		Duration: 15
+		ZOffset: 2047
+		Color: FF000080
+		SecondaryBeam: true
+		SecondaryBeamWidth: 180
+		SecondaryBeamZOffset: 2047
+		SecondaryBeamColor: FF000040
+	Warhead@1Dam: SpreadDamage
+		Spread: 42
+		Damage: 25000
+		DamageTypes: Prone60Percent, TriggerProne, EnergyDeath
+
+ObeliskLaserFire:
+	Inherits: ^Laser
+	ReloadDelay: 120
+	Range: 10c512
+	Report: obelray1.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 25000
+
+TurretLaserFire:
+	Inherits: ^Laser
+	ReloadDelay: 40
+	Range: 5c512
+	Report: lastur1.aud
+	Projectile: LaserZap
+		Width: 36
+		Duration: 8
+		SecondaryBeamWidth: 144
+		SecondaryBeamColor: FF000030
+	Warhead@1Dam: SpreadDamage
+		Damage: 3000
+
+LaserFence:
+	TargetActorCenter: true
+	Projectile: InstantHit
+	Warhead@1Dam: TargetDamage
+		DebugOverlayColor: FF0000
+		Damage: 10000000
+		DamageTypes: FireDeath
+
+#Explosions
+^DamagingExplosion:
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Falloff: 100, 50, 25, 12, 6, 3, 0
+		Damage: 50000
+		Versus:
+			None: 90
+			Wood: 75
+			Light: 60
+			Heavy: 25
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: large_brnl, large_bang, medium_twlt
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		ImpactSounds: expnew09.aud, expnew10.aud, expnew12.aud
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: MediumCrater
+		InvalidTargets: Building, Wall
+
+UnitExplode:
+	Inherits: ^DamagingExplosion
+
+UnitExplodeSmall:
+	Inherits: ^DamagingExplosion
+	Warhead@1Dam: SpreadDamage
+		Spread: 192
+		Damage: 4000
+	Warhead@2Eff: CreateEffect
+		Explosions: medium_brnl
+		ImpactSounds: expnew13.aud
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: SmallCrater
+		InvalidTargets: Building, Wall
+
+BuildingExplosions:
+	Warhead@1Eff: CreateEffect
+		Explosions: building, large_bang, large_brnl, verylarge_clsn, large_tumu
+		ExplosionPalette: effect-ignore-lighting-alpha75
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: MediumCrater
+
+CyborgExplode:
+	Warhead@1Eff: CreateEffect
+		Explosions: medium_bang
+		ImpactSounds: expnew10.aud
+		ExplosionPalette: effect-ignore-lighting-alpha75
+
+TiberiumExplosion:
+	Inherits: ^DamagingExplosion
+	Warhead@1Dam: SpreadDamage
+		Spread: 9
+		Damage: 1000
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@Res: CreateResource
+		AddsResourceType: Tiberium
+		Size: 1,1
+	Warhead@2Eff: CreateEffect
+		Explosions: large_explosion
+		ExplosionPalette: effect-ignore-lighting-alpha75
+	-Warhead@4Smu: LeaveSmudge
+
+Demolish:
+	Warhead@1Dam: SpreadDamage
+		DamageTypes: DefaultDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: large_twlt
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		ImpactSounds: expnew09.aud
+
+#Heal
+^HealWeapon:
+	ReloadDelay: 80
+	Range: 2c849
+	Report: healer1.aud
+	ValidTargets: Infantry
+	TargetActorCenter: true
+	Projectile: InstantHit
+	Warhead@1Dam: TargetDamage
+		DebugOverlayColor: 00FF00
+		Damage: -5000
+		ValidTargets: Infantry
+
+Heal:
+	Inherits: ^HealWeapon
+
+Repair:
+	Inherits: ^HealWeapon
+	Range: 1c819
+	Report: repair11.aud
+	ValidTargets: Repair
+	Warhead@1Dam: TargetDamage
+		ValidTargets: Repair
+
+#Missiles
+^DefaultMissile:
+	ReloadDelay: 60
+	Range: 6c0
+	MinRange: 0c512
+	ValidTargets: Ground, Air
+	Projectile: Missile
+		MaximumLaunchSpeed: 96
+		Blockable: false
+		Shadow: true
+		Inaccuracy: 128
+		Image: DRAGON
+		TrailImage: small_smoke_trail
+		HorizontalRateOfTurn: 8
+		RangeLimit: 8c0
+		Palette: ra
+		MinimumLaunchSpeed: 75
+		Speed: 216
+		Acceleration: 6
+		MinimumLaunchAngle: 128
+		MaximumLaunchAngle: 192
+		VerticalRateOfTurn: 11
+		CruiseAltitude: 2c124
+		AllowSnapping: true
+		TerrainHeightAware: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 108
+		Falloff: 100, 50, 25, 12, 6, 3, 0
+		Damage: 2500
+		ValidTargets: Ground, Air
+		Versus:
+			None: 25
+			Wood: 65
+			Light: 75
+			Heavy: 100
+			Concrete: 60
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_clsn
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		ImpactSounds: expnew12.aud
+		ValidTargets: Ground, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: small_watersplash
+		ExplosionPalette: player
+		ImpactSounds: ssplash3.aud
+		ValidTargets: Water
+		InvalidTargets: Vehicle
+	Warhead@Smu: LeaveSmudge
+		SmudgeType: SmallCrater
+		InvalidTargets: Vehicle, Building, Wall
+
+Bazooka:
+	Inherits: ^DefaultMissile
+	Report: rketinf1.aud
+
+HoverMissile:
+	Inherits: ^DefaultMissile
+	ReloadDelay: 68
+	Burst: 2
+	Range: 8c0
+	Report: hovrmis1.aud
+	Projectile: Missile
+		RangeLimit: 11c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 3000
+
+MammothTusk:
+	Inherits: ^DefaultMissile
+	ReloadDelay: 80
+	Report: misl1.aud
+	ValidTargets: Air
+	Burst: 2
+	Projectile: Missile
+		HorizontalRateOfTurn: 10
+		RangeLimit: 9c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 144
+		Damage: 4000
+		ValidTargets: Air
+		Versus:
+			None: 100
+			Wood: 85
+			Light: 70
+			Heavy: 35
+			Concrete: 28
+		DamageTypes: Explosion
+	Warhead@2Eff: CreateEffect
+		VictimScanRadius: 0
+		Explosions: medium_twlt
+		ImpactSounds: expnew07.aud
+		InvalidImpactTypes: Water
+	-Warhead@3EffWater: CreateEffect
+
+BikeMissile:
+	Inherits: ^DefaultMissile
+	Range: 5c0
+	Report: misl1.aud
+	ValidTargets: Ground
+	Projectile: Missile
+		RangeLimit: 7c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 4000
+		ValidTargets: Ground, Air
+
+Dragon:
+	Inherits: ^DefaultMissile
+	ReloadDelay: 50
+	Burst: 2
+	Report: misl1.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 3000
+
+Hellfire:
+	Inherits: ^DefaultMissile
+	ReloadDelay: 50
+	Report: orcamis1.aud
+	Burst: 2
+	ValidTargets: Ground
+	Warhead@1Dam: SpreadDamage
+		Spread: 72
+		Damage: 3000
+		ValidTargets: Ground, Air
+		Versus:
+			None: 30
+			Wood: 65
+			Light: 150
+			Heavy: 100
+			Concrete: 30
+
+RedEye2:
+	Inherits: ^DefaultMissile
+	ReloadDelay: 55
+	Range: 15c0
+	Report: samshot1.aud
+	ValidTargets: Air
+	Projectile: Missile
+		MaximumLaunchSpeed: 144
+		Arm: 1
+		HorizontalRateOfTurn: 5
+		RangeLimit: 25c0
+		Speed: 288
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 3300
+		ValidTargets: Air, Ground
+		DamageTypes: SmallExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: large_grey_explosion
+		ImpactSounds: expnew13.aud
+		VictimScanRadius: 0
+
+#Other
+FireballLauncher:
+	ReloadDelay: 50
+	Range: 4c256
+	Report: flamtnk1.aud
+	Projectile: Bullet
+		Speed: 64
+		Image: FLAMEALL
+		Inaccuracy: 384
+	Burst: 5
+	BurstDelays: 5
+	Warhead@1Dam: SpreadDamage
+		Spread: 288
+		Falloff: 100, 50, 25, 12, 6, 3, 0
+		Damage: 2500
+		Versus:
+			None: 600
+			Wood: 148
+			Light: 59
+			Heavy: 6
+			Concrete: 2
+		DamageTypes: Prone100Percent, TriggerProne, FireDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: SmallScorch
+		InvalidTargets: Vehicle, Building, Wall
+
+Bomb:
+	ReloadDelay: 60
+	Burst: 5
+	BurstDelays: 6
+	Range: 2c512
+	TargetActorCenter: true
+	Projectile: GravityBomb
+		Velocity: 72, 0, -90
+		Acceleration: 0, 0, -8
+		Image: 120mm
+		Shadow: true
+		Palette: ra
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Falloff: 100, 50, 25, 12, 6, 3, 0
+		Damage: 16000
+		Versus:
+			None: 200
+			Wood: 90
+			Light: 75
+			Heavy: 32
+			Concrete: 100
+		DamageTypes: Prone100Percent, TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: large_explosion
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		ImpactSounds: expnew09.aud
+		ValidTargets: Ground, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: small_watersplash
+		ExplosionPalette: player
+		ImpactSounds: ssplash3.aud
+		ValidTargets: Water
+		InvalidTargets: Vehicle
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: MediumCrater
+		InvalidTargets: Vehicle, Building, Wall
+	Warhead@5Res: DestroyResource
+		Size: 1
+
+FiendShard:
+	ReloadDelay: 30
+	Burst: 3
+	Range: 5c0
+	Report: fiend2.aud
+	Projectile: Bullet
+		Speed: 213
+		Image: CRYSTAL4
+		Inaccuracy: 512
+		Shadow: true
+		LaunchAngle: 60
+		Palette: greentiberium
+	Warhead@1Dam: SpreadDamage
+		Damage: 3500
+		Versus:
+			Light: 60
+			Heavy: 40
+			Concrete: 20
+		DamageTypes: Prone100Percent, TriggerProne, BulletDeath
+	Warhead@3EffWater: CreateEffect
+		Explosions: small_watersplash
+		ExplosionPalette: player
+		ImpactSounds: ssplash3.aud
+		ValidTargets: Water
+		InvalidTargets: Vehicle
+
+SlimeAttack:
+	ReloadDelay: 80
+	Range: 1c384
+	Report: vicer1.aud
+	Projectile: InstantHit
+	InvalidTargets: Wall, Bridge
+	Warhead@1Dam: SpreadDamage
+		Damage: 10000
+		InvalidTargets: Wall, Bridge
+		Versus:
+			Light: 60
+			Heavy: 40
+			Concrete: 20
+		DamageTypes: Prone100Percent, TriggerProne, SmallExplosionDeath
+
+Tentacle:
+	ReloadDelay: 80
+	Range: 1c384
+	Report: floatk1.aud
+	Projectile: InstantHit
+	InvalidTargets: Wall, Bridge
+	Warhead@1Dam: SpreadDamage
+		Damage: 16000
+		InvalidTargets: Wall, Bridge
+		Versus:
+			None: 60
+			Wood: 45
+			Light: 90
+			Heavy: 55
+			Concrete: 10
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+
+Veins:
+	ReloadDelay: 16
+	Warhead@Damage: TargetDamage
+		Damage: 500
+		DamageTypes: BulletDeath
+	Warhead@Effect: CreateEffect
+		Explosions: veins
+		ExplosionPalette: player
+
+^Debris:
+	Range: 5c0
+	Projectile: Bullet
+		Speed: 64, 128
+		LaunchAngle: 80, 192
+		Image: dbrissm
+		Sequences: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+		Shadow: true
+		Blockable: false
+	Warhead@1Dam: SpreadDamage
+		Spread: 200
+		Falloff: 100, 100, 0
+		Damage: 1000
+		Versus:
+			None: 100
+			Wood: 85
+			Light: 70
+			Heavy: 35
+			Concrete: 28
+		DamageTypes: Prone100Percent, TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: tiny_twlt
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		ValidTargets: Ground, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: small_watersplash
+		ExplosionPalette: player
+		ImpactSounds: ssplash3.aud
+		ValidTargets: Water
+		InvalidTargets: Vehicle
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: SmallScorch
+		InvalidTargets: Vehicle, Building, Wall
+
+SmallDebris:
+	Inherits: ^Debris
+
+LargeDebris:
+	Inherits: ^Debris
+	Projectile: Bullet
+		Image: dbrislg
+		Sequences: 2, 3, 4, 6, 7, 9, 10
+	Warhead@1Dam: SpreadDamage
+		Spread: 320
+		Damage: 2000
+	Warhead@2Eff: CreateEffect
+		Explosions: small_twlt
+		ImpactSounds: expnew06.aud
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: MediumCrater
+
+LargeDebrisWithTrail:
+	Inherits: LargeDebris
+	Projectile: Bullet
+		Sequences: 1, 5, 8
+		TrailImage: small_smoke_trail
+		TrailInterval: 1
+
+#SmallGuns
+^MG:
+	ReloadDelay: 20
+	Range: 4c0
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Spread: 108
+		Falloff: 100, 50, 25, 12, 6, 3, 0
+		Damage: 1500
+		Versus:
+			None: 100
+			Wood: 60
+			Light: 40
+			Heavy: 25
+			Concrete: 10
+		DamageTypes: Prone70Percent, TriggerProne, BulletDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: piffs
+		ValidTargets: Ground, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: water_piffs
+		ExplosionPalette: ra
+		ValidTargets: Water
+		InvalidTargets: Vehicle
+
+Minigun:
+	Inherits: ^MG
+	ReloadDelay: 21
+	Report: infgun3.aud, gostgun1.aud, slvkgun1.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 800
+		Versus:
+			Wood: 50
+
+M1Carbine:
+	Inherits: ^MG
+	Report: infgun3.aud
+
+Vulcan3:
+	Inherits: ^MG
+	ReloadDelay: 30
+	Burst: 3
+	Report: cygun1.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 1000
+
+VulcanTower:
+	Inherits: ^MG
+	ReloadDelay: 26
+	Range: 6c0
+	Report: chaingn1.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 1800
+
+JumpCannon:
+	Inherits: ^MG
+	ReloadDelay: 40
+	Burst: 2
+	Range: 5c0
+	Report: jumpjet1.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 1500
+
+AssaultCannon:
+	Inherits: ^MG
+	ReloadDelay: 50
+	Range: 5c0
+	Report: tsgun4.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 4000
+
+RaiderCannon:
+	Inherits: ^MG
+	ReloadDelay: 55
+	Range: 4c0
+	Report: chaingn1.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 4000
+
+HarpyClaw:
+	Inherits: ^MG
+	ReloadDelay: 36
+	Range: 5c0
+	Report: cygun1.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+
+Pistola:
+	Inherits: ^MG
+	Range: 3c0
+	Report: gun18.aud
+	Warhead@1Dam: SpreadDamage
+		Damage: 200
+	Warhead@2Eff: CreateEffect
+		Explosions: piff
+	Warhead@3EffWater: CreateEffect
+		Explosions: water_piff
+
+Sniper:
+	Inherits: ^MG
+	ReloadDelay: 60
+	Range: 6c768
+	Report: silencer.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 36
+		Damage: 15000
+		Versus:
+			Wood: 5
+			Light: 5
+			Heavy: 5
+			Concrete: 5
+		DamageTypes: Prone100Percent, TriggerProne, BulletDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: piff
+	Warhead@3EffWater: CreateEffect
+		Explosions: water_piff
+
+#SuperWeapons
+MultiCluster:
+	ReloadDelay: 80
+	Range: 6c0
+	Report: misl1.aud
+	ValidTargets: Ground
+	Projectile: Missile
+		MaximumLaunchSpeed: 170
+		Arm: 2
+		Blockable: false
+		Shadow: true
+		Inaccuracy: 128
+		Image: DRAGON
+		HorizontalRateOfTurn: 8
+		RangeLimit: 7c204
+		Palette: ra
+		MinimumLaunchSpeed: 75
+		Speed: 384
+		TerrainHeightAware: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 6500
+		ValidTargets: Ground
+		Versus:
+			None: 25
+			Wood: 65
+			Light: 75
+			Heavy: 100
+			Concrete: 60
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: large_explosion
+		ImpactSounds: expnew09.aud
+		ValidTargets: Ground, Air
+	Warhead@3EffWater: CreateEffect
+		Explosions: small_watersplash
+		ExplosionPalette: player
+		ValidTargets: Water
+		InvalidTargets: Vehicle
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: MediumCrater
+		InvalidTargets: Vehicle, Building, Wall
+
+SuicideBomb:
+	ReloadDelay: 1
+	Range: 0c512
+	Report: hunter2.aud
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 11000
+		Falloff: 10000, 3680, 1350, 500, 180, 70, 0
+		Versus:
+			None: 90
+			Light: 60
+			Heavy: 25
+			Concrete: 50
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@2Res: DestroyResource
+
+IonCannon:
+	ValidTargets: Ground, Water, Air
+	Warhead@1Dam_impact: SpreadDamage
+		Spread: 1c0
+		Damage: 10000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: Ground, Water, Air
+		DamageTypes: Prone100Percent, TriggerProne, EnergyDeath
+	Warhead@2Dam_area: SpreadDamage
+		Spread: 1c0
+		Damage: 25000
+		Falloff: 100, 50, 25, 0
+		Delay: 3
+		ValidTargets: Ground, Water, Air
+		DamageTypes: Prone50Percent, TriggerProne, EnergyDeath
+	Warhead@3Smu_area: LeaveSmudge
+		SmudgeType: SmallScorch
+		InvalidTargets: Vehicle, Building, Wall
+		Size: 2
+		Delay: 3
+	Warhead@4Effect: CreateEffect
+		Explosions: ionbeam
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		ImpactSounds: ion1.aud
+		VictimScanRadius: 0
+	Warhead@5Effect: CreateEffect
+		Explosions: ionbeam2
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		VictimScanRadius: 0
+	Warhead@6Effect: CreateEffect
+		Explosions: ionbeam3
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		VictimScanRadius: 0
+	Warhead@7Effect: CreateEffect
+		Explosions: ionbeam4
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		VictimScanRadius: 0
+	Warhead@8Effect: CreateEffect
+		Explosions: ionbeam5
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		VictimScanRadius: 0
+	Warhead@9Effect: CreateEffect
+		Explosions: ionbeam6
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		VictimScanRadius: 0
+
+EMPulseCannon:
+	ReloadDelay: 100
+	Range: 40c0
+	Report: plsecan2.aud
+	Projectile: Bullet
+		Speed: 425
+		Blockable: false
+		Shadow: true
+		LaunchAngle: 62
+		Image: pulsball
+	Warhead@1Eff: CreateEffect
+		Explosions: pulse_explosion
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		VictimScanRadius: 0
+	Warhead@emp: GrantExternalCondition
+		Range: 4c0
+		Duration: 250
+		Condition: empdisable
+
+ClusterMissile:
+	ValidTargets: Ground, Water, Air
+	Warhead@ImpactDamage0: SpreadDamage
+		Spread: 1c0
+		Damage: 15000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@SoundEffect0: CreateEffect
+		Explosions: large_explosion
+		ExplosionPalette: effect-ignore-lighting-alpha75
+		ImpactSounds: expnew19.aud
+		VictimScanRadius: 0
+	Warhead@ResourceDestruction0: DestroyResource
+		Size: 1
+	Warhead@ClusterSmudges0: LeaveSmudge
+		SmudgeType: LargeCrater
+		InvalidTargets: Vehicle, Building, Wall
+		Size: 1
+	Warhead@ClusterDamage1: SpreadDamage
+		Spread: 2c0
+		Damage: 6000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 5
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@ResourceDestruction1: DestroyResource
+		Size: 2
+		Delay: 5
+	Warhead@ClusterSmudges1: LeaveSmudge
+		SmudgeType: LargeScorch
+		InvalidTargets: Vehicle, Building, Wall
+		Size: 2
+		Delay: 5
+	Warhead@ClusterDamage2: SpreadDamage
+		Spread: 3c0
+		Damage: 6000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 10
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@ResourceDestruction2: DestroyResource
+		Size: 3
+		Delay: 10
+	Warhead@ClusterSmudges2: LeaveSmudge
+		SmudgeType: LargeScorch
+		InvalidTargets: Vehicle, Building, Wall
+		Size: 3
+		Delay: 10
+	Warhead@ClusterDamage3: SpreadDamage
+		Spread: 4c0
+		Damage: 6000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 15
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@ResourceDestruction3: DestroyResource
+		Size: 4
+		Delay: 15
+	Warhead@ClusterSmudges3: LeaveSmudge
+		SmudgeType: MediumScorch
+		InvalidTargets: Vehicle, Building, Wall
+		Size: 4
+		Delay: 15
+	Warhead@ClusterDamage4: SpreadDamage
+		Spread: 5c0
+		Damage: 6000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Delay: 20
+		ValidTargets: Ground, Water, Air
+		Versus:
+			Concrete: 25
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@ResourceDestruction4: DestroyResource
+		Size: 5
+		Delay: 20
+	Warhead@ClusterSmudges4: LeaveSmudge
+		SmudgeType: SmallScorch
+		InvalidTargets: Vehicle, Building, Wall
+		Size: 5
+		Delay: 20

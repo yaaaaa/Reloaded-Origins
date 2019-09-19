@@ -1,0 +1,297 @@
+LMG:
+	ReloadDelay: 30
+	Range: 2c512
+	Report: MGUN2.WAV
+	Projectile: Bullet
+		Speed: 1c256
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Falloff: 100, 50, 25, 0
+		Damage: 125
+		Versus:
+			wall: 10
+			building: 25
+			wood: 75
+			light: 40
+			heavy: 20
+			invulnerable: 0
+			cy: 20
+			harvester: 25
+		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: piffs
+
+HMG:
+	ReloadDelay: 20
+	Range: 3c0
+	Report: 20MMGUN1.WAV
+	Projectile: Bullet
+		Speed: 1c256
+	Warhead@1Dam: SpreadDamage
+		Spread: 160
+		Falloff: 100, 60, 30, 0
+		Damage: 180
+		Versus:
+			wall: 10
+			building: 25
+			wood: 75
+			light: 40
+			heavy: 20
+			invulnerable: 0
+			cy: 20
+			harvester: 25
+		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: piffs
+
+HMG_muzzle:
+	ReloadDelay: 16
+	Range: 3c0
+	Burst: 3
+	BurstDelay: 2
+	Warhead@TargetValidation: SpreadDamage
+
+UnitExplodeSmall:
+	Warhead@1Eff: CreateEffect
+		Explosions: self_destruct
+		ImpactSounds: EXPLSML1.WAV
+
+UnitExplodeLarge:
+	Warhead@1Eff: CreateEffect
+		Explosions: large_explosion
+		ImpactSounds: EXPLLG2.WAV
+		VictimScanRadius: 0
+
+Debris:
+	ReloadDelay: 60
+	Range: 2c768
+	Projectile: Bullet
+		Speed: 32, 64
+		Blockable: false
+		LaunchAngle: 128, 192
+		Inaccuracy: 1c256
+		Image: shrapnel
+		Shadow: true
+		BounceCount: 3
+		BounceRangeModifier: 20
+	Warhead@1Dam: SpreadDamage
+		Spread: 320
+		Falloff: 100, 60, 30, 15, 0
+		Damage: 1500
+		Versus:
+			none: 20
+			wall: 50
+			building: 50
+			wood: 60
+			light: 100
+			heavy: 75
+			concrete: 100
+			invulnerable: 0
+			cy: 20
+			harvester: 50
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: SandCrater
+		InvalidTargets: Vehicle, Structure
+	Warhead@3Eff: CreateEffect
+		Explosions: tiny_explosion
+		VictimScanRadius: 0
+
+Debris2:
+	Inherits: Debris
+	Projectile: Bullet
+		Image: shrapnel2
+		TrailImage: small_trail
+		TrailPalette: effect75alpha
+		TrailInterval: 1
+	Warhead@1Dam: SpreadDamage
+		Damage: 2500
+		Versus:
+			none: 90
+			wall: 5
+			building: 65
+			wood: 50
+			light: 40
+			heavy: 30
+			concrete: 100
+			invulnerable: 0
+			cy: 20
+			harvester: 25
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@3Eff: CreateEffect
+		Explosions: small_napalm
+
+Debris3:
+	Inherits: Debris2
+	Projectile: Bullet
+		Image: shrapnel3
+		TrailImage: small_trail2
+	Warhead@1Dam: SpreadDamage
+		Damage: 1500
+
+Debris4:
+	Inherits: Debris2
+	Projectile: Bullet
+		Image: shrapnel4
+		TrailImage: large_trail
+
+OrniBomb:
+	ReloadDelay: 25
+	Burst: 5
+	BurstDelays: 6
+	Range: 3c0
+	Projectile: GravityBomb
+		Image: BOMBS
+		Velocity: 0, 0, -64
+		Acceleration: 0, 0, 0
+		Shadow: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 320
+		Falloff: 100, 60, 30, 15, 0
+		Damage: 7500 #400 in original, reduce when bombers can do multiple passes
+		Versus:
+			none: 90
+			wall: 50
+			building: 75
+			wood: 60
+			light: 60
+			heavy: 60
+			invulnerable: 0
+			cy: 25
+			harvester: 60
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: SandCrater, RockCrater
+		InvalidTargets: Vehicle, Structure
+	Warhead@3Eff: CreateEffect
+		Explosions: large_explosion
+		ImpactSounds: EXPLSML4.WAV
+		VictimScanRadius: 0
+
+^Rocket:
+	ReloadDelay: 40
+	Range: 3c0
+	Report: ROCKET1.WAV
+	Projectile: Bullet
+		Blockable: false
+		Speed: 281
+		Inaccuracy: 256
+		Image: RPG
+		TrailImage: bazooka_trail2
+		TrailPalette: effect75alpha
+		TrailInterval: 1
+	Warhead@1Dam: SpreadDamage
+		Spread: 192
+		Falloff: 100, 50, 25, 0
+		Damage: 3000
+		Versus:
+			none: 8
+			wall: 75
+			building: 40
+			wood: 45
+			light: 70
+			heavy: 100
+			invulnerable: 0
+			cy: 20
+			harvester: 50
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: SandCrater, RockCrater
+		InvalidTargets: Vehicle, Structure
+	Warhead@3Eff: CreateEffect
+		Explosions: tiny_explosion
+		VictimScanRadius: 0
+		ValidTargets: Ground, Air
+
+Rocket:
+	Inherits: ^Rocket
+	ReloadDelay: 30
+	Range: 3c512
+	Projectile: Bullet
+		Speed: 352
+	Warhead@1Dam: SpreadDamage
+		Spread: 160
+		Damage: 2500
+		Versus:
+			none: 25
+			wall: 100
+			building: 50
+			wood: 65
+			light: 100
+			heavy: 50
+			invulnerable: 0
+			cy: 20
+			harvester: 50
+	Warhead@3Eff: CreateEffect
+		Explosions: rocket_explosion
+		ExplosionPalette: effect75alpha
+
+WallExplode:
+	Warhead@1Eff: CreateEffect
+		Explosions: wall_explosion
+		ImpactSounds: EXPLHG1.WAV
+		ImpactActors: false
+
+UnitExplodeMed:
+	Warhead@1Eff: CreateEffect
+		Explosions: building
+		ImpactSounds: EXPLSML2.WAV
+		ImpactActors: false
+
+mtank_pri:
+	Inherits: ^Missile
+	ReloadDelay: 115
+	Burst: 2
+	BurstDelays: 115
+	Range: 6c0
+	ValidTargets: Ground, Air
+	Projectile: Missile
+		Inaccuracy: 96
+		RangeLimit: 7c204
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+		ValidTargets: Ground, Air
+	Warhead@2Concrete: DamagesConcrete
+		Damage: 900
+
+^Cannon:
+	ReloadDelay: 50
+	Range: 4c0
+	Report: MEDTANK1.WAV
+	Projectile: Bullet
+		Speed: 562
+		Inaccuracy: 380
+		Image: 120mm
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Falloff: 100, 50, 25, 0
+		Damage: 2700
+		Versus:
+			none: 20
+			wall: 50
+			building: 50
+			wood: 60
+			heavy: 75
+			invulnerable: 0
+			cy: 20
+			harvester: 50
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: SandCrater, RockCrater
+		InvalidTargets: Vehicle, Structure
+	Warhead@3Eff: CreateEffect
+		Explosions: small_napalm
+		ImpactActors: false
+	Warhead@4Concrete: DamagesConcrete
+		Damage: 540
+
+80mm_A:
+	Inherits: ^Cannon
+
+80mm_H:
+	Inherits: ^Cannon
+	ReloadDelay: 55
+
+80mm_O:
+	Inherits: ^Cannon
+	ReloadDelay: 45

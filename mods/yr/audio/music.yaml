@@ -1,0 +1,207 @@
+intro: INTRO
+	Filename: drok
+	Extension: wav
+
+score: SCORE
+	Filename: scorex
+	Extension: wav
+
+loading: LOADING
+	Filename: bully
+	Extension: wav
+
+credits: CREDITS
+	Filename: optionx
+	Extension: wav
+
+brainfreeze: BrainFreeze
+	Filename: brainfre
+	Extension: wav
+
+drok: Drok
+	Filename: drok
+	Extension: wav
+
+deceiver: Deceiver
+	Filename: deceiver
+	Extension: wav
+
+phatattack: PhatAttack
+	Filename: phatatta
+	Extension: wav
+
+bullykit: BullyKit
+	Filename: bully
+	Extension: wav
+
+defendthebase: DefendTheBase
+	Filename: defend
+	Extension: wav
+
+tactics: Tactics
+	Filename: tactics
+	Extension: wav
+
+trancelvania: TranceLVania
+	Filename: trancelv
+	Extension: wav
+
+#RA2
+grinder: Grinder
+	Extension: wav
+power: Power
+	Extension: wav
+fortific: Fortification
+	Extension: wav
+indeep: In Deep
+	Extension: wav
+tension: Tension
+	Extension: wav
+eaglehun: Eagle Hunter
+	Extension: wav
+industro: Industro Funk
+	Extension: wav
+jank: Jank
+	Extension: wav
+200meter: 200 Meters
+	Extension: wav
+blowitup: Blow It Up
+	Extension: wav
+destroy: Destroy
+	Extension: wav
+burn: Burn
+	Extension: wav
+motorize: Motorized
+	Extension: wav
+hm2: HM 2
+	Extension: wav
+creditsra2: Credits RA2
+	Filename: ra2-opt
+	Extension: wav
+scorera2: Score RA2
+	Filename: ra2-sco
+	Extension: wav
+
+#D2K
+ARAKATAK: Attack on Arrakis
+	Extension: AUD
+ENTORDOS: Enter the Ordos
+	Extension: AUD
+FIGHTPWR: Fight for Power
+	Extension: AUD
+HARK_BAT: Harkonnen Battle
+	Extension: AUD
+LANDSAND: Land of Sand
+	Extension: AUD
+OPTIONS: Options
+	Extension: AUD
+PLOTTING: Plotting
+	Extension: AUD
+RISEHARK: Rise of Harkonnen
+	Extension: AUD
+ROBOTIX: Robotix
+	Extension: AUD
+SCORED2K: Score Dune 2000
+	Filename: SCORED2K
+	Extension: AUD
+SPICESCT: Spice Scouting
+	Extension: AUD
+AMBUSH: The Ambush
+	Extension: AUD
+ATREGAIN: The Atreides Gain
+	Extension: AUD
+FREMEN: The Fremen
+	Extension: AUD
+SOLDAPPR: The Soldiers Approach
+	Extension: AUD
+WAITGAME: The Waiting Game
+	Extension: AUD
+UNDERCON: Under Construction
+	Extension: AUD
+
+#SC
+zerg1: zerg1
+	Extension: wav
+zerg2: zerg2
+	Extension: wav
+zerg3: zerg3
+	Extension: wav
+terran1: terran1
+	Extension: wav
+terran2: terran2
+	Extension: wav
+terran3: terran3
+	Extension: wav
+protoss1: protoss1
+	Extension: wav
+protoss2: protoss2
+	Extension: wav
+protoss3: protoss3
+	Extension: wav
+#Tiberian Sun
+introts: Intro TS
+	Extension: aud
+approach: Approach
+	Extension: aud
+defense: The Defense
+	Extension: aud
+duskhour: Dusk Hour
+	Extension: aud
+flurry: Flurry
+	Extension: aud
+gloom: Gloom
+	Extension: aud
+heroism: Heroism
+	Extension: aud
+infrared: Infrared
+	Extension: aud
+lonetrop: Lone Trooper
+	Extension: aud
+madrap: Mad Rap
+	Extension: aud
+mutants: Mutants
+	Extension: aud
+nodcrush: Nod Crush
+	Extension: aud
+pharotek: Pharotek
+	Extension: aud
+redsky: Red Sky
+	Extension: aud
+scorets: Score TS
+	Filename: score
+	Extension: aud
+scout: Scouting
+	Extension: aud
+storm: Storm
+	Extension: aud
+timebomb: Timebomb
+	Extension: aud
+valves1b: Valves
+	Extension: aud
+whatlurk: What Lurks
+	Extension: aud
+maps: Map Selection
+	Hidden: true
+	Extension: aud
+#Firestorm
+dmachine: Deploy Machines
+	Extension: aud
+elusive: Elusive
+	Extension: aud
+hacker: Hacker
+	Extension: aud
+infiltra: Infiltration
+	Extension: aud
+kmachine: Killing Machine
+	Extension: aud
+linkup: Link Up
+	Extension: aud
+rainnite: Rain In The Night 2
+	Extension: aud
+slavesys: Slave To The System
+	Extension: aud
+#Bonus tracks
+stomp: Stomp
+	Extension: aud
+initiate: Initiate
+	Extension: aud

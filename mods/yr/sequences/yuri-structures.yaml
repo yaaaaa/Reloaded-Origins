@@ -1,0 +1,729 @@
+yacnst:
+	Defaults:
+		Offset: 4, -58
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yacnst
+		length: 1
+		ShadowStart: 3
+	damaged-idle: yacnst
+		Start: 1
+		ShadowStart: 4
+	idle-normal: yacnst_c
+		ShadowStart: 3
+	damaged-idle-normal: yacnst_c
+		Start: 1
+		ShadowStart: 3
+	make: yacnstmk
+		Length: 27
+		ShadowStart: 27
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle-top: yacnst_a
+		Length: 3
+		Tick: 200
+	damaged-idle-top: yacnst_a
+		Start: 3
+		Length: 3
+		Tick: 150
+	crane-overlay: yacnst_b
+		Length: 18
+		Tick: 150
+	damaged-crane-overlay: yacnst_b
+		Start: 18
+		Length: 18
+		Tick: 150
+	icon: xxicon
+		Offset: 0,0
+		UseTilesetCode: false
+        
+yapowr:
+	Defaults:
+		Offset: 0, -31
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	make: yapowrmk
+		Length: 22
+		ShadowStart: 22
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yapowr
+		Length: 1
+		ShadowStart: 3
+		Tick: 150
+	damaged-idle: yapowr
+		Start: 1
+		Length: 1
+		ShadowStart: 4
+		Tick: 150
+	idle-tier2: yapowr_b
+		Length: 5
+		ShadowStart: 16
+		Tick: 150
+	damaged-idle-tier2: yapowr_b
+		Start: 8
+		Length: 8
+		ShadowStart: 24
+		Tick: 150
+	idle-lights: yapowr_c
+		Length: 2
+		Tick: 200
+	damaged-idle-lights: yapowr_c
+		Start: 5
+		Length: 2
+		Tick: 200
+	icon: ypwricon
+		Offset: 0,0
+		UseTilesetCode: false
+    
+yabrck:
+	Defaults:
+		Offset: 15, -31
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yabrck
+		Length: 1
+		ShadowStart: 3
+		Tick: 150
+	damaged-idle: yabrck
+		Start: 1
+		Length: 1
+		ShadowStart: 4
+		Tick: 150
+	idle-training: yabrck_a
+		Length: 7
+		Tick: 150
+	damaged-idle-training: yabrck_a
+		Start: 8
+		Length: 7
+		Tick: 150
+	dead: ggpiledm # SHP broken & unused
+		Length: 25
+		ShadowStart: 25
+		Tick: 100
+	make: yabrckmk
+		Length: 25
+		ShadowStart: 25
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	icon: brckicon
+		Offset: 0,0
+		UseTilesetCode: false
+        
+yarefn:
+	Defaults:
+		Offset: 0, -31
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yarefn
+		ShadowStart: 3
+	damaged-idle: yarefn
+		Start: 1
+		ShadowStart: 4
+	make: yarefnmk
+		Length: 17
+		ShadowStart: 17
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle-processing: yarefn_a
+		Length: 2
+		ShadowStart: 2
+		Tick: 150
+	damaged-idle-processing: yarefn_a
+		Length: 2
+		ShadowStart: 2
+		Tick: 150
+	icon: sminicon
+		Offset: 0,0
+		UseTilesetCode: false
+        
+yaweap:
+	Defaults:
+		Offset: -30, -60
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yaweap
+		ShadowStart: 3
+		ZOffset: -1536
+	damaged-idle: yaweap
+		Start: 1
+		ShadowStart: 4
+		ZOffset: -1536
+	build-door: yaweap_1
+		ShadowStart: 2
+		ZOffset: -1024
+	damaged-build-door: yaweap_1
+		Start: 1
+		ShadowStart: 3
+		ZOffset: -1024
+	build-top: yaweap_2
+		ShadowStart: 2
+		ZOffset: 1024
+	damaged-build-top: yaweap_2
+		Start: 1
+		ShadowStart: 3
+		ZOffset: 1024
+	build-air-open: yaweap_3
+		ShadowStart: 2
+	damaged-air-open: yaweap_3
+		Start: 1
+		ShadowStart: 3
+	build-air-inside: yaweap_4
+		ShadowStart: 2
+	damaged-air-inside: yaweap_4
+		Start: 1
+		ShadowStart: 3
+	bib: yaweapbb
+		ShadowStart: 2
+		ZOffset: -1024
+	damaged-bib: yaweapbb
+		Start: 1
+		ShadowStart: 2
+		ZOffset: -1024
+	idle-lights: yaweap_a
+		Length: 7
+		ShadowStart: 0
+		Tick: 150
+	damaged-idle-lights: yaweap_a
+		Start: 8
+		Length: 7
+		ShadowStart: 0
+		Tick: 150
+	make: yaweapmk
+		Length: 24
+		ShadowStart: 25
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	icon: ywepicon
+		Offset: 0,0
+		UseTilesetCode: false
+yayard:
+	Defaults:
+		Offset: 0, -45
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yayard
+		ShadowStart: 3
+	damaged-idle: yayard
+		Start: 2
+		ShadowStart: 4
+	idle-crane: yayard_a
+		Length: 15
+		ShadowStart: 32
+		Tick: 200
+	damaged-idle-crane: yayard_a
+		Start: 16
+		Length: 15
+		ShadowStart: 48
+		Tick: 200
+	idle-waves: ngyard_c
+		Length: 15
+		ShadowStart: 30
+		Tick: 200
+	damaged-idle-waves: yayard_c
+		Start: 16
+		Length: 15
+		ShadowStart: 32
+		Tick: 200
+	production-lights: yayard_d
+		Length: 15
+		ZOffset: 256
+	damaged-production-lights: yayard_d
+		Start: 15
+		Length: 15
+		ZOffset: 256
+	make: yayardmk
+		Length: 24
+		ShadowStart: 25
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	repair: yayard_s
+		Length: 15
+		ShadowStart: 32
+	damaged-repair: yayard_s
+		Start: 16
+		Length: 15
+		ShadowStart: 48
+	icon: yyrdicon
+		Offset: 0,0
+		UseTilesetCode: false
+        
+yagrnd:
+	Defaults:
+		Offset: 0, -31
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yagrnd_c
+		Length: 1
+		ShadowStart: 2
+		Tick: 180
+	damaged-idle: yagrnd_c
+		Start: 1
+		Length: 1
+		ShadowStart: 3
+	idle-normal: yagrnd_a
+		length: 10
+		ShadowStart: 11
+		Tick: 180
+	damaged-idle-normal: yagrnd_a
+		length: 10
+		ShadowStart: 11
+		Tick: 180
+	make: yagrndmk
+		Length: 30
+		ShadowStart: 30
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	grind: yagrnd_b
+		Length: 48
+		ShadowStart: 96
+		Tick: 120
+	damaged-grind: yagrnd_b
+		Start: 48
+		Length: 48
+		ShadowStart: 144
+		Tick: 120
+	icon: grndicon
+		Offset: 0,0
+		UseTilesetCode: false
+        
+yatech:
+	Defaults:
+		Offset: -21, -38
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yatech
+		ShadowStart: 3
+	damaged-idle: yatech
+		Start: 1
+		ShadowStart: 4
+	idle-critical: yatech_a
+		Length: 32
+		ShadowStart: 64
+	damaged-idle-critical: yatech_a
+		Start: 32
+		Length: 32
+		ShadowStart: 96
+	make: yatechmk
+		Length: 25
+		ShadowStart: 25
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	icon: ytchicon
+		Offset: 0,0
+		UseTilesetCode: false
+        
+gafwll:
+	Defaults:
+		Offset: 0, -12
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: gafwll
+		Length: 16
+		ShadowStart: 32
+	damaged-idle: gafwll
+		Start: 16
+		Length: 16
+		ShadowStart: 48
+	icon: citwicon
+		Offset: 0,0
+		UseTilesetCode: false
+        
+natbnk:
+	Defaults:
+		Offset: 0, -24
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: natbnkbb
+		Length: 1
+		ShadowStart: 3
+	damaged-idle: natbnkbb
+		Start: 1
+		Length: 1
+		ShadowStart: 4
+	idle-bunkered: natbnk_b
+		Start: 9
+		Length: 1
+		ShadowStart: 19
+	damaged-idle-bunkered: natbnk_b
+		Start: 19
+		Length: 1
+		ShadowStart: 29
+	build: natbnk_b
+		Length: 10
+		ShadowStart: 20
+	damaged-build: natbnk_b
+		Start: 10
+		Length: 10
+		ShadowStart: 30
+	make: natbnkmk
+		Length: 10
+		ShadowStart: 10
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	icon: tbnkicon
+		Offset: 0,0
+		UseTilesetCode: false
+        
+yaggun:
+	Defaults:
+		Offset: 0, -20
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yaggun
+		ShadowStart: 3
+	damaged-idle: yaggun
+		Start: 1
+		ShadowStart: 4
+	muzzle0: mgun-n
+		Length: *
+		UseTilesetCode: false
+	muzzle1: mgun-nw
+		Length: *
+		UseTilesetCode: false
+	muzzle2: mgun-w
+		Length: *
+		UseTilesetCode: false
+	muzzle3: mgun-sw
+		Length: *
+		UseTilesetCode: false
+	muzzle4: mgun-s
+		Length: *
+		UseTilesetCode: false
+	muzzle5: mgun-se
+		Length: *
+		UseTilesetCode: false
+	muzzle6: mgun-e
+		Length: *
+		UseTilesetCode: false
+	muzzle7: mgun-ne
+		Length: *
+		UseTilesetCode: false
+	muzzle-stage-2: gunfire
+		Length: *
+		UseTilesetCode: false
+	muzzle-stage-3: vtmuzzle
+		Length: *
+		UseTilesetCode: false
+	make: yaggunmk
+		Length: 13
+		ShadowStart: 13
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+		ZOffset: 0
+	icon: ggunicon
+		Offset: 0,0
+		UseTilesetCode: false
+yapsyt:
+	Defaults:
+		Offset: 0, -15
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yapsyt
+		Length: 1
+		ShadowStart: 3
+	damaged-idle: yapsyt
+		Start: 1
+		Length: 1
+		ShadowStart: 4
+	idle-top: yapsyt_a
+		Length: 26
+		ShadowStart: 78
+		UseTilesetCode: false
+	damaged-idle-top: yapsyt_a
+		Start: 52
+		Length: 26
+		ShadowStart: 130
+		UseTilesetCode: false
+	idle-full: yapsyt_b
+		Length: 26
+		ShadowStart: 26
+		UseTilesetCode: false
+	damaged-idle-full: yapsyt_a
+		Start: 26
+		Length: 26
+		ShadowStart: 104
+		UseTilesetCode: false
+	muzzle: yuricntl
+		Length: *
+		UseTilesetCode: false
+	make: yapsytmk
+		Length: 31
+		ShadowStart: 31
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	icon: psyticon
+		Offset: 0,0
+		UseTilesetCode: false
+yagntc:
+	Defaults:
+		Offset: 0, -31
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	##ORA can't process yagntc shp file, use yapowr instead
+	make: yapowrmk
+		Length: 3
+		ShadowStart: 3
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yagntc
+		Length: 1
+		ShadowStart: 3
+		Tick: 150
+	damaged-idle: yagntc
+		Start: 1
+		Length: 1
+		ShadowStart: 4
+		Tick: 150
+	idle-top: yagntc_e
+		Length: 1
+		ShadowStart: 2
+		Tick: 150
+	damaged-idle-top: yagntc_e
+		Start: 1
+		Length: 1
+		ShadowStart: 3
+		Tick: 150
+	charged: yagntc_f
+		Length: 15
+		ShadowStart: 62
+		Tick: 50
+	damaged-charged: yagntc_f
+		Start: 31
+		Length: 15
+		ShadowStart: 93
+		Tick: 50
+	active: yagntc_f
+		Start: 15
+		Length: 15
+		ShadowStart: 78
+		Tick: 50
+	damaged-active: yagntc_f
+		Start: 46
+		Length: 15
+		ShadowStart: 109
+		Tick: 50
+	deactive: yagntc_h
+		Length: 31
+		ShadowStart: 63
+		Tick: 50
+	damaged-deactive: yagntc_h
+		Start: 31
+		Length: 31
+		ShadowStart: 93
+		Tick: 50
+	icon: gtncicon
+		Offset: 0,0
+		UseTilesetCode: false
+        
+yappet:
+	Defaults:
+		Offset: 0, -31
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	make: yappetmk
+		Length: 24
+		ShadowStart: 24
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yappet_e
+		Length: 1
+		ShadowStart: 2
+		Tick: 150
+	damaged-idle: yappet_e
+		Start: 1
+		Length: 1
+		ShadowStart: 3
+		Tick: 150
+	charged: yappet_f
+		Length: 19
+		ShadowStart: 38
+		Tick: 150
+	damaged-charged: yappet_f
+		Start: 19
+		Length: 19
+		ShadowStart: 57
+		Tick: 150
+	active: yappet_g
+		Length: 8
+		ShadowStart: 16
+		Tick: 150
+	damaged-active: yappet_g
+		Start: 8
+		Length: 8
+		ShadowStart: 24
+		Tick: 150
+	deactive: yappet_h
+		Length: 19
+		ShadowStart: 38
+		Tick: 150
+	damaged-deactive: yappet_h
+		Start: 19
+		Length: 19
+		ShadowStart: 57
+		Tick: 150
+	icon: pupticon
+		Offset: 0,0
+		UseTilesetCode: false
+
+yarock:
+	Defaults:
+		Offset: 0, -24
+		UseTilesetCode: true
+		TilesetOverrides:
+			TEMPERATE: GENERIC
+			URBAN: GENERIC
+			NEWURBAN: GENERIC
+			DESERT: GENERIC
+			LUNAR: GENERIC
+	idle: yarock
+		Length: 1
+		ShadowStart: 4
+	damaged-idle: yarock
+		Start: 1
+		Length: 1
+		ShadowStart: 5
+	idle-rocket-launched: yarock_a
+		Length: 1
+		ShadowStart: 4
+	damaged-idle-rocket-launched: yarock_a
+		Start: 1
+		Length: 1
+		ShadowStart: 5
+	icon: xxicon
+
+yapppt:
+	Defaults:
+		Offset: 0, -24
+		UseTilesetCode: false
+	idle: yapppt
+		Length: 1
+		ShadowStart: 3
+	damaged-idle: yapppt
+		Start: 1
+		Length: 1
+		ShadowStart: 4
+	icon: xxicon
+        

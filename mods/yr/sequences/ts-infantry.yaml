@@ -1,0 +1,439 @@
+^BasicInfantryTS:
+	Defaults:
+		Tick: 80
+		Offset: 0, 0, 16
+	stand:
+		Facings: 8
+		ShadowStart: 292
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		ShadowStart: 300
+	idle1:
+		Start: 56
+		Length: 15
+		ShadowStart: 348
+	idle2:
+		Start: 71
+		Length: 15
+		ShadowStart: 363
+	prone-run:
+		Start: 86
+		Length: 6
+		Facings: 8
+		ShadowStart: 378
+	prone-stand:
+		Start: 86
+		Facings: 8
+		Stride: 6
+		ShadowStart: 378
+	die-twirling:
+		Start: 134
+		Length: 15
+		ShadowStart: 426
+	die-flying:
+		Start: 149
+		Length: 15
+		ShadowStart: 441
+	die-exploding: s_bang34
+		Length: *
+	die-crushed:
+		Start: 159
+		Length: 5
+		ShadowStart: 451
+		Tick: 800
+		ZOffset: -511
+	standup:
+		Start: 260
+		Length: 2
+		Facings: 8
+		ShadowStart: 552
+	die-melting: electro
+		Length: *
+
+^BasicInfantryTSAttack:
+	attack:
+		Start: 164
+		Length: 6
+		Facings: 8
+		ShadowStart: 456
+	prone-attack:
+		Start: 212
+		Length: 6
+		Facings: 8
+		ShadowStart: 504
+
+e1gdi:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+	Defaults: e1ts
+	icon: e1icongdi
+
+e1nod:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+	Defaults: e1ts
+	icon: e1iconnod
+
+e2ts:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+	icon: e2iconts
+
+e3:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+	icon: e4icon
+
+engineergdi:
+	Inherits: ^BasicInfantryTS
+	Defaults: engineerts
+	icon: engnicongdi
+
+engineernod:
+	Inherits: ^BasicInfantryTS
+	Defaults: engineerts
+	icon: engniconnod
+
+umagon:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+	icon: umagicon
+
+ghostts:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+	icon: ghosticonts
+
+mhijack:
+	Inherits: ^BasicInfantryTS
+	icon: chamicon
+
+chamspy:
+	Inherits: ^BasicInfantryTS
+	icon: chamicon
+
+mutant:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+	icon: mutcicon
+
+mwmn:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+	icon: mutcicon
+
+mutant3:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+	icon: mutcicon
+
+tratos:
+	Inherits: ^BasicInfantryTS
+	icon: mutcicon
+
+oxanna:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+
+slav:
+	Inherits: ^BasicInfantryTS
+	Inherits@attack: ^BasicInfantryTSAttack
+
+cyborg:
+	Defaults:
+		Tick: 80
+		Offset: 0, 0, 16
+	stand:
+		Facings: 8
+		ShadowStart: 370
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		ShadowStart: 378
+	idle1:
+		Start: 56
+		Length: 15
+		ShadowStart: 426
+	idle2:
+		Start: 71
+		Length: 15
+		ShadowStart: 441
+	crippled-run:
+		Start: 86
+		Length: 6
+		Facings: 8
+		ShadowStart: 456
+	crippled-stand:
+		Start: 86
+		Facings: 8
+		Stride: 6
+		ShadowStart: 456
+	attack:
+		Start: 164
+		Length: 6
+		Facings: 8
+		ShadowStart: 534
+	crippled-attack:
+		Start: 212
+		Length: 6
+		Facings: 8
+		ShadowStart: 582
+	emp-overlay: emp_fx01
+		Length: *
+		ZOffset: 512
+		BlendMode: Additive
+	icon: cybiicon
+
+cyc2:
+	Defaults:
+		Offset: 0, 0, 16
+	stand:
+		Facings: 8
+		ShadowStart: 308
+		Offset: 0, 0, 16
+	run:
+		Start: 8
+		Length: 9
+		Facings: 8
+		ShadowStart: 316
+	idle1:
+		Start: 80
+		Length: 15
+		ShadowStart: 388
+	idle2:
+		Start: 95
+		Length: 15
+		ShadowStart: 403
+	crippled-run:
+		Start: 110
+		Length: 9
+		Facings: 8
+		ShadowStart: 418
+	crippled-stand:
+		Start: 110
+		Facings: 8
+		Stride: 9
+		ShadowStart: 418
+	attack:
+		Start: 212
+		Length: 6
+		Facings: 8
+		ShadowStart: 520
+	crippled-attack:
+		Start: 260
+		Length: 6
+		Facings: 8
+		ShadowStart: 568
+	emp-overlay: emp_fx01
+		Length: *
+		ZOffset: 512
+		BlendMode: Additive
+	icon: cybcicon
+
+medic:
+	Defaults:
+		Tick: 80
+		Offset: 0, 0, 16
+	stand:
+		Facings: 8
+		ShadowStart: 307
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		ShadowStart: 315
+	idle1:
+		Start: 56
+		Length: 15
+		ShadowStart: 363
+	idle2:
+		Start: 71
+		Length: 15
+		ShadowStart: 378
+	prone-run:
+		Start: 86
+		Length: 6
+		Facings: 8
+		ShadowStart: 393
+	prone-stand:
+		Start: 86
+		Facings: 8
+		Stride: 6
+		ShadowStart: 393
+	die-twirling:
+		Start: 134
+		Length: 15
+		ShadowStart: 441
+	die-flying:
+		Start: 149
+		Length: 15
+		ShadowStart: 455
+	die-exploding: s_bang34
+		Length: *
+	die-crushed:
+		Start: 159
+		Length: 5
+		ShadowStart: 451
+		Tick: 800
+		ZOffset: -511
+	standup:
+		Start: 260
+		Length: 2
+		Facings: 8
+		ShadowStart: 567
+	heal:
+		Start: 292
+		Length: 14
+		ShadowStart: 599
+	die-melting: electro
+		Length: *
+	icon: mediicon
+
+jumpjetts:
+	Defaults:
+		Tick: 80
+		Offset: 0, 0, 16
+	stand:
+		Facings: 8
+		ShadowStart: 451
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		ShadowStart: 459
+	idle1:
+		Start: 56
+		Length: 15
+		ShadowStart: 507
+	idle2:
+		Start: 71
+		Length: 15
+		ShadowStart: 522
+	prone-run:
+		Start: 86
+		Length: 6
+		Facings: 8
+		ShadowStart: 537
+	prone-stand:
+		Facings: 8
+		ShadowStart: 451
+	flying:
+		Facings: 8
+		Length: 6
+		Start: 292
+		ShadowStart: 743
+	die-twirling: # TODO: animation for falling from sky starts at 436
+		Start: 445
+		Length: 6
+		ShadowStart: 896
+	die-falling:
+		Start: 436
+		Length: 9
+	die-flying: # TODO: animation for falling from sky starts at 436
+		Start: 445
+		Length: 6
+		ShadowStart: 896
+	die-splash: h2o_exp2
+		Length: *
+	die-exploding: s_bang34
+		Length: *
+	die-crushed:
+		Start: 450
+		ShadowStart: 901
+		Tick: 800
+		ZOffset: -511
+	attack:
+		Start: 164
+		Length: 6
+		Facings: 8
+		ShadowStart: 615
+	flying-attack:
+		Start: 388
+		Facings: 8
+		Length: 6
+		ShadowStart: 839
+	prone-attack:
+		Start: 212
+		Length: 6
+		Facings: 8
+		ShadowStart: 663
+	standup:
+		Start: 260
+		Length: 2
+		Facings: 8
+		ShadowStart: 711
+	die-melting: electro
+		Length: *
+	icon: jjeticon
+
+weedguy:
+	Defaults: weed
+		Tick: 80
+		Offset: 0, 0, 16
+	stand:
+		Facings: 8
+		ShadowStart: 202
+	run:
+		Start: 8
+		Length: 6
+		Facings: 8
+		ShadowStart: 210
+	attack:
+		Start: 56
+		Facings: 8
+		ShadowStart: 258
+	prone-attack:
+		Start: 64
+		Facings: 8
+		Stride: 6
+		ShadowStart: 288
+	standup:
+		Start: 112
+		Length: 2
+		Facings: 8
+		ShadowStart: 314
+	prone-run:
+		Start: 64
+		Length: 6
+		Facings: 8
+		ShadowStart: 288
+	prone-stand:
+		Start: 64
+		Facings: 8
+		Stride: 6
+		ShadowStart: 288
+	idle1:
+		Start: 128
+		Length: 8
+		ShadowStart: 330
+	idle2:
+		Start: 136
+		Length: 16
+		ShadowStart: 338
+	die-twirling:
+		Start: 152
+		Length: 8
+		ShadowStart: 354
+	die-flying:
+		Start: 160
+		Length: 6
+		ShadowStart: 362
+	die-exploding:
+		Start: 166
+		Length: 11
+		ShadowStart: 368
+	die-burning:
+		Start: 177
+		Length: 20
+		ShadowStart: 379
+	die-melting: electro
+		Length: *
+	die-crushed:
+		Start: 174
+		Length: 3
+		ShadowStart: 376
+		Tick: 1000
+

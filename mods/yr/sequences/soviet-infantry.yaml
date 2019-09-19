@@ -1,0 +1,154 @@
+dog:
+	Inherits: adog
+	shoot: dogp
+		Length: 1
+		Facings: 64
+	icon: dogicon
+
+sqd:
+	stand:
+		Start: 160
+		Facings: -8
+	run:
+		Start: 0
+		Length: 20
+		Facings: -8
+		Tick: 80
+	punch:
+		Start: 168
+		Length: 14
+		Facings: -8
+		Tick: 120
+	icon: sqdicon
+
+e2:
+	Inherits: ^ArmedInfantry
+	Defaults: cons
+	run:
+		Tick: 120
+	paradrop:
+		Start: 292
+	icon: e2icon
+
+flakt:
+	Inherits: ^ArmedInfantry
+	run:
+		Tick: 120
+	die1:
+		Start: 86
+	die2:
+		Start: 101
+	shoot:
+		Start: 116
+	liedown:
+		Start: 213
+	standup:
+		Start: 229
+	prone-stand:
+		Frames: 165, 171, 177, 183, 189, 195, 201, 207
+	prone-run:
+		Start: 165
+	prone-shoot:
+		Start: 245
+	icon: flkticon
+
+shk:
+	Inherits: ^ArmedInfantry
+	run:
+		Tick: 120
+	paradrop:
+		Start: 292
+	icon: shkicon
+
+terror:
+	Inherits: ^BasicInfantry
+	Defaults: trst
+	run:
+		Tick: 120
+	die1:
+		Start: 86
+	die2:
+		Start: 101
+	shoot:
+		Start: 116
+		Length: 6
+		Facings: 8
+		Tick: 80
+	deploy:
+		Start: 164
+		Length: 15
+		Tick: 80
+	paradrop:
+		Start: 179
+	cheer:
+		Start: 180
+	icon: trsticon
+
+deso:
+	Inherits: ^ArmedInfantry
+	run:
+		Tick: 120
+	deploy:
+		Start: 199
+		Length: 15
+		Tick: 80
+	deployed:
+		Start: 198
+	deployed-fire:
+		Start: 192
+		Length: 7
+		Tick: 80
+	cheer:
+		Start: 314
+	icon: desoicon
+
+ivan:
+	Inherits: ^ArmedInfantry
+	run:
+		Tick: 120
+	liedown:
+		Start: 212
+	standup:
+		Start: 228
+	prone-shoot:
+		Start: 164
+	deploy:
+		Start: 244
+		Length: 15
+	cheer:
+		Start: 259
+	icon: ivanicon
+    
+boris:
+	Inherits: ^ArmedInfantry
+	run:
+		Tick: 120
+	prone:
+		Start: 86
+		length: 1
+		Facings: 6
+	shoot:
+		Start: 169
+	prone-shoot:
+		Start: 217
+	idle1:
+		Start: 56
+		length: 15
+	idle2:
+		Start: 71
+		Length: 20
+	die1:
+		Start: 139
+	die2:
+		Start: 154
+	cheer:
+		Start: 297
+	paradrop:
+		Start: 292
+	secondary-fire
+		Start: 401
+		Length: 1
+	secondary-prone
+		Start: 217
+		Length: 6
+	icon: brisicon

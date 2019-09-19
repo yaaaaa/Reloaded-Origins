@@ -1,0 +1,54 @@
+hatchery:
+	Inherits: ^Building
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 1000
+		Prerequisites: ~disabled
+		IconPalette: sc
+	RenderSprites:
+		Scale: 0.6
+		PlayerPalette: sc
+	Building:
+		Footprint: xxxx xxxx xxxx xxxx
+		Dimensions: 4,4
+	Selectable:
+		Bounds: 220, 155, 0, -20
+	Health:
+		HP: 1000
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 400
+	Production:
+		Produces: Building,Support
+	Tooltip:
+		Name: Hatchery
+		Description: Zerg Hatchery.
+	BaseBuilding:
+	WithIdleOverlay@fans:
+		Sequence: idle
+	ProvidesPrerequisite:
+		Prerequisite: structures.zergs
+	Power:
+		Amount: 0
+	SeedsResource:
+		ResourceType: Veins
+		Interval: 5
+	Exit@1:
+		SpawnOffset: -704,768,0
+		ExitCell: -1,2
+	Exit@2:
+		SpawnOffset: -704,768,0
+		ExitCell: -1,3
+	Exit@3:
+		SpawnOffset: -704,768,0
+		ExitCell: 0,3
+	SpawnActorsOnSell:
+		ActorTypes: larva, larva, larva, larva, larva
+	Voiced:
+		VoiceSet: HatcheryVoice
+
+

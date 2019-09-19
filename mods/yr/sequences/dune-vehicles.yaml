@@ -1,0 +1,247 @@
+mcva:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1795
+		Facings: -32
+	icon: DATA.R8
+		Start: 4284
+		Offset: -30,-24
+	mindcontrol: yuricntl.shp
+		Length: *
+		Offset: 0, -24, 24
+
+mcvh:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1795
+		Facings: -32
+	icon: DATA.R8
+		Start: 4284
+		Offset: -30,-24
+	mindcontrol: yuricntl.shp
+		Length: *
+		Offset: 0, -24, 24
+
+mcvo:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1795
+		Facings: -32
+	icon: DATA.R8
+		Start: 4284
+		Offset: -30,-24
+	mindcontrol: yuricntl.shp
+		Length: *
+		Offset: 0, -24, 24
+
+harvester:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1699
+		Facings: -32
+	harvest: DATA.R8
+		Start: 3884
+		Length: 6
+		Facings: -8
+		Tick: 80
+		ZOffset: 1
+		BlendMode: Multiply
+	dock: DATA.R8
+		Start: 3623
+		Length: 10
+	dock-loop: DATA.R8
+		Start: 3633
+	icon: DATA.R8
+		Start: 4280
+		Offset: -30,-24
+	mindcontrol: yuricntl.shp
+		Length: *
+		Offset: 0, -24, 24
+
+mcv.husk:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1795
+		Facings: -32
+		ZOffset: -1023
+
+harvester.husk:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1699
+		Facings: -32
+		ZOffset: -1023
+
+trike:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1635
+		Facings: -32
+	muzzle: DATA.R8
+		Start: 4092
+		Tick: 50
+		Facings: -32
+		BlendMode: Additive
+	icon: DATA.R8
+		Start: 4305
+		Offset: -30,-24
+	mindcontrol: yuricntl.shp
+		Length: *
+		Offset: 0, -24, 24
+
+quad:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1667
+		Facings: -32
+	icon: DATA.R8
+		Start: 4279
+		Offset: -30,-24
+	mindcontrol: yuricntl.shp
+		Length: *
+		Offset: 0, -24, 24
+
+siege_tank:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1763
+		Facings: -32
+	turret: DATA.R8
+		Start: 1891
+		Facings: -32
+	muzzle: DATA.R8
+		Start: 3671
+		Length: 3
+		BlendMode: Additive
+	icon: DATA.R8
+		Start: 4287
+		Offset: -30,-24
+
+siege_tank.husk:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1763
+		Facings: -32
+		ZOffset: -512
+	turret: DATA.R8
+		Start: 1891
+		Facings: -32
+		ZOffset: -512
+
+missile_tank:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1603
+		Facings: -32
+	icon: DATA.R8
+		Start: 4285
+		Offset: -30,-24
+
+missile_tank.husk:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1603
+		Facings: -32
+		ZOffset: -512
+
+combat_tank_a:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1731
+		Facings: -32
+	turret: DATA.R8
+		Start: 1859
+		Facings: -32
+	muzzle: DATA.R8
+		Start: 4028
+		Tick: 60
+		Facings: -32
+		BlendMode: Additive
+	icon: DATA.R8
+		Start: 4281
+		Offset: -30,-24
+
+combat_tank_a.husk:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1731
+		Facings: -32
+		ZOffset: -512
+	turret: DATA.R8
+		Start: 1859
+		Facings: -32
+		ZOffset: -512
+
+combat_tank_h:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 2051
+		Facings: -32
+	turret: DATA.R8
+		Start: 2115
+		Facings: -32
+	muzzle: DATA.R8
+		Start: 4028
+		Tick: 60
+		Facings: -32
+		BlendMode: Additive
+	icon: DATA.R8
+		Start: 4282
+		Offset: -30,-24
+
+combat_tank_h.husk:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 2051
+		Facings: -32
+		ZOffset: -512
+	turret: DATA.R8
+		Start: 2115
+		Facings: -32
+		ZOffset: -512
+
+combat_tank_o:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 2453
+		Facings: -32
+	turret: DATA.R8
+		Start: 2485
+		Facings: -32
+	muzzle: DATA.R8
+		Start: 4028
+		Tick: 60
+		Facings: -32
+		BlendMode: Additive
+	icon: DATA.R8
+		Start: 4283
+		Offset: -30,-24
+
+combat_tank_o.husk:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 2453
+		Facings: -32
+		ZOffset: -512
+	turret: DATA.R8
+		Start: 2485
+		Facings: -32
+		ZOffset: -512

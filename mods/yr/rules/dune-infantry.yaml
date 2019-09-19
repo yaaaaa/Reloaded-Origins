@@ -1,0 +1,59 @@
+light_inf:
+	Inherits@1: ^Infantry
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@2: ^Parachutable
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 10
+		BuildDuration: 54
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Prerequisites: ~dune.barracks
+		Description: General-purpose infantry\n  Strong vs Infantry\n  Weak vs Vehicles, Artillery
+	Valued:
+		Cost: 50
+	Tooltip:
+		Name: Light Infantry
+	Health:
+		HP: 600
+	Mobile:
+		Speed: 43
+	Armament:
+		Weapon: LMG
+	AttackFrontal:
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	Voiced:
+		VoiceSet: InfantryVoice
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+
+engineer2k:
+	Inherits: engineer
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 30
+		Prerequisites: upgrade.barracks, ~techlevel.medium, ~dune.barracks
+		BuildDuration: 108
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Infiltrates and captures enemy structures\n  Strong vs Buildings\n  Weak vs Everything
+	Valued:
+		Cost: 400
+	Health:
+		HP: 5000
+	RevealsShroud:
+		Range: 2c768
+	Mobile:
+		Speed: 31
+	Captures:
+		CaptureTypes: building, husk
+		PlayerExperience: 50
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Voiced:
+		VoiceSet: EngineerVoice2k
+

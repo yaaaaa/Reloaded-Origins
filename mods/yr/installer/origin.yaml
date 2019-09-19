@@ -1,0 +1,16 @@
+origin: C&C The Ultimate Collection (Origin version, English)
+	Type: Install
+	RegistryPrefixes: HKEY_LOCAL_MACHINE\Software\, HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\
+	RegistryKey: EA Games\Command and Conquer Red Alert II
+	RegistryValue: Install Dir
+	IDFiles:
+		theme.mix: 184f99e3292ab19c71c08a1ad7097ce739396190
+	Install:
+		copy: .
+			^Content/yr/ra2.mix: ra2.mix
+			^Content/yr/ra2md.mix: ra2md.mix
+			^Content/yr/language.mix: language.mix
+			^Content/yr/langmd.mix: langmd.mix
+			^Content/yr/theme.mix: theme.mix
+			^Content/yr/thememd.mix: thememd.mix
+			^Content/yr/movmd03.mix: movmd03.mix

@@ -1,0 +1,558 @@
+pcv:
+	Inherits: ^Vehicle
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 80
+		Prerequisites: ~yaweap, yagrnd
+		Description: Deploys into a Construction Yard.
+	Valued:
+		Cost: 3000
+	Tooltip:
+		Name: Mobile Construction Vehicle
+	Selectable:
+		Priority: 4
+		Bounds: 68, 56, 0, -7
+	Health:
+		HP: 1000
+	Armor:
+		Type: Heavy
+	Mobile:
+		Speed: 80
+		TurnSpeed: 5
+		Crushes: fence, crate, infantry
+	RevealsShroud:
+		Range: 4c0
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	BaseBuilding:
+	Transforms:
+		Voice: Move
+		IntoActor: yacnst
+		Offset: -1,-1
+		Facing: 96
+		TransformSounds: uplace.wav
+		NoTransformNotification: BuildingCannotPlaceAudio
+	RenderSprites:
+	RenderVoxels:
+	WithVoxelBody:
+	Voiced:
+		VoiceSet: MCVVoice
+	HitShape:
+	SelfHealing@MACHSHOP:
+		RequiresCondition: machshop
+	
+smin:
+	Inherits: ^Vehicle
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 10
+		Prerequisites: ~yaweap, ~yarefn
+		Description: Provides Credit for Yuri
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Slave Miner
+	Selectable:
+		Bounds: 64, 52, 0, -6
+	Transforms:
+		Voice: Move
+		IntoActor: yarefn
+		Offset: -1,-1
+		Facing: 96
+		TransformSounds: uplace.wav
+		NoTransformNotification: BuildingCannotPlaceAudio
+	Health:
+		HP: 2000
+	DeliversCash:
+		Payload: 1500
+		PlayerExperience: 25
+		Voice: Move
+	Armor:
+		Type: Medium
+	Mobile:
+		Speed: 45
+		TurnSpeed: 8
+		WaitAverage: 0
+		Crushes: crate, infantry
+	ProvidesPrerequisite:
+		Prerequisite: yarefn
+	Turreted:
+		TurnSpeed: 5
+	Armament@primary:
+		Weapon: 20mmrapid
+		LocalOffset: 640,0,384
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: 20mmrapidE
+		LocalOffset: 640,0,384
+		RequiresCondition: rank-elite
+	AttackTurreted:
+		Voice: Attack
+	RevealsShroud:
+		Range: 4c0
+	GainsExperience: # can get experience, i.e. speed
+		LevelUpImage: crate-effects
+	RenderSprites: # TODO: WithHarvestOverlay relies on this, but it should actually be removed
+	RenderVoxels:
+		LightAmbientColor: -0.7,-0.7,-0.7
+		LightDiffuseColor: 1.5,1.5,1.5
+	WithVoxelBody:
+	WithVoxelTurret:
+	Voiced:
+		VoiceSet: SlaveMinerVoice
+	HitShape:
+	SelfHealing@MACHSHOP:
+		RequiresCondition: machshop
+	GrantConditionOnDeploy:
+		DeployedCondition: deploy
+		UndeployedCondition: undeploy
+	SpawnerHarvesterMaster:
+		Actors: slav, slav, slav, slav, slav
+		Resources: Ore,Gems,Tiberium
+		DeployScanRadius: 20
+	
+ltnk:
+	Inherits: ^Vehicle
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Lasher Light Tank
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 20
+		Prerequisites: ~yaweap
+		Description: Basic Yuri Tank.\n  Strong vs Vehicle\n  Weak vs Infantry, Aircraft
+	Mobile:
+		Speed: 105
+		TurnSpeed: 5
+		Crushes: fence, crate, infantry
+	Health:
+		HP: 300
+	DeliversCash:
+		Payload: 700
+		PlayerExperience: 25
+		Voice: Move
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 8c0
+	Turreted:
+		TurnSpeed: 5
+	Armament@primary:
+		Weapon: 105mm
+		LocalOffset: 640,0,384
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: 105mmE
+		LocalOffset: 640,0,384
+		RequiresCondition: rank-elite
+	AttackTurreted:
+		Voice: Attack
+	AutoTarget:
+	RenderSprites:
+	Selectable:
+		Bounds: 64, 52, 0, -6
+	RenderVoxels:
+	WithVoxelBody:
+	WithVoxelTurret:
+	Voiced:
+		VoiceSet: LasherTankVoice
+	ProducibleWithLevel:
+		Prerequisites: warfactory.infiltrated
+	HitShape:
+	SelfHealing@MACHSHOP:
+		RequiresCondition: machshop
+	Bunkerable:
+	
+ytnk:
+	Inherits: ^Vehicle
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Gatling Tank
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 20
+		Prerequisites: ~yaweap
+		Description: Yuri Gattling Tank.\n  Strong vs Infantry, Aircraft\n  Weak vs Vehicle
+	Mobile:
+		Speed: 90
+		TurnSpeed: 5
+		Crushes: fence, crate, infantry
+	Health:
+		HP: 210
+	DeliversCash:
+		Payload: 600
+		PlayerExperience: 25
+		Voice: Move
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 8c0
+	Turreted:
+		TurnSpeed: 5
+	Armament@primary-stage-1:
+		Weapon: AGGattling
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: !rank-elite && stage-1
+	Armament@primary-elite-stage-1:
+		Weapon: AGGattling
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: rank-elite && elite-stage-1
+	Armament@primary-stage-2:
+		Weapon: AGGattling2
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: !rank-elite && stage-2
+	Armament@primary-elite-stage-2:
+		Weapon: AGGattling2E
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: rank-elite && elite-stage-2
+	Armament@primary-stage-3:
+		Weapon: AGGattling3
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: !rank-elite && stage-3
+	Armament@primary-elite-stage-3:
+		Weapon: AGGattling3E
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: rank-elite && elite-stage-3
+	Armament@second-stage-1:
+		Weapon: AAGattling
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: !rank-elite && stage-1
+	Armament@second-elite-stage-1:
+		Weapon: AAGattlingE
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: rank-elite && elite-stage-1
+	Armament@second-stage-2:
+		Weapon: AAGattling2
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: !rank-elite && stage-2
+	Armament@second-elite-stage-2:
+		Weapon: AAGattling2E
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: rank-elite && elite-stage-2
+	Armament@second-stage-3:
+		Weapon: AAGattling3
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: !rank-elite && stage-3
+	Armament@second-elite-stage-3:
+		Weapon: AAGattling3E
+		LocalOffset: 700,100,10, 700,-100,10
+		RequiresCondition: rank-elite && elite-stage-3
+	GrantConditionOnStage:
+		Conditions:
+			stage-1: 200
+			stage-2: 400
+			stage-3: 600
+		RequiresCondition: !rank-elite
+	GrantConditionOnStage@elite:
+		Conditions:
+			elite-stage-1: 100
+			elite-stage-2: 200
+			elite-stage-3: 300
+		RequiresCondition: rank-elite
+	AttackTurreted:
+		Voice: Attack
+	AutoTarget:
+	RenderSprites:
+	Selectable:
+		Bounds: 52, 40, 0, -6
+	RenderVoxels:
+		LightAmbientColor: -0.6,-0.6,-0.6
+		LightDiffuseColor: 1.6,1.6,1.6
+	WithVoxelBody:
+	WithVoxelTurret:
+	Voiced:
+		VoiceSet: GattlingTankVoice
+	ProducibleWithLevel:
+		Prerequisites: warfactory.infiltrated
+	HitShape:
+	SelfHealing@MACHSHOP:
+		RequiresCondition: machshop
+	Bunkerable:
+	
+tele:
+	Inherits: ^Vehicle
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Magnetron
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 20
+		Prerequisites: ~yaweap, napsis
+		Description: Yuri Magnetron Tank. Powerful sige weapon.\n  Strong vs structures\n  Weak vs Infantry, Vehicle, Aircraft and Ships
+	Mobile:
+		Speed: 75
+		TurnSpeed: 5
+		Crushes: fence, crate, infantry
+	DeliversCash:
+		Payload: 1000
+		PlayerExperience: 25
+		Voice: Move
+	Health:
+		HP: 150
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+	Turreted:
+		TurnSpeed: 5
+		Offset: -400,0,0
+	Armament@primary:
+		Weapon: MagneShake
+		LocalOffset: 720,0,1000
+	Armament@effect:
+		Weapon: MagnetronZapEffect
+		LocalOffset: 720,0,1000
+	Armament@tract:
+		Weapon: MagnetronTract
+		LocalOffset: 720,0,1000
+		RequiresCondition: stance-defend
+	Armament@repel:
+		Weapon: MagnetronRepel
+		LocalOffset: 720,0,1000
+		RequiresCondition: stance-holdfire
+	Armament@lift:
+		Weapon: MagnetronLift
+		LocalOffset: 720,0,1000
+		RequiresCondition: !stance-defend && !stance-holdfire
+	AttackTurreted:
+		Voice: Attack
+	AutoTarget:
+	RenderSprites:
+	Selectable:
+		Bounds: 64, 52, 0, -6
+	RenderVoxels:
+	WithVoxelBody:
+	WithVoxelTurret:
+	Voiced:
+		VoiceSet: MagnetronVoice
+	ProducibleWithLevel:
+		Prerequisites: warfactory.infiltrated
+	AutoTarget:
+		DefendCondition: stance-defend
+		HoldFireCondition: stance-holdfire
+	HitShape:
+	SelfHealing@MACHSHOP:
+		RequiresCondition: machshop
+	
+caos:
+	Inherits: ^Vehicle
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Chaos Drone
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 20
+		Prerequisites: ~yaweap
+		Description: Yuri Chaos Drone can make chaos in enemy force\n  Strong vs Infantry, Vehicles\n  Weak vs Aircraft
+	Mobile:
+		Speed: 300
+		TurnSpeed: 40
+		Crushes: fence, crate, infantry
+	Health:
+		HP: 200
+	DeliversCash:
+		Payload: 800
+		PlayerExperience: 25
+		Voice: Move
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+	Turreted:
+		TurnSpeed: 5
+	Armament@primary:
+		Weapon: ChaosGasAttack
+		MuzzleSequence: muzzle
+		LocalOffset: 640,0,384
+	WithMuzzleOverlay:
+	AttackFrontal:
+		Voice: Attack
+	AutoTarget:
+	RenderSprites:
+	Selectable:
+		Bounds: 64, 52, 0, -6
+	RenderVoxels:
+	WithVoxelBody:
+	Voiced:
+		VoiceSet: ChaosDroneVoice
+	ProducibleWithLevel:
+		Prerequisites: warfactory.infiltrated
+	HitShape:
+	SelfHealing@MACHSHOP:
+		RequiresCondition: machshop
+	GrantExternalConditionWeapon@ChaoGas:
+		Condition: chaosgasability
+		EffectDuration: 500
+	
+mind:
+	Inherits: ^Vehicle
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 1750
+	Tooltip:
+		Name: Master Mind
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 20
+		Prerequisites: ~yaweap, yatech
+		Description: Yuri MindControl Vehicle.\n  Strong vs Infantry, Vehicles, Ships\n  Weak vs Aircraft
+	Mobile:
+		Speed: 60
+		TurnSpeed: 5
+		Crushes: fence, crate, infantry
+	Health:
+		HP: 500
+	DeliversCash:
+		Payload: 1750
+		PlayerExperience: 25
+		Voice: Move
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 8c0
+	Turreted:
+		TurnSpeed: 5
+	Armament:
+		Weapon: MindControl
+		MuzzleSequence: muzzle
+		LocalOffset: 0,0,960
+	WithMuzzleOverlay:
+	MindController:
+		Capacity: 3
+		ControllingCondition: controlling
+		Sounds: iyurat1a.wav
+		Overload: true
+		OverloadCondition: mind-control-overload
+	WithMindControlArc:
+		UsePlayerColor: true
+		Offset: 0,0,960
+	AttackTurreted:
+		Voice: Attack
+	AutoTarget:
+	RenderSprites:
+	Selectable:
+		Bounds: 64, 52, 0, -6
+	RenderVoxels:
+		LightAmbientColor: -0.6,-0.6,-0.6
+		LightDiffuseColor: 1.6,1.6,1.6
+	WithVoxelBody:
+	Voiced:
+		VoiceSet: MasterMindVoice
+	ProducibleWithLevel:
+		Prerequisites: warfactory.infiltrated
+	HitShape:
+	SelfHealing:
+	SelfHealing@Overload:
+		PercentageStep: -5
+		RequiresCondition: mind-control-overload
+	SelfHealing@MACHSHOP:
+		RequiresCondition: machshop
+
+
+disk:
+	Inherits: ^Aircraft
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Valued:
+		Cost: 1750
+	Tooltip:
+		Name: Floating Disk
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 30
+		Prerequisites: ~yaweap, yatech
+		Description: Yuri Laser Disk, Strong with infantry, aircraft\n Weak with vehicles
+	Aircraft:
+		CruiseAltitude: 4608
+		LandWhenIdle: false
+		TurnSpeed: 100
+		Speed: 200
+		CanHover: True
+		VTOL: true
+	Selectable:
+		Bounds: 78, 43, 0, -15
+	Health:
+		HP: 600
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+		Type: CenterPosition
+	Armament@primary:
+		Weapon: DiskLaser
+	Armament@second:
+		Name: secondary
+		Weapon: DiskDrain
+		MuzzleSequence: muzzle
+		LocalOffset: 0,0,-300
+	WithMuzzleOverlay:
+	AttackAircraft:
+		FacingTolerance: 20
+		Voice: Attack
+	Voiced:
+		VoiceSet: DiskVoice
+	Turreted:
+		TurnSpeed: 5
+	RenderSprites:
+	RenderVoxels:
+	WithVoxelBody:
+	WithVoxelTurret:
+	VoiceAnnouncement:
+		Voice: Build
+	HitShape:
+	SelfRotationCraft:
+	Repairable:
+		RepairActors:
+	Rearmable:
+		RearmActors:
+	SpawnActorOnDeath:
+		Actor: diskhusk
+	GrantConditionOnAttackType:
+		Condition: diskdrainabilitytransfercash
+		ArmamentNames: secondary
+		CheckTargetTypes: true
+		TargetTypes: refinery
+	CashTrickler:
+		Interval: 30
+		Amount: 30
+		RequiresCondition: diskdrainabilitytransfercash
+
+diskhusk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Floating Disk
+	Turreted:
+		TurnSpeed: 5
+	RevealsShroud:
+		Range: 6c0
+		Type: CenterPosition
+	FallsToEarth:
+		Explosion: UnitExplode
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 140
+	RenderVoxels:
+		Image: disk
+	WithVoxelTurret:
+	SelfRotationCraft:
+	BodyOrientation:
+		UseClassicPerspectiveFudge: false

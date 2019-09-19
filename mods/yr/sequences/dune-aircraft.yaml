@@ -1,0 +1,20 @@
+carryall:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 1923
+		Facings: -32
+	icon: DATA.R8
+		Start: 4290
+		Offset: -30,-24
+	mindcontrol: yuricntl.shp
+		Length: *
+		Offset: 0, -24, 24
+
+frigate:
+	Defaults:
+		AddExtension: false
+	idle: DATA.R8
+		Start: 2517
+		Facings: 1
+

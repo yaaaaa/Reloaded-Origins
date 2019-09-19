@@ -1,0 +1,16 @@
+Player:
+	-ConquestVictoryConditions:
+	ModularBot@SHELLMAPAI:
+		Name: Shellmap Player AI
+		Type: Shellmap
+
+World:
+	-CrateSpawner:
+	-SpawnMPUnits:
+	-MPStartLocations:
+	MusicPlaylist:
+		BackgroundMusic: intro
+		DisableWorldSounds: true
+	LuaScript:
+		Scripts: shellmap.lua
+	-StartGameNotification:

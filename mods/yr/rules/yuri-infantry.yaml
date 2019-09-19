@@ -1,0 +1,401 @@
+init:
+	Inherits: ^Infantry
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Infantry
+		Prerequisites: ~yabrck
+		BuildPaletteOrder: 20
+		Description: Basic Yuri Infantry.\n Strong vs Infantry and Vehicle\n Weak vs aircraft
+	Valued:
+		Cost: 200
+	Tooltip:
+		Name: Initiate
+	DeliversCash:
+		Payload: 100
+		PlayerExperience: 5
+		Voice: Move
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 100
+	Mobile:
+		Speed: 60
+	Passenger:
+		PipType: Green
+	RevealsShroud:
+		Range: 5c0
+	AttackFrontal:
+		Voice: Attack
+	Armament@primary:
+		Weapon: PsychicJab
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: PsychicJabE
+		RequiresCondition: rank-elite
+	Voiced:
+		VoiceSet: InitiateVoice
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	Bunkerable:
+	BunkerPassenger:
+		Voice: Move
+		CargoType: Infantry
+		GrantBunkerCondition: bunkered
+		Accepter: nabnkr, bfrt, garrisonable-building
+		
+yengineer:
+	Inherits: ^Infantry
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Infantry
+		Prerequisites: ~yabrck
+		BuildPaletteOrder: 20
+		Description: Capture enemy structures and netural vehicles.\n Unarmed
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Engineer
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 75
+	Mobile:
+		Speed: 60
+	DeliversCash:
+		Payload: 250
+		PlayerExperience: 25
+		Voice: Move
+	Passenger:
+		PipType: Blue
+	EngineerRepair:
+	RepairsBridges:
+		RepairNotification: BridgeRepaired
+	Captures:
+		Sabotage: false
+		CaptureTypes: building, husk
+	RevealsShroud:
+		Range: 4c0
+	Voiced:
+		VoiceSet: EngineerYuriVoice
+	Guard:
+		Voice: Action
+	AttackMove:
+		Voice: Action
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	WithInfantryBody:
+		DefaultAttackSequence: stand
+		
+	CaptureManager:
+brute:
+	Inherits: ^Infantry
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Infantry
+		Prerequisites: ~yabrck
+		BuildPaletteOrder: 20
+		Description: Powerful soldiers.\n Strong vs Infantry and Vehicle\n Weak vs aircraft
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Brute
+	DeliversCash:
+		Payload: 250
+		PlayerExperience: 10
+		Voice: Move
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 200
+	Mobile:
+		Speed: 90
+	Passenger:
+		PipType: Green
+	RevealsShroud:
+		Range: 5c0
+	AttackFrontal:
+		Voice: Attack
+	Armament@primary:
+		Weapon: Punch
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: PunchE
+		RequiresCondition: rank-elite
+	Armament@second:
+		Weapon: Smash
+		RequiresCondition: !rank-elite
+	Armament@second-elite:
+		Weapon: SmashE
+		RequiresCondition: rank-elite
+	Voiced:
+		VoiceSet: BruteVoice
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	-Crushable:
+	-BunkerPassenger:
+
+virus:
+	Inherits: ^Infantry
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Infantry
+		Prerequisites: napsis, ~yabrck
+		BuildPaletteOrder: 20
+		Description: Virus sniper.\n Strong vs Infantry\n Weak vs Vehicle and Aircraft
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Virus
+	DeliversCash:
+		Payload: 350
+		PlayerExperience: 20
+		Voice: Move
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Health:
+		HP: 100
+	Mobile:
+		Speed: 60
+	Passenger:
+		PipType: Green
+	RevealsShroud:
+		Range: 5c0
+	AttackFrontal:
+		Voice: Attack
+	Armament@primary:
+		Weapon: Virusgun
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: VirusgunE
+		RequiresCondition: rank-elite
+	Voiced:
+		VoiceSet: VirusVoice
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	BunkerPassenger:
+		Voice: Move
+		CargoType: Infantry
+		GrantBunkerCondition: bunkered
+		Accepter: bfrt
+		
+slav:
+	Inherits: ^Infantry
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: Slave
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Harvester:
+		Capacity: 10
+		Resources: Ore,Gems
+		BaleUnloadDelay: 1
+		SearchFromProcRadius: 30
+		SearchFromOrderRadius: 11
+		HarvestVoice: Move
+		DeliverVoice: Move
+	Health:
+		HP: 100
+	Mobile:
+		Speed: 45
+	Passenger:
+		PipType: Green
+	RevealsShroud:
+		Range: 5c0
+	WithSpriteBody:
+	WithDockingAnimation:
+		DockSequence: idle
+		DockLoopSequence: idle
+	Armament@primary:
+		Weapon: shovel
+		RequiresCondition: freed
+	Voiced:
+		VoiceSet: SlaveWorkerVoice
+	AttackFrontal:
+		Voice: Attack
+	SpawnerHarvesterSlave:
+		OnMasterKilled: Free
+		OnMasterChangeOwner: Free
+		FreeCondition: freed
+	-BunkerPassenger:
+
+yuri:
+	Inherits: ^Infantry
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Infantry
+		BuildPaletteOrder: 160
+		Prerequisites: yatech, ~yabrck
+		Description: Psychic infantry. Can mind control enemy units.\nCan be deployed to unleash a powerful psychic wave.\n  Strong vs Infantry, Vehicles\n  Weak vs Terror Drones, Aircraft, Buildings
+	Valued:
+		Cost: 1200
+	DeliversCash:
+		Payload: 600
+		PlayerExperience: 60
+		Voice: Move
+	Tooltip:
+		Name: Yuri Clone
+	Selectable:
+		Bounds: 20, 30, 0, -11
+	Voiced:
+		VoiceSet: YuriVoice
+	Health:
+		HP: 100
+	Mobile:
+		Speed: 60
+		RequiresCondition: !deployed && !deploying && !chronodisable
+	RevealsShroud:
+		Range: 12c0
+	Armor:
+		Type: None
+	Passenger:
+		PipType: Red
+	PeriodicExplosion:
+		Weapon: PsiWave
+		LocalOffset: 0,0,128
+		RequiresCondition: deployed
+	GrantTimedConditionOnDeploy:
+		DeployedTicks: 50
+		CooldownTicks: 0
+		Facing: 96
+		DeployedCondition: deployed
+		DeployingCondition: deploying
+		DeployAnimation: deploy
+		UndeployAnimation: undeploy
+		ShowSelectionBar: false
+		Voice:
+	TakeCover:
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		IdleSequences: idle1,idle2
+		RequiresCondition: !deployed && !deploying
+	WithSpriteBody@DEPLOYED:
+		Sequence: deployed
+		RequiresCondition: deployed || deploying
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	AttackFrontal:
+		Voice: Attack
+	Armament:
+		Weapon: MindControl
+		MuzzleSequence: muzzle
+		LocalOffset: 0,0,960
+		PauseOnCondition: deployed
+	WithMuzzleOverlay:
+	MindController:
+		ControllingCondition: controlling
+		Sounds: iyurat1a.wav
+	WithMindControlArc:
+		UsePlayerColor: true
+		Offset: 0,0,960
+	AutoTarget:
+	AutoTargetPriority@DEFAULT:
+		Types: MindControl
+		RequiresCondition: !controlling
+	BunkerPassenger:
+		Voice: Move
+		CargoType: Infantry
+		GrantBunkerCondition: bunkered
+		Accepter: bfrt
+		
+yuripr:
+	Inherits: ^Infantry
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Infantry
+		BuildPaletteOrder: 160
+		Prerequisites: yatech, ~yabrck
+		Description: Yuri Prime himself. Can mind control enemy units and structures.\nCan be deployed to unleash a powerful psychic wave.\n  Strong vs Infantry, Vehicles, Structures\n  Weak vs Terror Drones, Aircraft, Buildings
+		BuildLimit: 1
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: yurix
+	DeliversCash:
+		Payload: 600
+		PlayerExperience: 60
+		Voice: Move
+	Tooltip:
+		Name: Yuri Prime
+	Selectable:
+		Bounds: 26, 52, 0, -30
+	Voiced:
+		VoiceSet: YuriPrimeVoice
+	Health:
+		HP: 150
+	Mobile:
+		Speed: 90
+		Locomotor: swimsuit
+		PauseOnCondition: !(!deployed && !deploying && !chronodisable)
+	RevealsShroud:
+		Range: 12c0
+	Armor:
+		Type: None
+	Passenger:
+		PipType: Red
+	PeriodicExplosion:
+		Weapon: PsiWave
+		LocalOffset: 0,0,128
+		RequiresCondition: deployed
+	GrantTimedConditionOnDeploy:
+		DeployedTicks: 50
+		CooldownTicks: 0
+		Facing: 96
+		DeployedCondition: deployed
+		DeployingCondition: deploying
+		DeployAnimation: deploy
+		UndeployAnimation: undeploy
+		ShowSelectionBar: false
+		Voice:
+	TakeCover:
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		IdleSequences: idle1,idle2
+		RequiresCondition: !deployed && !deploying
+	WithSpriteBody@DEPLOYED:
+		Sequence: deployed
+		RequiresCondition: deployed || deploying
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	AttackFrontal:
+		Voice: Attack
+	Armament:
+		Weapon: SuperMindControl
+		MuzzleSequence: muzzle
+		LocalOffset: 0,0,960
+		PauseOnCondition: deployed
+	WithMuzzleOverlay:
+	MindController:
+		ControllingCondition: controlling
+		Sounds: iyurat1a.wav
+	WithMindControlArc:
+		UsePlayerColor: true
+		Offset: 0,0,960
+	AutoTarget:
+	VoiceAnnouncement:
+		Voice: Build
+	AutoTargetPriority@DEFAULT:
+		Types: MindControl
+		RequiresCondition: !controlling
+	-Crushable:
+	BunkerPassenger:
+		Voice: Move
+		CargoType: Infantry
+		GrantBunkerCondition: bunkered
+		Accepter: bfrt

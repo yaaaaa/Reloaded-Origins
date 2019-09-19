@@ -1,0 +1,41 @@
+asw:
+	icon: xxicon
+
+beag:
+	icon: beagicon
+
+cargoplane:
+	icon: xxicon
+
+falc:
+	icon: falcicon
+
+hind:
+	icon: hindiconn
+
+hornet:
+	icon: xxicon
+
+pdplane:
+	icon: xxicon
+
+shad:
+	icon: shadicon
+
+zep:
+	icon: zepicon
+    
+bpln:
+	icon: bplnicon
+
+v3rocket:
+	icon: xxicon
+	
+schp:
+	icon: schpicon
+	
+schd:
+	make: schpdepl
+		Length: 11
+		ShadowStart: 11
+	icon: schpicon

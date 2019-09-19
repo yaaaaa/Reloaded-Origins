@@ -1,0 +1,670 @@
+viruscloud:
+	Inherits: ^Aircraft
+	-Selectable:
+	-SelectionDecorations:
+	-UpdatesPlayerStatistics:
+	-ActorLostNotification:
+	-AppearsOnRadar:
+	Valued:
+		Cost: 0
+	Aircraft:
+		CruiseAltitude: 0
+		TurnSpeed: 6
+		Repulsable: false
+		AltitudeVelocity: 400
+		Speed: 15
+		MoveIntoShroud: true
+	-Targetable@airborne:
+	-Targetable@ground:
+	Health:
+		HP: 100
+	SelfHealing:
+		Step: -1
+		Delay: 25
+		HealIfBelow: 200
+	RejectsOrders:
+	RenderSprites:
+		Image: viruscloud
+		Palette: effect
+	BodyOrientation:
+		QuantizedFacings: 32
+	Wanders:
+	WithDeathAnimation:
+		DeathSequence: die
+		UseDeathTypeSuffix: false
+	Interactable:
+	Explodes:
+		Weapon: VirusCloudDamage
+		Chance: 75
+	HitShape:
+
+shad:
+	Inherits: ^Aircraft
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@MC: ^MindControllable
+	Tooltip:
+		Name: Night Hawk
+	Health:
+		HP: 175
+	Armor:
+		Type: Light
+	Armament:
+		Weapon: BlackHawkCannon
+	Voiced:
+		VoiceSet: NighthawkVoice
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 90
+		Prerequisites: ~gaweap
+		Description: Infantry Transport Helicopter\nUndetectable by radar.\n  Strong vs Infantry\n  Weak vs Vehicles, Aircraft
+	Selectable:
+		Bounds: 119, 58, 0, -20
+	Valued:
+		Cost: 1000
+	RevealsShroud:
+		Range: 7c0
+		Type: CenterPosition
+	-AppearsOnRadar:
+	Aircraft:
+		CruiseAltitude: 3072
+		LandableTerrainTypes: Clear, Rough, Road, DirtRoad, Ore, Gems
+		TurnSpeed: 10
+		Speed: 100
+		AltitudeVelocity: 120
+		CruisingCondition: cruising
+		IdleBehavior: Land
+	AttackAircraft:
+		Voice: Attack
+		AttackType: Hover
+	RenderSprites:
+	WithVoxelWalkerBody:
+		TickRate: 1
+	Hovers@CRUISING:
+		RequiresCondition: cruising
+		BobDistance: -45
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		PipCount: 5
+		UnloadVoice: Move
+	SpawnActorOnDeath:
+		Actor: shadhusk
+	HitShape:
+
+shadhusk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Night Hawk
+	Aircraft:
+		TurnSpeed: 10
+		Speed: 100
+	FallsToEarth:
+		Explosion: UnitExplode
+	RevealsShroud:
+		Range: 7c0
+		Type: CenterPosition
+	RenderVoxels:
+		Image: shad
+	BodyOrientation:
+		UseClassicPerspectiveFudge: false
+
+zep:
+	Inherits: ^Aircraft
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Kirov Airship
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 90
+		Prerequisites: ~naweap, natech
+		Description: Soviet heavy bomber\n  Strong vs Infantry, Vehicle, Ship and Structure\n Weak vs Aircraft
+	Selectable:
+		Bounds: 149, 86, 0, -11
+	AttackAircraft:
+		CruiseAltitude: 5600
+		TurnSpeed: 5
+		Speed: 50
+		Voice: Move
+		AirborneCondition: airborne
+		CanHover: True
+		TakeOffOnResupply: true
+		VTOL: true
+		AttackType: Hover
+	Health:
+		HP: 2000
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+		Type: CenterPosition
+	Armament:
+		Weapon: BlimpBomb
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: BlimpBombE
+		RequiresCondition: rank-elite
+	AttackFrontal:
+		Voice: Attack
+	AutoTarget:
+	RenderSprites:
+	RenderVoxels:
+	WithVoxelBody:
+	Hovers:
+		BobDistance: -10
+	Explodes:
+		Weapon: UnitExplode
+		Chance: 75
+	VoiceAnnouncement:
+		Voice: Build
+	Voiced:
+		VoiceSet: KirovVoice
+	SpawnActorOnDeath:
+		Actor: zephusk
+	HitShape:
+
+zephusk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Kirov Airship
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 50
+	FallsToEarth:
+		Explosion: KirovExplode
+		Spins: False # TODO: In the original they did spin, but that just looks weird.
+	RevealsShroud:
+		Range: 8c0
+		Type: CenterPosition
+	RenderVoxels:
+		Image: zep
+	BodyOrientation:
+		UseClassicPerspectiveFudge: false
+
+orca:
+	Inherits: ^Plane
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Harrier
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 10
+		Prerequisites: ~aircraft.harrier
+		Description: Fast assault fighter\n  Strong vs Buildings, Vehicles\n  Weak vs Infantry, Aircraft
+	Aircraft:
+		TurnSpeed: 3
+		Speed: 210
+	Selectable:
+		Bounds: 30,24
+	Health:
+		HP: 150
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+		Type: CenterPosition
+	Armament:
+		Weapon: Maverick
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		FacingTolerance: 20
+		Voice: Attack
+		AttackType: Hover
+	Voiced:
+		VoiceSet: HarrierVoice
+	AmmoPool:
+		Ammo: 1
+		PipCount: 1
+		PipType: Ammo
+		PipTypeEmpty: AmmoEmpty
+		AmmoCondition: ammo
+	AutoTarget:
+	RenderSprites:
+		Image: falc
+	RenderVoxels:
+		Image: falc
+	SpawnActorOnDeath:
+		Actor: orcahusk
+	HitShape:
+	Rearmable:
+		RearmActors: gaairc, amradr
+
+orcahusk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Harrier
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 210
+	RenderVoxels:
+		Image: falc
+
+beag:
+	Inherits: orca
+	Tooltip:
+		Name: Black Eagle
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: ~aircraft.korea
+	SpawnActorOnDeath:
+		Actor: beaghusk
+	Armament:
+		Weapon: Maverick2
+	Health:
+		HP: 200
+	Voiced:
+		VoiceSet: BlackEagleVoice
+	RenderSprites:
+		Image: beag
+	RenderVoxels:
+		Image: beag
+	HitShape:
+
+beaghusk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Black Eagle
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 140
+	RenderVoxels:
+		Image: beag
+
+pdplane:
+	Inherits: ^NeutralAircraft
+	Valued:
+		Cost: 2000
+	-Selectable:
+	RejectsOrders:
+	Tooltip:
+		Name: Cargo Plane
+	Aircraft:
+		CruiseAltitude: 5600
+		TurnSpeed: 5
+		Speed: 100
+	Health:
+		HP: 1000
+	RevealsShroud:
+		Range: 6c0
+		Type: CenterPosition
+	RenderSprites:
+	RenderVoxels:
+	WithVoxelBody:
+	Cargo:
+		MaxWeight: 10
+	ParaDrop:
+		DropRange: 4c0
+		ChuteSound: sparadra.wav
+	SpawnActorOnDeath:
+		Actor: pdplanehusk
+	HitShape:
+	Interactable:
+
+pdplanehusk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Cargo Plane
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 100
+	RenderVoxels:
+		Image: pdplane
+
+hornet:
+	Inherits: ^Plane
+	Valued:
+		Cost: 50
+	Tooltip:
+		Name: Hornet
+	Health:
+		HP: 75
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 2c0
+		Type: GroundPosition
+		RevealGeneratedShroud: False
+	Armament:
+		Weapon: HornetBomb
+		PauseOnCondition: !ammo
+	Aircraft:
+		InitialFacing: 192
+		TurnSpeed: 8
+		Speed: 180
+		RepulsionSpeed: 40
+		VTOL: false
+	AttackAircraft:
+		FacingTolerance: 20
+		AttackType: Hover
+	AmmoPool:
+		Ammo: 3
+		AmmoCondition: ammo
+	RejectsOrders:
+	SpawnActorOnDeath:
+		Actor: hornethusk
+	-Selectable:
+	-ActorLostNotification:
+	CarrierSlave:
+		LandingDistance: 8c0
+	HitShape:
+	Interactable:
+	RenderVoxels:
+		NormalsPalette: ts-normals
+	Rearmable:
+		RearmActors: carrier
+
+hornethusk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Hornet
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 180
+	RenderVoxels:
+		Image: hornet
+		NormalsPalette: ts-normals
+
+bpln:
+	Inherits: ^Plane
+	Valued:
+		Cost: 0
+	Tooltip:
+		Name: Soviet MIG
+	Aircraft:
+		CruiseAltitude: 4096
+		TurnSpeed: 10
+		Speed: 240
+		CanHover: true
+		CanSlide: True
+	Selectable:
+		Bounds: 30,24
+	Health:
+		HP: 100
+	Armor:
+		Type: Light
+	RevealsShroud:
+		Range: 8c0
+		Type: CenterPosition
+	Armament@primary:
+		Weapon: Maverick3
+		PauseOnCondition: !ammo
+	Armament@primary-elite:
+		Weapon: Maverick3E
+		PauseOnCondition: !ammo
+	AttackAircraft:
+		FacingTolerance: 20
+		Voice: Attack
+		Armaments: primary
+		AttackType: Hover
+	Voiced:
+		VoiceSet: MigVoice
+	AmmoPool:
+		Ammo: 1
+		PipCount: 1
+		PipType: Ammo
+		PipTypeEmpty: AmmoEmpty
+		AmmoCondition: ammo
+	AutoTarget:
+	RenderSprites:
+		Image: bpln
+	RenderVoxels:
+		Image: bpln
+	Explodes:
+		Weapon: MigDeath
+		EmptyWeapon: MigDeath
+	HitShape:
+	MarkerSlave:
+		LandingDistance: 1c0
+	RejectsOrders:
+	SpawnActorOnDeath:
+		Actor: bplnhusk
+
+bplnhusk:
+	Inherits: ^PlaneHusk
+	Tooltip:
+		Name: Soviet MIG
+	Aircraft:
+		TurnSpeed: 5
+		Speed: 180
+	RenderVoxels:
+		Image: bpln
+	
+schp:
+	Inherits: ^Aircraft
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@MC: ^MindControllable
+	Tooltip:
+		Name: Soviet Siege Chopper
+	Health:
+		HP: 300
+	Armor:
+		Type: Light
+	Armament@primary:
+		Weapon: BlackHawkCannon
+		RequiresCondition: !rank-elite && !deployed
+	Armament@primary-elite:
+		Weapon: BlackHawkCannonE
+		RequiresCondition: rank-elite && !deployed
+	Armament@second:
+		Weapon: 160mm
+		RequiresCondition: !rank-elite && deployed
+	Armament@second-elite:
+		Weapon: 160mmE
+		RequiresCondition: rank-elite && deployed
+	Voiced:
+		VoiceSet: SiegeChopperVoice
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 90
+		Prerequisites: ~naweap
+		Description: Soviet Siege Chopper\n  Strong vs Infantry, Structures\n  Weak vs Vehicles, Aircraft
+	Selectable:
+		Bounds: 119, 58, 0, -20
+	Valued:
+		Cost: 1000
+	RevealsShroud:
+		Range: 7c0
+		Type: CenterPosition
+	Aircraft:
+		CruiseAltitude: 3072
+		LandableTerrainTypes: Clear, Rough, Road, DirtRoad, Ore, Gems
+		TurnSpeed: 6
+		Speed: 180
+		AltitudeVelocity: 120
+		CruisingCondition: cruising
+		IdleBehavior: Land
+	AttackAircraft:
+		Voice: Attack
+		AttackType: Hover
+	RenderSprites:
+	WithVoxelWalkerBody:
+		TickRate: 1
+	Hovers@CRUISING:
+		RequiresCondition: cruising
+		BobDistance: -45
+	SpawnActorOnDeath:
+		Actor: schphusk
+	HitShape:
+	Transforms:
+		Voice: Move
+		IntoActor: schd
+		Facing: 96
+		DeployCursor: deploy
+		NoTransformNotification: BuildingCannotPlaceAudio
+	
+schd:
+	Inherits: ^Vehicle
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@MC: ^MindControllable
+	Tooltip:
+		Name: Soviet Siege Chopper
+	Health:
+		HP: 300
+	Armor:
+		Type: Light
+	Armament@primary:
+		Weapon: 160mm
+		RequiresCondition: !rank-elite
+	Armament@primary-elite:
+		Weapon: 160mmE
+		RequiresCondition: rank-elite
+	Mobile:
+		Speed: 0
+	Voiced:
+		VoiceSet: SiegeChopperVoice
+	Selectable:
+		Bounds: 119, 58, 0, -20
+	Valued:
+		Cost: 1000
+	RevealsShroud:
+		Range: 7c0
+		Type: CenterPosition
+	Turreted:
+		TurnSpeed: 10
+	AttackTurreted:
+		Voice: Attack
+	WithVoxelBody:
+	WithVoxelTurret:
+	RenderSprites:
+		TickRate: 1
+	Hovers@CRUISING:
+		RequiresCondition: cruising
+		BobDistance: -45
+	HitShape:
+	Transforms:
+		Voice: Move
+		IntoActor: schp
+		Facing: 96
+		DeployCursor: undeploy
+
+schphusk:
+	Inherits: ^HelicopterHusk
+	Tooltip:
+		Name: Soviet Siege Chopper
+	Aircraft:
+		TurnSpeed: 10
+		Speed: 100
+	FallsToEarth:
+		Explosion: UnitExplode
+	RevealsShroud:
+		Range: 7c0
+		Type: CenterPosition
+	RenderVoxels:
+		Image: schp
+	BodyOrientation:
+		UseClassicPerspectiveFudge: false
+
+spyp:
+	Inherits: ^Aircraft
+	Valued:
+		Cost: 1
+	Tooltip:
+		Name: Soviet Spy Plane
+	Aircraft:
+		CruiseAltitude: 5600
+		TurnSpeed: 5
+		Speed: 225
+	Health:
+		HP: 400
+	AttackBomber:
+		FacingTolerance: 20
+		Armaments: primary
+		Voice: Attack
+	RenderSprites:
+	RenderVoxels:
+	WithVoxelBody:
+	HitShape:
+	Interactable:
+	Armament@primary:
+		Weapon: SpyCameraWeapon
+	-Selectable:
+	RejectsOrders:
+		
+v3rocket:
+	Inherits: ^ShootableMissileVoxel
+	Valued:
+		Cost: 10
+	Tooltip:
+		Name: V3 Rocket
+	Health:
+		HP: 90
+	Armor:
+		Type: Light
+	ShootableBallisticMissile:
+		LaunchAngle: 128
+		Speed: 170
+	Selectable:
+		Bounds: 30, 24, -10, -11
+	Contrail:
+		Offset: -598,0,0
+	AttackFrontal:
+		Voice: Attack
+	Voiced:
+		VoiceSet: HindVoice
+	Selectable:
+	MissileSpawnerSlave:
+	Explodes:
+		Type: Footprint
+		Weapon: V3WH
+	RejectsOrders:
+
+dmisl:
+	Inherits: ^ShootableMissileVoxel
+	Valued:
+		Cost: 1
+	Tooltip:
+		Name: Cruise Missile
+	Health:
+		HP: 90
+	Armor:
+		Type: Light
+	ShootableBallisticMissile:
+		LaunchAngle: 128
+		Speed: 170
+	Selectable:
+		Bounds: 30, 24, -10, -11
+	Contrail:
+		Offset: -598,0,0
+	AttackFrontal:
+		Voice: Attack
+	Voiced:
+		VoiceSet: HindVoice
+	Selectable:
+	MissileSpawnerSlave:
+	Explodes:
+		Type: Footprint
+		Weapon: V3WH
+	RenderVoxels:
+	RejectsOrders:
+
+cmisl:
+	Inherits: ^ShootableMissileVoxel
+	Valued:
+		Cost: 1
+	Tooltip:
+		Name: Cruise Missile
+	Health:
+		HP: 90
+	Armor:
+		Type: Light
+	ShootableBallisticMissile:
+		LaunchAngle: 128
+		Speed: 170
+	Selectable:
+		Bounds: 30, 24, -10, -11
+	Contrail:
+		Offset: -598,0,0
+	AttackFrontal:
+		Voice: Attack
+	Voiced:
+		VoiceSet: HindVoice
+	Selectable:
+	MissileSpawnerSlave:
+	Explodes:
+		Type: Footprint
+		Weapon: V3WH
+	RenderVoxels:
+		Image: bsubmisl
+	RejectsOrders:

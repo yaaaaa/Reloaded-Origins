@@ -1,0 +1,617 @@
+^BaseWorld:
+	Inherits: ^Palettes
+	AlwaysVisible:
+	MusicPlaylist:
+		VictoryMusic: score
+		DefeatMusic: score
+	ActorMap:
+	ScreenMap:
+	TerrainGeometryOverlay:
+	DebugVisualizations:
+	Locomotor@FOOT:
+		Name: foot
+		Crushes: crate
+		SharesCell: true
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 100
+			Rail: 90
+			Road: 100
+			Bridge: 100
+			DirtRoad: 100
+			Ore: 90
+			Gems: 80
+	Locomotor@SWIMSUIT:
+		Name: swimsuit
+		Crushes: crate
+		SharesCell: true
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 100
+			Rail: 90
+			Road: 100
+			Bridge: 100
+			DirtRoad: 100
+			Ore: 90
+			Gems: 80
+			Water: 70
+	Locomotor@FLAMEGUY:
+		Name: flameguy
+		Crushes: crate
+		SharesCell: true
+		TerrainSpeeds:
+			Clear: 45
+			Road: 50
+			Rail: 45
+			DirtRoad: 50
+			Rough: 40
+			Ore: 45
+			Gems: 45
+	Locomotor@WHEELED:
+		Name: wheeled
+		Crushes: crate
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 100
+			Rail: 50
+			Road: 100
+			Bridge: 100
+			DirtRoad: 100
+			Beach: 100
+			Ore: 70
+			Gems: 70
+	Locomotor@TRACKED:
+		Name: tracked
+		Crushes: crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 100
+			Rail: 50
+			Road: 100
+			Bridge: 100
+			DirtRoad: 100
+			Beach: 100
+			Ore: 70
+			Gems: 70
+	Locomotor@HEAVYTRACKED:
+		Name: heavytracked
+		Crushes: wall, crate, infantry
+		TerrainSpeeds:
+			Clear: 100
+			Rough: 100
+			Rail: 50
+			Road: 100
+			Bridge: 100
+			DirtRoad: 100
+			Beach: 100
+			Ore: 70
+			Gems: 70
+	Locomotor@NAVAL:
+		Name: naval
+		Crushes: crate
+		TerrainSpeeds:
+			Water: 100
+	Locomotor@LANDINGCRAFT:
+		Name: lcraft
+		Crushes: crate
+		TerrainSpeeds:
+			Clear: 80
+			Rough: 80
+			Rail: 50
+			Road: 100
+			DirtRoad: 100
+			Beach: 60
+			Ore: 50
+			Gems: 50
+			Water: 100
+	ShroudRenderer:
+		Index: 255, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 20, 40, 56, 65, 97, 130, 148, 194, 24, 33, 66, 132, 28, 41, 67, 134, 1, 2, 4, 8, 3, 6, 12, 9, 7, 14, 13, 11, 5, 10, 15, 255
+		UseExtendedIndex: true
+		FogPalette: shroud
+		ShroudPalette: shroud
+	Faction@random:
+		Name: Random
+		InternalName: Random
+		RandomFactionMembers: random-allies, random-soviets, random-dune, random-sc, random-ts
+		Side: Randoms
+	Faction@allies:
+		Name: Allies
+		InternalName: random-allies
+		RandomFactionMembers: america, germany, england, france, korea
+		Side: Randoms
+	Faction@soviets:
+		Name: Soviets
+		InternalName: random-soviets
+		RandomFactionMembers: cuba, libya, iraq, russia
+		Side: Randoms
+	Faction@yuris:
+		Name: Yuris
+		InternalName: random-yuri
+		RandomFactionMembers: yuri
+		Side: Randoms
+	Faction@dunes:
+		Name: Dunes
+		InternalName: random-dune
+		RandomFactionMembers: atreides, harkonnen, ordos
+		Side: Randoms
+	Faction@sc:
+		Name: SC
+		InternalName: random-sc
+		RandomFactionMembers: zerg
+		Side: Randoms
+	Faction@ts:
+		Name: TS
+		InternalName: random-ts
+		RandomFactionMembers: gdi, nod
+		Side: Randoms
+	Faction@1:
+		Name: America
+		InternalName: america
+		Side: Allies
+		Description: America\nSpecial Ability: Paratroopers
+	Faction@2:
+		Name: Germany
+		InternalName: germany
+		Side: Allies
+		Description: Germany\nSpecial Vehicle: Tank Destroyer
+	Faction@3:
+		Name: England
+		InternalName: england
+		Side: Allies
+		Description: England\nSpecial Infantry: Sniper
+	Faction@4:
+		Name: France
+		InternalName: france
+		Side: Allies
+		Description: France\nSpecial Building: Grand Cannon
+	Faction@5:
+		Name: Korea
+		InternalName: korea
+		Side: Allies
+		Description: Korea\nSpecial Aircraft: Black Eagle
+	Faction@6:
+		Name: Cuba
+		InternalName: cuba
+		Side: Soviets
+		Description: Cuba\nSpecial Infantry: Terrorist
+	Faction@7:
+		Name: Libya
+		InternalName: libya
+		Side: Soviets
+		Description: Libya\nSpecial Vehicle: Demolition Truck
+	Faction@8:
+		Name: Iraq
+		InternalName: iraq
+		Side: Soviets
+		Description: Iraq\nSpecial Infantry: Desolator
+	Faction@9:
+		Name: Russia
+		InternalName: russia
+		Side: Soviets
+		Description: Russia\nSpecial Vehicle: Tesla Tank
+	Faction@10:
+		Name: Yuri Country
+		InternalName: yuri
+		Side: Yuris
+		Description:
+	Faction@11:
+		Name: Zerg
+		InternalName: zerg
+		Side: SC
+		Description: Zergs
+	Faction@12:
+		Name: Atreides
+		InternalName: atreides
+		Side: Dunes
+		Description: Atreides
+	Faction@13:
+		Name: Harkonnen
+		InternalName: harkonnen
+		Side: Dunes
+		Description: Harkonnen
+	Faction@14:
+		Name: Ordos
+		InternalName: ordos
+		Side: Dunes
+		Description: Ordos
+	Faction@15:
+		Name: GDI
+		InternalName: gdi
+		Side: TS
+		Description: GDI
+	Faction@16:
+		Name: NOD
+		InternalName: nod
+		Description: NOD
+		Side: TS
+	ResourceType@Ore:
+		ResourceType: 1
+		Palette: resource
+		Sequences: tib01, tib02, tib03, tib04, tib05, tib06, tib07, tib08, tib09, tib10, tib11, tib12, tib13, tib14, tib15, tib16, tib17, tib18, tib19, tib20
+		MaxDensity: 12
+		ValuePerUnit: 25
+		Type: Ore
+		Name: Valuable Minerals
+		PipColor: Yellow
+		AllowedTerrainTypes: Clear, Rough, Road
+		AllowUnderActors: false
+		TerrainType: Ore
+	ResourceType@Gems:
+		ResourceType: 2
+		Palette: resource
+		Sequences: gem01, gem02, gem03, gem04, gem05, gem06, gem07, gem08, gem09, gem10, gem11, gem12
+		MaxDensity: 12
+		ValuePerUnit: 50
+		Type: Gems
+		Name: Valuable Minerals
+		PipColor: Red
+		AllowedTerrainTypes: Clear, Rough, Road
+		AllowUnderActors: false
+		TerrainType: Gems
+	ResourceType@Veins:
+		Type: Veins
+		Name: Veins
+		PipColor: Red
+		ResourceType: 3
+		Palette: chromedune
+		Sequences: veins
+		MaxDensity: 1
+		ValuePerUnit: 0
+		AllowedTerrainTypes: Clear, Rough, DirtRoad
+		AllowUnderActors: true
+		TerrainType: Veins
+	TerrainRenderer:
+
+World:
+	Inherits: ^BaseWorld
+	ChatCommands:
+	DevCommands:
+	DebugVisualizationCommands:
+	PlayerCommands:
+	HelpCommand:
+	ScreenShaker:
+	BuildingInfluence:
+	ProductionQueueFromSelection:
+		ProductionPaletteWidget: PRODUCTION_PALETTE
+	DomainIndex:
+	SmudgeLayer@smallscorch:
+		Type: SmallScorch
+		Sequence: smallscorches
+		SmokeType: smallfire
+		SmokePercentage: 50
+	SmudgeLayer@mediumscorch:
+		Type: MediumScorch
+		Sequence: mediumscorches
+		SmokeType: mediumfire
+		SmokePercentage: 75
+	SmudgeLayer@largescorch:
+		Type: LargeScorch
+		Sequence: largescorches
+		SmokeType: largefire
+		SmokePercentage: 100
+	SmudgeLayer@smallcrater:
+		Type: SmallCrater
+		SmokeType: smallsmoke
+		Sequence: smallcraters
+	SmudgeLayer@mediumcrater:
+		Type: MediumCrater
+		SmokeType: smallsmoke
+		Sequence: mediumcraters
+	SmudgeLayer@largecrater:
+		Type: LargeCrater
+		SmokeType: largesmoke
+		Sequence: largecraters
+	ResourceLayer:
+	ResourceClaimLayer:
+	BridgeLayer:
+	WarheadDebugOverlay:
+	SpawnMapActors:
+	MapBuildRadius:
+		AllyBuildRadiusCheckboxDisplayOrder: 4
+		BuildRadiusCheckboxVisible: false
+	MapOptions:
+		ShortGameCheckboxDisplayOrder: 2
+		TechLevelDropdownDisplayOrder: 2
+		GameSpeedDropdownDisplayOrder: 3
+	CreateMPPlayers:
+	MPStartUnits@amcv:
+		Class: none
+		ClassName: MCV Only
+		Factions: allies, america, germany, england, france, korea
+		BaseActor: amcv
+	MPStartUnits@lightallies:
+		Class: light
+		ClassName: Light Support
+		Factions: allies, america, germany, england, france, korea
+		BaseActor: amcv
+		SupportActors: dog,e1,e1
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@mediumallies:
+		Class: medium
+		ClassName: Medium Support
+		Factions: allies, america, germany, england, france, korea
+		BaseActor: amcv
+		SupportActors: dog,e1,e1,e1,mtnk,engineer
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@heavyallies:
+		Class: heavy
+		ClassName: Heavy Support
+		Factions: allies, america, germany, england, france, korea
+		BaseActor: amcv
+		SupportActors: dog,e1,e1,e1,e1,mtnk,mtnk,fv,engineer
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@smcv:
+		Class: none
+		ClassName: MCV Only
+		Factions: soviets, cuba, libya, iraq, russia
+		BaseActor: smcv
+	MPStartUnits@lightsoviets:
+		Class: light
+		ClassName: Light Support
+		Factions: soviets, cuba, libya, iraq, russia
+		BaseActor: smcv
+		SupportActors: dog,e2,e2,e2
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@mediumsoviets:
+		Class: medium
+		ClassName: Medium Support
+		Factions: soviets, cuba, libya, iraq, russia
+		BaseActor: smcv
+		SupportActors: dog,e2,e2,e2,e2,htnk,engineer
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@heavysoviets:
+		Class: heavy
+		ClassName: Heavy Support
+		Factions: soviets, cuba, libya, iraq, russia
+		BaseActor: smcv
+		SupportActors: dog,e2,e2,e2,e2,e2,htnk,htnk,htk,engineer
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@pcv:
+		Class: none
+		ClassName: MCV Only
+		Factions: yuris, yuri
+		BaseActor: pcv
+	MPStartUnits@lightyuris:
+		Class: light
+		ClassName: Light Support
+		Factions: yuris, yuri
+		BaseActor: pcv
+		SupportActors: brute,init,init,init
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@mediumyuris:
+		Class: medium
+		ClassName: Medium Support
+		Factions: yuris, yuri
+		BaseActor: pcv
+		SupportActors: brute,init,init,init,init,htnk,engineer
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@heavyyuris:
+		Class: heavy
+		ClassName: Heavy Support
+		Factions: yuri
+		BaseActor: pcv
+		SupportActors: brute,init,init,init,init,init,htnk,htnk,htk,engineer
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@hatchery:
+		Class: none
+		ClassName: Hatchery Only
+		Factions: zerg
+		BaseActor: hatchery
+		SupportActors: lechinka,amcv
+	MPStartUnits@lightzergs:
+		Class: light
+		CLassName: Light Support
+		Factions: zerg
+		BaseActor: hatchery
+		SupportActors: lechinka,amcv
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@mediumzergs:
+		Class: medium
+		CLassName: Medium Support
+		Factions: zerg
+		BaseActor: hatchery
+		SupportActors: lechinka,amcv
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@heavyzergs:
+		Class: heavy
+		CLassName: Heavy Support
+		Factions: zerg
+		BaseActor: hatchery
+		SupportActors: lechinka,amcv
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@MCVatreides:
+		Class: none
+		ClassName: MCV Only
+		Factions: atreides
+		BaseActor: mcva
+	MPStartUnits@lightatreides:
+		Class: light
+		CLassName: Light Support
+		Factions: atreides
+		BaseActor: mcva
+		SupportActors: light_inf, light_inf, light_inf, trooper, grenadier, trike, quad
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@mediumatreides:
+		Class: medium
+		CLassName: Medium Support
+		Factions: atreides
+		BaseActor: mcva
+		SupportActors: light_inf, light_inf, light_inf, trooper, grenadier, trike, combat_tank_a
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@heavyatreides:
+		Class: heavy
+		CLassName: Heavy Support
+		Factions: atreides
+		BaseActor: mcva
+		SupportActors: light_inf, light_inf, light_inf, trooper, grenadier, trike, combat_tank_a, missile_tank
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@MCVharkonnen:
+		Class: none
+		ClassName: MCV Only
+		Factions: harkonnen
+		BaseActor: mcvh
+	MPStartUnits@lightharkonnen:
+		Class: light
+		CLassName: Light Support
+		Factions: harkonnen
+		BaseActor: mcvh
+		SupportActors: light_inf, light_inf, light_inf, trooper, trooper, trike, quad
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@mediumharkonnen:
+		Class: medium
+		CLassName: Medium Support
+		Factions: harkonnen
+		BaseActor: mcvh
+		SupportActors: light_inf, light_inf, light_inf, trooper, engineer, quad, combat_tank_h
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@heavyharkonnen:
+		Class: heavy
+		CLassName: Heavy Support
+		Factions: harkonnen
+		BaseActor: mcvh
+		SupportActors: light_inf, light_inf, light_inf, trooper, engineer, quad, combat_tank_h, siege_tank
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@MCVordos:
+		Class: none
+		ClassName: MCV Only
+		Factions: ordos
+		BaseActor: mcvo
+	MPStartUnits@lightordos:
+		Class: light
+		CLassName: Light Support
+		Factions: ordos
+		BaseActor: mcvo
+		SupportActors: light_inf, light_inf, light_inf, trooper, engineer, raider, quad
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@mediumordos:
+		Class: medium
+		CLassName: Medium Support
+		Factions: ordos
+		BaseActor: mcvo
+		SupportActors: light_inf, light_inf, light_inf, trooper, engineer, raider, combat_tank_o
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@heavyordos:
+		Class: heavy
+		CLassName: Heavy Support
+		Factions: ordos
+		BaseActor: mcvo
+		SupportActors: light_inf, light_inf, light_inf, trooper, engineer, raider, combat_tank_o, missile_tank
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@MCVgdi:
+		Class: none
+		ClassName: MCV Only
+		Factions: gdi
+		BaseActor: mcvgdi
+	MPStartUnits@MCVnod:
+		Class: none
+		ClassName: MCV Only
+		Factions: nod
+		BaseActor: mcvnod
+	MPStartUnits@light.gdi:
+		Class: light
+		ClassName: Light
+		Factions: gdi
+		BaseActor: mcvgdi
+		SupportActors: e1,e1,e1,smech
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@light.nod:
+		Class: light
+		ClassName: Light
+		Factions: nod
+		BaseActor: mcvnod
+		SupportActors: e1,e1,e1,bggy
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@med.gdi:
+		Class: medium
+		ClassName: Medium
+		Factions: gdi
+		BaseActor: mcvgdi
+		SupportActors: e1,e1,e2,e2,jumpjet,smech
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@med.nod:
+		Class: medium
+		ClassName: Medium
+		Factions: nod
+		BaseActor: mcvnod
+		SupportActors: e1,e1,e3,e3,cyborg,bggy
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@heavy.gdi:
+		Class: heavy
+		ClassName: Heavy
+		Factions: gdi
+		BaseActor: mcvgdi
+		SupportActors: e1,e1,e2,e2,jumpjet,smech,smech,mmch
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@heavy.nod:
+		Class: heavy
+		ClassName: Heavy
+		Factions: nod
+		BaseActor: mcvnod
+		SupportActors: e1,e1,e3,e3,cyborg,bggy,bike,ttnk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	MPStartUnits@UnhollyAlliance:
+		Class: UnhollyAlliance
+		CLassName: UnhollyAlliance
+		Factions: allies, america, germany, england, france, korea, soviets, cuba, libya, iraq, russia, yuris, yuri, sc, zerg, dunes, atreides, harkonnen, ordos, ts, gdi, nod
+		BaseActor: hatchery
+		SupportActors: mcvgdi,mcvnod,amcv,smcv,mcva,mcvh,mcvo,pcv
+		InnerSupportRadius: 1
+		OuterSupportRadius: 2
+	CrateSpawner:
+		Minimum: 1
+		Maximum: 3
+		SpawnInterval: 3000
+		WaterChance: 25
+		InitialSpawnDelay: 1000
+		CheckboxDisplayOrder: 1
+	MPStartLocations:
+		SeparateTeamSpawnsCheckboxDisplayOrder: 6
+	SpawnMPUnits:
+	PathFinder:
+	ValidateOrder:
+	DebugPauseState:
+	RadarPings:
+	StartGameNotification:
+	ObjectivesPanel:
+		PanelName: SKIRMISH_STATS
+	LoadWidgetAtGameStart:
+	CliffBackImpassabilityLayer:
+	TimeLimitManager:
+	Selection:
+	BuildableTerrainLayer:
+	MapCreeps:
+		CheckboxVisible: False
+
+EditorWorld:
+	Inherits: ^BaseWorld
+	EditorActorLayer:
+	EditorResourceLayer:
+	EditorSelectionLayer:
+	LoadWidgetAtGameStart:

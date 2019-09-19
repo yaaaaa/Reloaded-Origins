@@ -1,0 +1,1060 @@
+yacnst:
+	Inherits: ^Building
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@shape: ^4x4Shape
+	Building:
+		Footprint: xxxx xxxx xxxx xxxx
+		Dimensions: 4,4
+	Selectable:
+		Bounds: 220, 155, 0, -20
+	Health:
+		HP: 1000
+	Armor:
+		Type: concrete
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 3000
+	Production:
+		Produces: Building,Support
+	Tooltip:
+		Name: Yuri Construction Yard
+	Transforms:
+		IntoActor: pcv
+		Offset: 1,1
+		Facing: 96
+		DeployCursor: undeploy
+	ProductionQueue@Building:
+		Type: Building
+	ProductionQueue@Support:
+		Type: Support
+	ProductionBar@Building:
+		ProductionType: Building
+	ProductionBar@Support:
+		ProductionType: Support
+	WithIdleOverlay@top:
+		Sequence: idle-top
+		RequiresCondition: !build-incomplete
+	WithIdleOverlay@normal:
+		Sequence: idle-normal
+		RequiresCondition: !placing && !build-incomplete #This need to be conditional when place building
+	WithBuildingPlacedOverlayConditional:
+		PlacingCondition: placing
+	ProvidesPrerequisite:
+		Prerequisite: structures.yuris
+	Power:
+		Amount: 0
+
+yapowr:
+	Inherits: ^Building
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@DISKDRAIN: ^Diskdrainshutdownpowerable
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 10
+		Prerequisites: ~structures.yuris
+		Description: Provides power for other structures.
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Bio Reactor
+	ProvidesPrerequisite:
+		Prerequisite: power
+	Selectable:
+		Bounds: 96, 98, -2, -24
+	Health:
+		HP: 700
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 4c0
+	WithIdleOverlay@lights:
+		Sequence: idle-lights
+		RequiresCondition: !build-incomplete
+	Power:
+		Amount: 150
+		RequiresCondition: !outagepower
+	Power@1:
+		Amount: 50
+		RequiresCondition: !outagepower && loaded >= 1
+	Power@2:
+		Amount: 50
+		RequiresCondition: !outagepower && loaded >= 2
+	Power@3:
+		Amount: 50
+		RequiresCondition: !outagepower && loaded >= 3
+	Power@4:
+		Amount: 50
+		RequiresCondition: !outagepower && loaded >= 4
+	Power@5:
+		Amount: 50
+		RequiresCondition: !outagepower && loaded >= 5
+	Cargo:
+		Types: Infantry
+		MaxWeight: 5
+		PipCount: 5
+		LoadedCondition: loaded
+	InfiltrateForPowerOutage:
+		Types: SpyInfiltrate
+	AffectedByPowerOutage:
+		Condition: outagepower
+	ScalePowerWithHealth:
+	PowerTooltip:
+	Targetable:
+		TargetTypes: Ground, C4, DetonateAttack, Structure, SpyInfiltrate, powerplant
+
+yabrck:
+	Inherits: ^Building
+	Inherits@shape: ^2x3Shape
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 20
+		Prerequisites: power, ~structures.yuris
+		Description: Train Yuri's soldiers
+	Selectable:
+		Bounds: 132, 134, -28, -28
+	Health:
+		HP: 500
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Yuri Barracks
+	ProvidesPrerequisite:
+		Prerequisite: yabrck
+	ProvidesPrerequisite@default:
+	Building:
+		Footprint: xx xx xx
+		Dimensions: 2,3
+	PrimaryBuilding:
+		PrimaryCondition: primary
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		RequiresCondition: primary
+	Production:
+		Produces: Infantry
+	ProductionQueue:
+		Type: Infantry.Yuris
+	ProductionBar:
+		ProductionType: Infantry.Yuris
+	Armor:
+		Type: steel
+	RevealsShroud:
+		Range: 5c0
+	RallyPoint:
+		Offset: 2,3
+		Palette: mouse
+		IsPlayerPalette: false
+	Exit@0_n1:
+		SpawnOffset: 170,-810,0
+		ExitCell: 0, -1
+	Exit@0_2:
+		SpawnOffset: -900,220,0
+		ExitCell: 0, 2
+	Exit@2_n1:
+		SpawnOffset: 900,-220,0
+		ExitCell: 2, -1
+	Exit@2_2:
+		SpawnOffset: -170,810,0
+		ExitCell: 2, 2
+	WithIdleOverlay@training:
+		Sequence: idle-training
+		RequiresCondition: !build-incomplete
+	Power:
+		Amount: -10
+	InfiltrateForSupportPower:
+		Types: SpyInfiltrate
+		Proxy: barracks.infiltrated
+	Targetable:
+		TargetTypes: Ground, C4, DetonateAttack, Structure, SpyInfiltrate
+
+yarefn:
+	Inherits: ^Building
+	Inherits@shape: ^2x2Shape
+	Inherits@DISKDRAIN: ^Diskdraintransfercashable
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 30
+		Prerequisites: power, ~structures.yuris
+		Description: Provides credits for Yuri
+	Selectable:
+		Bounds: 70, 50, 0, -20
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Slave Miner
+	Health:
+		HP: 2000
+	Armor:
+		Type: medium
+	RevealsShroud:
+		Range: 8c0
+	ProvidesPrerequisite:
+		Prerequisite: yarefn
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Refinery:
+		DockOffset: 3,0
+		ShowTicks: True
+		TickLifetime: 30
+		TickVelocity: 1
+		TickRate: 10
+		DockAngle: 160
+		UseStorage: false
+	Transforms:
+		IntoActor: smin
+		Offset: 1,1
+		Facing: 96
+		DeployCursor: undeploy
+	CustomSellValue:
+		Value: 300
+	InfiltrateForCash:
+		Types: SpyInfiltrate
+		Percentage: 50
+		Notification: CreditsStolen
+		Minimum: 500
+	WithIdleOverlay@processing:
+		Sequence: idle-processing
+		RequiresCondition: !build-incomplete
+	Power:
+		Amount: 0
+	Targetable:
+		TargetTypes: Ground, C4, DetonateAttack, Structure, SpyInfiltrate
+	GrantConditionOnDeploy:
+		DeployedCondition: deploy
+		UndeployedCondition: undeploy
+	SpawnerRefineryMaster:
+		Actors: slav, slav, slav, slav, slav
+		SpawnAllAtOnce: True
+		Resources: Ore,Gems,Tiberium
+
+yaweap:
+	Inherits: ^Building
+	Inherits@shape: ^5x3Shape
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 50
+		Prerequisites: power, yarefn, ~structures.yuris
+		Description: Produces Yuri Vehicles
+	Selectable:
+		Bounds: 196, 178, -6, -48
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Yuri War Factory
+	ProvidesPrerequisite@default:
+	Health:
+		HP: 1000
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 8c0
+	RevealsShroud:
+		Range: 4c0
+	Building:
+		Footprint: xxxx= xxxx= xxxx=
+		Dimensions: 5,3
+	RallyPoint:
+		Offset: 6,1
+		Palette: mouse
+		IsPlayerPalette: false
+	Exit@1:
+		ExitCell: 5,1
+	Production:
+		Produces: Vehicle
+	ProductionQueue:
+		Type: Vehicle.Yuris
+	PrimaryBuilding:
+		PrimaryCondition: primary
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		RequiresCondition: primary
+	WithExitOverlay@door:
+		Sequence: build-door
+		RequiresCondition: !roof-open && !build-incomplete
+	WithExitOverlay@top-vehicles:
+		Sequence: build-top
+		RequiresCondition: !roof-open && !build-incomplete
+	WithIdleOverlay@lights:
+		Sequence: idle-lights
+		RequiresCondition: !build-incomplete
+	WithIdleOverlay@bib:
+		Sequence: bib
+		RequiresCondition: !build-incomplete
+	WithIdleOverlay@air-open:
+		Sequence: build-air-open
+		RequiresCondition: roof-open && !build-incomplete
+	WithIdleOverlay@air-inside:
+		Sequence: build-air-inside
+		RequiresCondition: roof-open && !build-incomplete
+	ProductionBar:
+		ProductionType: Vehicle.Yuris
+	Power:
+		Amount: -25
+	InfiltrateForSupportPower:
+		Types: SpyInfiltrate
+		Proxy: warfactory.infiltrated
+	Targetable:
+		TargetTypes: Ground, C4, DetonateAttack, Structure, SpyInfiltrate
+	GrantConditionOnProductionToSelf:
+		UnitNames: zep, shad, schp, disk, hind
+		Condition: roof-open
+		ConditionDelay: 50
+
+yayard:
+	Inherits: ^Building
+	Inherits@shape: ^4x4Shape
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 50
+		Prerequisites: power, yarefn, ~structures.yuris
+		Description: Build Yuri's Navy Force
+	Selectable:
+		Bounds: 220, 155, 0, -20
+	Health:
+		HP: 1500
+	Armor:
+		Type: concrete
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Yuri Naval Yard
+	ProvidesPrerequisite:
+		Prerequisite: yayard
+	Power:
+		Amount: -25
+	Targetable:
+		TargetTypes: Ground, Water, C4
+	ProvidesPrerequisite@default:
+	Building:
+		Footprint: xxxx xxxx xxxx xxxx
+		Dimensions: 4,4
+		Adjacent: 13
+		TerrainTypes: Water
+	-GivesBuildableArea:
+	Health:
+		HP: 1500
+	Armor:
+		Type: Concrete
+	RevealsShroud:
+		Range: 10c0
+	# X -2 column
+	Exit@n2_n2:
+		ExitCell: -2,-2
+	Exit@n2_n1:
+		ExitCell: -2,-1
+	Exit@n2_0:
+		ExitCell: -2,0
+	Exit@n2_1:
+		ExitCell: -2,1
+	Exit@n2_2:
+		ExitCell: -2,2
+	Exit@n2_3:
+		ExitCell: -2,3
+	Exit@n2_4:
+		ExitCell: -2,4
+	Exit@n2_5:
+		ExitCell: -2,5
+	# X -1 column
+	Exit@n1_n2:
+		ExitCell: -1,-2
+	Exit@n1_5:
+		ExitCell: -1,5
+	# X 0 column
+	Exit@0_n2:
+		ExitCell: 0,-2
+	Exit@0_5:
+		ExitCell: 0,5
+	# X 1 column
+	Exit@1_n2:
+		ExitCell: 1,-2
+	Exit@1_5:
+		ExitCell: 1,5
+	# X 2 column
+	Exit@2_n2:
+		ExitCell: 2,-2
+	Exit@2_5:
+		ExitCell: 2,5
+	# X 3 column
+	Exit@3_n2:
+		ExitCell: 3,-2
+	Exit@3_5:
+		ExitCell: 3,5
+	# X 4 column
+	Exit@4_n2:
+		ExitCell: 4,-2
+	Exit@4_5:
+		SpawnOffset: 0,-113,0
+		Facing: 160
+		ExitCell: 4,5
+	# X 5 column
+	Exit@5_n2:
+		ExitCell: 5,-2
+	Exit@5_n1:
+		ExitCell: 5,-1
+	Exit@5_0:
+		ExitCell: 5,0
+	Exit@5_1:
+		ExitCell: 5,1
+	Exit@5_2:
+		ExitCell: 5,2
+	Exit@5_3:
+		ExitCell: 5,3
+	Exit@5_4:
+		SpawnOffset: 0,-113,0
+		Facing: 96
+		ExitCell: 5,4
+	Exit@5_5:
+		ExitCell: 5,5
+	Production:
+		Produces: Ship
+	ProductionQueue:
+		Type: Naval.Yuris
+	PrimaryBuilding:
+		PrimaryCondition: primary
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		RequiresCondition: primary
+	RallyPoint:
+		Offset: 5,1
+		Palette: mouse
+		IsPlayerPalette: false
+	RepairsUnitsConditional:
+		RepairingCondition: repairing
+		FinishRepairingNotification: UnitRepaired
+	ProductionBar:
+		ProductionType: Naval.Yuris
+	Power:
+		Amount: -20
+	WithIdleOverlay@crane:
+		Sequence: idle-crane
+		RequiresCondition: !build-incomplete && !repairing
+	WithIdleOverlay@waves:
+		Sequence: idle-waves
+		RequiresCondition: !build-incomplete
+	WithRepairOverlay:
+		Sequence: repair
+	WithProductionOverlay@lights:
+		Sequence: production-lights
+		RequiresCondition: !build-incomplete
+	-SpawnActorsOnSell@allies:
+	-SpawnActorsOnSell@soviets:
+	-SpawnActorsOnSell@yuris:
+
+yagrnd:
+	Inherits: ^Building
+	Inherits@shape: ^3x3Shape
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 1000
+		Prerequisites: yaweap, ~structures.yuris
+		Description: Convert Soldiers and Vehicle to credits which provides for Yuri
+	Selectable:
+		Bounds: 154, 127, 0, -20
+	Health:
+		HP: 900
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Grinder
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	ProvidesPrerequisite:
+		Prerequisite: yagrnd
+	AcceptsDeliveredCash:
+	WithIdleOverlay@normal:
+		Sequence: idle-normal
+	WithAcceptDeliveredCashAnimation:
+		Sequence: grind
+	Power:
+		Amount: -50
+
+yatech:
+	Inherits: ^Building
+	Inherits@shape: ^3x2Shape
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 1000
+		Prerequisites: yaweap, ~structures.yuris
+		Description: Provides newest technology for Yuri
+	Selectable:
+		Bounds: 128, 215, 0, -80
+	Health:
+		HP: 500
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Yuri Battle Lab
+	Building:
+		Footprint: xxx xxx
+		Dimensions: 3,2
+	ProvidesPrerequisite:
+		Prerequisite: yatech
+	InfiltrateForSupportPower:
+		Types: SpyInfiltrate
+		Proxy: yuris.tech.infiltrated
+	WithIdleOverlay@critical:
+		Sequence: idle-critical
+		RequiresCondition: !build-incomplete
+	Power:
+		Amount: -100
+	Targetable:
+		TargetTypes: Ground, C4, DetonateAttack, Structure, SpyInfiltrate
+	GrantExternalConditionPowerEx@FORCESHIELD:
+		Icon: forceshield
+		ChargeInterval: 7500
+		Description: Force Shield
+		LongDesc: Makes a force shield for the structures to protect them\nfor 20 seconds.
+		Duration: 500
+		OnFireSound: sforceon.wav
+		DisplayRadarPing: True
+		Condition: forceshieldability
+		PauseOnCondition: lowpower
+		Range: 4
+		Cursor: forceshield
+		BlockedCursor: forceshield-blocked
+		LowPower: true
+		LowPowerDuration: 625
+
+gafwll:
+	Inherits: ^Wall
+	Buildable:
+		Queue: Support
+		BuildPaletteOrder: 10
+		Prerequisites: yabrck, ~structures.yuris
+		Description: Protect Yuri Base
+	Tooltip:
+		Name: Citadel Walls
+
+natbnk:
+	Inherits: ^SupportBuilding
+	Inherits@shape: ^2x2Shape
+	Inherits@SMC: ^SuperMindControllable
+	Tooltip:
+		Name: Tank Bunker
+	Valued:
+		Cost: 400
+	Buildable:
+		Queue: Support
+		BuildPaletteOrder: 20
+		Prerequisites: yabrck, ~structures.yuris
+		Description: Make the Yuri tank more powerful
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	Selectable:
+		Bounds: 120, 53, 0, -5
+	Health:
+		HP: 1000
+	Armor:
+		Type: steel
+	RevealsShroud:
+		Range: 8c0
+	BunkerCargo:
+		Types: Vehicle
+		MaxWeight: 9
+		PipCount: 1
+		WillDisappear: false
+		SequenceOnCargo: build
+		BunkerNotSequence: idle
+		BunkeredSequence: idle-bunkered
+		RequiresCondition: !build-incomplete
+	AttackBunkered:
+		Armaments: primary
+		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
+		PortYaws: 0, 176, 341, 512, 682, 853
+		PortCones: 88, 88, 88, 88, 88, 88
+	Power:
+		Amount: 0
+
+yaggun:
+	Inherits: ^VoxelLighting
+	Inherits@AUTOTARGET: ^AutoTargetAll
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Support
+		BuildPaletteOrder: 30
+		Prerequisites: yabrck, ~structures.yuris
+		Description: Powerful Anti-Infantry and Aircraft Cannon
+	Health:
+		HP: 810
+	Armor:
+		Type: steel
+	RevealsShroud:
+		Range: 8c0
+	Selectable:
+		Bounds: 53, 56, 0, -30
+	Building:
+		Footprint: x
+		Dimensions: 1, 1
+		Adjacent: 5
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Gattling Cannon
+	Turreted:
+		TurnSpeed: 10
+		InitialFacing: 224
+		PreviewFacing: 224
+		Offset: -512,20,600
+	AttackTurreted:
+		Voice: Attack
+	Armament@primary:
+		Weapon: AGGattling
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle
+		MuzzleSplitFacings: 8
+		RequiresCondition: !rank-elite && stage-1
+	Armament@primary-elite:
+		Weapon: AGGattling
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle
+		MuzzleSplitFacings: 8
+		RequiresCondition: rank-elite && stage-1
+	Armament@primary-stage-2:
+		Weapon: AGGattling2
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle-stage-2
+		RequiresCondition: !rank-elite && stage-2
+	Armament@primary-elite-stage-2:
+		Weapon: AGGattling2E
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle-stage-2
+		RequiresCondition: rank-elite && stage-2
+	Armament@primary-stage-3:
+		Weapon: AGGattling3
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle-stage-3
+		RequiresCondition: !rank-elite && stage-3
+	Armament@primary-elite-stage-3:
+		Weapon: AGGattling3E
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle-stage-3
+		RequiresCondition: rank-elite && stage-3
+	Armament@second-stage-1:
+		Weapon: AAGattling
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle
+		MuzzleSplitFacings: 8
+		RequiresCondition: !rank-elite && stage-1
+	Armament@second-elite-stage-1:
+		Weapon: AAGattlingE
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle
+		MuzzleSplitFacings: 8
+		RequiresCondition: rank-elite && stage-1
+	Armament@second-stage-2:
+		Weapon: AAGattling2
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle-stage-2
+		RequiresCondition: !rank-elite && stage-2
+	Armament@second-elite-stage-2:
+		Weapon: AAGattling2E
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle-stage-2
+		RequiresCondition: rank-elite && stage-2
+	Armament@second-stage-3:
+		Weapon: AAGattling3
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle-stage-3
+		RequiresCondition: !rank-elite && stage-3
+	Armament@second-elite-stage-3:
+		Weapon: AAGattling3E
+		LocalOffset: 700,300,10, 700,-300,10
+		MuzzleSequence: muzzle-stage-3
+		RequiresCondition: rank-elite && stage-3
+	GrantConditionOnStage:
+		Conditions:
+			stage-1: 200
+			stage-2: 400
+			stage-3: 600
+	BodyOrientation:
+		QuantizedFacings: 16
+	WithMuzzleOverlay:
+	RenderVoxels:
+		Scale: 19
+		LightYaw: 800
+		LightPitch: 120
+		LightAmbientColor: -1.3,-1.3,-1.3
+		LightDiffuseColor: 1.8, 1.8, 1.8
+	WithVoxelTurret:
+		RequiresCondition: !build-incomplete
+	WithRangeCircle:
+		Range: 6c0
+		Type: pillbox
+	AutoTarget:
+	Power:
+		Amount: -50
+	Targetable:
+		TargetTypes: powerable-defense
+
+yapsyt:
+	Inherits: ^SupportBuilding
+	Inherits@AUTOTARGET: ^AutoTargetGround
+	Buildable:
+		Queue: Support
+		BuildPaletteOrder: 40
+		Prerequisites: napsis, ~structures.yuris
+		Description: Mind Control Tower
+	Selectable:
+		Bounds: 69, 150, 0, -70
+	Health:
+		HP: 455
+	Armor:
+		Type: steel
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Psychic Tower
+	AttackTurreted:
+		Voice: Attack
+	Turreted:
+		TurnSpeed: 255
+	WithIdleOverlay@top:
+		Sequence: idle-top
+		PauseOnCondition: lowpower
+		RequiresCondition: !build-incomplete
+	Power:
+		Amount: -100
+	Targetable:
+		TargetTypes: Ground, C4, DetonateAttack, Structure
+	Armament:
+		Weapon: MindControl
+		MuzzleSequence: muzzle
+		LocalOffset: 0,0,960
+	WithMuzzleOverlay:
+	MindController:
+		Capacity: 3
+		ControllingCondition: controlling
+		Sounds: iyurat1a.wav
+	WithMindControlArc:
+		UsePlayerColor: true
+		Offset: 0,0,960
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
+	AutoTarget:
+	AutoTargetPriority@DEFAULT:
+		Types: MindControl
+		RequiresCondition: !controlling
+
+yagntc:
+	Inherits: ^Building
+	Inherits@shape: ^3x3Shape
+	Buildable:
+		Queue: Support
+		BuildPaletteOrder: 50
+		Prerequisites: yatech, ~structures.yuris
+		BuildLimit: 1
+		Description: Convert soldiers to powerful brute
+	Selectable:
+		Bounds: 160, 142, 0, -20
+	Health:
+		HP: 1000
+	Armor:
+		Type: concrete
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Genetic Mutator
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
+	SupportPowerChargeBar:
+	TransformActorsPower@Geneticconverter:
+		OrderName: Geneticconverter
+		ChargeInterval: 15000
+		Icon: geneticmute
+		Description: Genetic Converter
+		LongDesc: Transform the soldiers to the powerful brute which will obey Yuri forever!
+		EndChargeSound: sgenlo1a.wav,sgenlo2a.wav,sgenlo2b.wav,sgenlo2c.wav,sgenlo3a.wav
+		LaunchSound: sgenon.wav
+		DisplayTimerStances: Ally, Neutral, Enemy
+		DisplayBeacon: True
+		DisplayRadarPing: True
+		Actor: brute
+		EffectSequence: die9
+		PauseOnCondition: lowpower
+		Range: 5
+		Cursor: geneticmutator
+	WithIdleOverlay@top:
+		Sequence: idle-top
+		RequiresCondition: !build-incomplete
+	WithSupportPowerAnimation:
+		OrderName: Geneticconverter
+		IdleSequence: idle
+		ChargedSequence: charged
+		ActiveSequence: active
+		DeactiveSequence: deactive
+		Condition: build-incomplete
+	Power:
+		Amount: -200
+
+yappet:
+	Inherits: ^Building
+	Inherits@shape: ^3x3Shape
+	Buildable:
+		Queue: Support
+		BuildPaletteOrder: 60
+		Prerequisites: yatech, ~structures.yuris
+		BuildLimit: 1
+		Description: Release powerful energy to destroy enemy structures and control their soldiers
+	Selectable:
+		Bounds: 131, 152, 0, -20
+	Health:
+		HP: 1000
+	Armor:
+		Type: concrete
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 5000
+	Tooltip:
+		Name: Psychic Dominator
+	Building:
+		Footprint: xxx xxx xxx
+		Dimensions: 3,3
+	Power:
+		Amount: -200
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
+	ParticleSupportPower@Psychicdominator:
+		OrderName: Psychicdominator
+		ChargeInterval: 15000
+		Icon: psychicdom
+		Description: Psychic Dominator
+		LongDesc: Make the enemy feel the anger from the Yuri!
+		EndChargeSound: spsylo1a.wav,spsylo2a.wav,spsylo2b.wav,spsylo2c.wav,spsylo3a.wav
+		LaunchSound: spsydom.wav
+		DisplayTimerStances: Ally, Neutral, Enemy
+		DisplayBeacon: True
+		DisplayRadarPing: True
+		Weapons:
+			DominatorWH: 0, 0, 0
+		PauseOnCondition: lowpower
+		Cursor: psyicdom
+		EnvironmentEffectType: Dominator
+		ChangeOwner: true
+		ChangeTargets: Infantry
+		ChangeRange: 2
+	SupportPowerChargeBar:
+	WithSupportPowerAnimation:
+		OrderName: Psychicdominator
+		IdleSequence: idle
+		ChargedSequence: charged
+		ActiveSequence: active
+		DeactiveSequence: deactive
+		Condition: build-incomplete
+		
+naclon:
+	Inherits: ^Building
+	Inherits@shape: ^2x2Shape
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 100
+		Prerequisites: yatech, ~structures.yuris
+		BuildLimit: 1
+		Description: Clones most trained infantry.
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Cloning Vats
+	Building:
+		Footprint: xx xx
+		Dimensions: 2, 2
+	Selectable:
+		Bounds: 108, 134, 0, -48
+	Health:
+		HP: 1000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 5c0
+	Power:
+		Amount: -200
+	Exit@n1_0:
+		SpawnOffset: 0,0,0
+		ExitCell: -1, 0
+	Exit@0_n1:
+		SpawnOffset: 0,0,0
+		ExitCell: 0, -1
+	Exit@n1_n1:
+		SpawnOffset: 280,-280,0
+		ExitCell: -1, -1
+	Exit@1_n1:
+		SpawnOffset: 0,0,0
+		ExitCell: 1, -1
+	Exit@n1_1:
+		SpawnOffset: -410,-140,0
+		ExitCell: -1, 1
+	Exit@2_0:
+		SpawnOffset: 410,140,0
+		ExitCell: 2, 0
+	Exit@2_n1:
+		SpawnOffset: 0,0,0
+		ExitCell: 2, -1
+	Exit@2_1:
+		SpawnOffset: 0,0,0
+		ExitCell: 2, 1
+	Exit@0_2:
+		SpawnOffset: -280,280,0
+		ExitCell: 0, 2
+	Exit@n1_2:
+		SpawnOffset: 0,0,0
+		ExitCell: -1, 2
+	Exit@1_2:
+		SpawnOffset: 0,0,0
+		ExitCell: 1, 2
+	Exit@2_2:
+		SpawnOffset: 0,0,0
+		ExitCell: 2, 2
+	Production:
+		Produces: Dummy
+	RallyPoint:
+		Offset: 3,3
+		Palette: mouse
+		IsPlayerPalette: false
+	ClonesProducedUnits:
+		CloneableTypes: infantry
+
+napsis:
+	Inherits: ^Building
+	Inherits@shape: ^2x2Shape
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 60
+		Prerequisites: yarefn, ~structures.yuris
+		Description: Detects enemy units and strikepoints
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Psychic Radar
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	ProvidesPrerequisite:
+		Prerequisite: radar
+	ProvidesPrerequisite@default:
+	Selectable:
+		Bounds: 82, 150, -1, -55
+	Health:
+		HP: 750
+	Armor:
+		Type: Wood
+	ProvidesRadar:
+		RequiresCondition: !disabled
+	RevealsShroud:
+		Range: 10c0
+	RenderDetectionCircle:
+	DetectCloaked:
+		Range: 6c0
+	WithIdleOverlay@spin:
+		Sequence: idle-spin
+		PauseOnCondition: lowpower
+		RequiresCondition: !build-incomplete
+	Power:
+		Amount: -100
+	GrantConditionOnPowerState@LOWPOWER:
+		Condition: lowpower
+		ValidPowerStates: Low, Critical
+	SupportPowerChargeBar:
+	ExploreMapSupportPower@Psychicreveal:
+		ChargeInterval: 6000
+		Icon: psychicrev
+		Description: Psychic Reveal
+		LongDesc: Use psychic technology to explore the enemy action
+		LaunchSound: spsyreve.wav
+		DisplayBeacon: False
+		DisplayRadarPing: False
+		PauseOnCondition: lowpower
+		Cursor: explore
+		Radius: 15
+
+yarock:
+	Inherits: ^Building
+	Selectable:
+		Bounds: 220, 155, 0, -20
+	Health:
+		HP: 700
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 600
+	Tooltip:
+		Name: Unknown Building
+	Power:
+		Amount: 0
+
+yacomd:
+	Inherits: ^Building
+	Selectable:
+		Bounds: 220, 155, 0, -20
+	Health:
+		HP: 1000
+	Armor:
+		Type: concrete
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 3000
+	Tooltip:
+		Name: Yuri Command Center
+	Power:
+		Amount: 0
+
+yapppt:
+	Inherits: ^Building
+	Selectable:
+		Bounds: 220, 155, 0, -20
+	Health:
+		HP: 1000
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 8c0
+	Valued:
+		Cost: 0
+	Tooltip:
+		Name: Partially Built Psychic Dominator
+	Power:
+		Amount: 0

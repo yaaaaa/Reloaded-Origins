@@ -1,0 +1,19 @@
+barracks.infiltrated:
+	AlwaysVisible:
+	ProvidesPrerequisite:
+
+warfactory.infiltrated:
+	AlwaysVisible:
+	ProvidesPrerequisite:
+
+allies.tech.infiltrated:
+	AlwaysVisible:
+	ProvidesPrerequisite:
+
+soviets.tech.infiltrated:
+	AlwaysVisible:
+	ProvidesPrerequisite:
+
+yuris.tech.infiltrated:
+	AlwaysVisible:
+	ProvidesPrerequisite:

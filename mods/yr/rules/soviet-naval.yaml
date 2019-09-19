@@ -1,0 +1,282 @@
+sapc:
+	Inherits: ^Ship
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 10
+		Prerequisites: ~nayard
+		Description: General-purpose naval transport.\nCan carry infantry and vehicles.\n  Unarmed
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Amphibious Transport
+	Selectable:
+		Bounds: 60, 80, 0, -6
+	Health:
+		HP: 300
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 10
+		Speed: 75
+		Locomotor: lcraft
+		PauseOnCondition: !(!notmobile && !chronodisable)
+	RevealsShroud:
+		Range: 6c0
+	Cargo:
+		Types: Infantry, Vehicle
+		MaxWeight: 12
+		PipCount: 12
+		PassengerFacing: 96
+		UnloadTerrainTypes: Clear, Rough, Rail, Road, DirtRoad, Beach, Ore, Gems
+		UnloadVoice: Move
+		LoadingCondition: notmobile
+	Explodes:
+		Weapon: UnitExplode
+		EmptyWeapon: UnitExplode
+	WithVoxelBody:
+	RenderSprites:
+	Voiced:
+		VoiceSet: HoverSovietVoice
+	HitShape:
+
+sub:
+	Inherits: ^Ship
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 20
+		Prerequisites: ~nayard
+		Description: Submerged anti-ship unit armed with\ntorpedoes.\nCan detect other submarines and Giant Squids.\n  Strong vs Ships\n  Weak vs Ground units, Aircraft\nSpecial Ability: Submerge
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Typhoon Attack Sub
+	Health:
+		HP: 600
+	Selectable:
+		Bounds: 79, 60, 0, -6
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 4
+		Speed: 71
+	-LeavesTrails:
+	RevealsShroud:
+		Range: 6c0
+	-Targetable:
+	Targetable:
+		TargetTypes: Ground, Water, Repair
+		RequiresCondition: underwater
+	Cloak:
+		CloakTypes: Underwater
+		InitialDelay: 50
+		CloakDelay: 75
+		CloakSound: vnavupa.wav
+		UncloakSound: vnavupa.wav
+		CloakedCondition: underwater
+		UncloakOn: Damage
+		IsPlayerPalette: true
+		PauseOnCondition: !(!uncloak-critical-damage)
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: uncloak-critical-damage
+		ValidDamageStates: Critical
+	Armament:
+		Weapon: SubTorpedo
+		LocalOffset: 768,0,0
+		FireDelay: 2
+		RequiresCondition: !rank-elite
+	Armament@Elite:
+		Weapon: SubTorpedoE
+		LocalOffset: 768,0,0
+		FireDelay: 2
+		RequiresCondition: rank-elite
+	AttackFrontal:
+		Voice: Attack
+	AutoTarget:
+		InitialStance: ReturnFire
+	DetectCloaked:
+		CloakTypes: Underwater
+		Range: 4c0
+	RenderDetectionCircle:
+	Explodes:
+		Weapon: UnitExplode
+		EmptyWeapon: UnitExplode
+	-MustBeDestroyed:
+	WithVoxelBody:
+	RenderSprites:
+	Targetable@underwater:
+		TargetTypes: Underwater, Repair
+		RequiresCondition: underwater
+	HitShape:
+	Voiced:
+		VoiceSet: TyphoonSubVoice
+
+hyd:
+	Inherits: ^Ship
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 30
+		Prerequisites: naradr, ~nayard
+		Description: Anti-Air/Anti-Infantry naval unit.\n  Strong vs Aircraft, Infantry\n  Weak vs Vehicles, Naval Units
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Sea Scorpion
+	Selectable:
+		Bounds: 50, 30, 0, -6
+	Health:
+		HP: 300
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 6
+		Speed: 75
+	RevealsShroud:
+		Range: 8c0
+	AttackFrontal:
+		Voice: Attack
+	Armament@primary:
+		Weapon: FlakTrackGun
+	Armament@secondary:
+		Weapon: FlakWeapon
+	Explodes:
+		Weapon: UnitExplode
+		EmptyWeapon: UnitExplode
+	WithVoxelBody:
+	RenderSprites:
+	HitShape:
+	Voiced:
+		VoiceSet: SeaScorpionVoice
+
+sqd:
+	Inherits@1: ^ExistsInWorld
+	Inherits@2: ^SpriteActor
+	Inherits@3: ^GainsExperience
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 40
+		Prerequisites: natech, ~nayard
+		Description: Ocean creature\npunches enemies in close combat.\n  Strong vs Ships
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Giant Squid
+	Armor:
+		Type: Light
+	Health:
+		HP: 200
+	SelfHealing:
+	Mobile:
+		TurnSpeed: 6
+		Speed: 90
+		Locomotor: naval
+		Voice: Move
+	SelectionDecorations:
+		Palette: pips
+	Selectable:
+		Bounds: 101, 64, 0, -10
+	Voiced:
+		VoiceSet: GiantSquidVoice
+	Armament:
+		Weapon: SquidPunch
+	AttackFrontal:
+		Voice: Attack
+	AutoTarget:
+	RevealsShroud:
+		Range: 5c0
+	Cloak:
+		CloakTypes: Underwater
+		InitialDelay: 50
+		CloakDelay: 75
+		CloakSound: vnavupa.wav
+		UncloakSound: vnavupa.wav
+		CloakedCondition: underwater
+		UncloakOn: Damage, Attack
+		IsPlayerPalette: true
+	Targetable:
+		TargetTypes: Ground, Water
+		RequiresCondition: underwater
+	Targetable@underwater:
+		TargetTypes: Underwater
+		RequiresCondition: underwater
+	DetectCloaked:
+		CloakTypes: Underwater
+		Range: 5c0
+	HiddenUnderFog:
+	ActorLostNotification:
+	Guard:
+		Voice: Attack
+	Guardable:
+	DeathSounds:
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	Chronoshiftable:
+		ExplodeInstead: true
+	RenderDetectionCircle:
+	WithInfantryBody:
+		StandSequences: stand
+		DefaultAttackSequence: punch
+	Repairable:
+		Voice: Attack
+		RepairActors: gayard, nayard
+	HitShape:
+
+	
+dred:
+	Inherits: ^Ship
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 60
+		Prerequisites: natech, ~nayard
+		Description: Soviet dreadnought ship.\n  Strong vs Tanks, Structures, Infantry\n  Weak vs Aircraft
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Dreadnought
+	Health:
+		HP: 800
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 7c0
+		Type: CenterPosition
+	Selectable:
+		Bounds: 112,76,0,-6
+	Mobile:
+		TurnSpeed: 1
+		Speed: 60
+	RevealsShroud:
+		Range: 7c0
+	Turreted:
+		TurnSpeed: 255
+	AttackTurreted:
+		Voice: Attack
+	AutoTarget:
+	Explodes:
+		Weapon: UnitExplode
+		EmptyWeapon: UnitExplode
+	WithVoxelBody:
+	RenderSprites:
+	Voiced:
+		VoiceSet: SovietNavalVoice
+	HitShape:
+	MissileSpawnerMaster:
+		Actors: dmisl, dmisl
+	Exit@0:
+		SpawnOffset: 0,0,0
+		Facing: 0
+	Repairable:
+		Voice: Attack
+		RepairActors: gayard, nayard
+	Armament:
+		Weapon: DredLauncher

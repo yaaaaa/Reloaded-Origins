@@ -1,0 +1,2225 @@
+construction_yard_a:
+	Inherits: ^Building
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 1000
+		Prerequisites: ~disabled
+		Description: Produces Atreides structures.
+		IconPalette: chromedune
+	Building:
+		Footprint: xxxx xxxx xxxx xxxx
+		Dimensions: 4,4
+	LaysTerrain:
+		TerrainTypes: Rock
+		Template: 88
+	Selectable:
+		Bounds: 168,112
+	Health:
+		HP: 3000
+	Armor:
+		Type: cy
+	RevealsShroud:
+		Range: 5c768
+	Exit:
+	Valued:
+		Cost: 2000
+	Production:
+		Produces: Building, Support, Upgrade
+	Tooltip:
+		Name: Atreides Construction Yard
+	CustomSellValue:
+		Value: 2000
+	BaseBuilding:
+	Transforms:
+		IntoActor: mcva
+		Offset: 1,1
+		Facing: 16
+		DeployCursor: undeploy
+	ProductionQueue@Building:
+		Type: Building
+	ProductionQueue@Support:
+		Type: Support
+	ProductionQueue@Upgrade:
+		Type: Upgrade
+	ProductionBar@Building:
+		ProductionType: Building
+	ProductionBar@Support:
+		ProductionType: Support
+	ProductionBar@Upgrade:
+		ProductionType: Upgrade
+	WithBuildingPlacedOverlay:
+		Palette: d2kpal
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	ProvidesPrerequisite:
+		Prerequisite: structures.atreides
+	ProvidesPrerequisite@wall:
+		Prerequisite: structures.dunes
+	PrimaryBuilding:
+		PrimaryCondition: primary
+		ProductionQueues: Building
+	Power:
+		Amount: 20
+	SpawnActorsOnSell:
+		ActorTypes: light_inf, light_inf, engineer
+	GrantConditionOnPrerequisite:
+		Prerequisites: upgrade.construction_yard_a
+		Condition: stardecoration
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		RequiresCondition: stardecoration
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		RequiresCondition: primary
+	RevealOnDeath:
+		Radius: 5c768
+
+
+upgrade.construction_yard_a:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Atreides Construction Yard Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: ~structures.atreides
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 590
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks additional construction options \n(Large Concrete Slab, Rocket Turret)
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: construction_yard_a
+	ProvidesPrerequisite@upgradename:
+
+upgrade.barracks_a:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Atreides Barracks Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: barracks_a, ~structures.atreides
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 290
+		IconPalette: chromedune
+		BuildDurationModifier: 40
+		Description: Unlocks additional infantry \n(Trooper, Engineer, Thumper Infantry)    \n\nRequired to unlock faction specific infantry \n(Atreides: Grenadier, Harkonnen: Sardaukar)
+	Valued:
+		Cost: 500
+	RenderSprites:
+		Image: barracks_a
+	ProvidesPrerequisite@upgradename:
+	ProvidesPrerequisite:
+		Prerequisite: upgrade.barracks
+
+upgrade.light_a:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Atreides Light Factory Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: light_factory_a, ~structures.atreides
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 215
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks additional light unit \n(Missile Quad) \n\nRequired to unlock faction specific light unit \n(Ordos: Stealth Raider Trike)
+	Valued:
+		Cost: 400
+	RenderSprites:
+		Image: light_factory_a
+	ProvidesPrerequisite@upgradename:
+	ProvidesPrerequisite:
+		Prerequisite: upgrade.light
+
+upgrade.heavy_a:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Atreides Heavy Factory Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: heavy_factory_a, ~structures.atreides
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 380
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks additional construction options    \n(Repair Pad, IX Research Center) \n\nUnlocks additional heavy units \n(Siege Tank, Missile Tank, MCV)
+	Valued:
+		Cost: 800
+	RenderSprites:
+		Image: heavy_factory_a
+	ProvidesPrerequisite@upgradename:
+	ProvidesPrerequisite:
+		Prerequisite: upgrade.heavy
+
+upgrade.hightech_a:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Atreides High Tech Factory Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: hightech_a, ~structures.atreides, ~techlevel.superweapons
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 720
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks the Atreides Air Strike superweapon
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: hightech_a
+	ProvidesPrerequisite@upgradename:
+
+upgrade.construction_yard_h:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Harkonnen Construction Yard Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: ~structures.harkonnen
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 590
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks additional construction options \n(Large Concrete Slab, Rocket Turret)
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: construction_yard_h
+	ProvidesPrerequisite@upgradename:
+
+upgrade.barracks_h:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Harkonnen Barracks Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: barracks_h, ~structures.harkonnen
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 290
+		IconPalette: chromedune
+		BuildDurationModifier: 40
+		Description: Unlocks additional infantry \n(Trooper, Engineer, Thumper Infantry)    \n\nRequired to unlock faction specific infantry \n(Atreides: Grenadier, Harkonnen: Sardaukar)
+	Valued:
+		Cost: 500
+	RenderSprites:
+		Image: barracks_h
+	ProvidesPrerequisite@upgradename:
+	ProvidesPrerequisite:
+		Prerequisite: upgrade.barracks
+
+upgrade.light_h:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Harkonnen Light Factory Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: light_factory_h, ~structures.harkonnen
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 215
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks additional light unit \n(Missile Quad) \n\nRequired to unlock faction specific light unit \n(Ordos: Stealth Raider Trike)
+	Valued:
+		Cost: 400
+	RenderSprites:
+		Image: light_factory_h
+	ProvidesPrerequisite@upgradename:
+	ProvidesPrerequisite:
+		Prerequisite: upgrade.light
+
+upgrade.heavy_h:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Harkonnen Heavy Factory Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: heavy_factory_h, ~structures.harkonnen
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 380
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks additional construction options    \n(Repair Pad, IX Research Center) \n\nUnlocks additional heavy units \n(Siege Tank, Missile Tank, MCV)
+	Valued:
+		Cost: 800
+	RenderSprites:
+		Image: heavy_factory_h
+	ProvidesPrerequisite@upgradename:
+	ProvidesPrerequisite:
+		Prerequisite: upgrade.heavy
+
+upgrade.hightech_h:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Harkonnen High Tech Factory Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: hightech_h, ~structures.harkonnen, ~techlevel.superweapons
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 720
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks the Harkonnen Air Strike superweapon
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: hightech_h
+	ProvidesPrerequisite@upgradename:
+
+upgrade.construction_yard_o:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Ordos Construction Yard Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: ~structures.ordos
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 590
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks additional construction options \n(Large Concrete Slab, Rocket Turret)
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: construction_yard_o
+	ProvidesPrerequisite@upgradename:
+
+upgrade.barracks_o:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Ordos Barracks Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: barracks_o, ~structures.ordos
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 290
+		IconPalette: chromedune
+		BuildDurationModifier: 40
+		Description: Unlocks additional infantry \n(Trooper, Engineer, Thumper Infantry)    \n\nRequired to unlock faction specific infantry \n(Atreides: Grenadier, Harkonnen: Sardaukar)
+	Valued:
+		Cost: 500
+	RenderSprites:
+		Image: barracks_o
+	ProvidesPrerequisite@upgradename:
+	ProvidesPrerequisite:
+		Prerequisite: upgrade.barracks
+
+upgrade.light_o:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Ordos Light Factory Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: light_factory_o, ~structures.ordos
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 215
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks additional light unit \n(Missile Quad) \n\nRequired to unlock faction specific light unit \n(Ordos: Stealth Raider Trike)
+	Valued:
+		Cost: 400
+	RenderSprites:
+		Image: light_factory_o
+	ProvidesPrerequisite@upgradename:
+	ProvidesPrerequisite:
+		Prerequisite: upgrade.light
+
+upgrade.heavy_o:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Ordos Heavy Factory Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: heavy_factory_o, ~structures.ordos
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 380
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks additional construction options    \n(Repair Pad, IX Research Center) \n\nUnlocks additional heavy units \n(Siege Tank, Missile Tank, MCV)
+	Valued:
+		Cost: 800
+	RenderSprites:
+		Image: heavy_factory_o
+	ProvidesPrerequisite@upgradename:
+	ProvidesPrerequisite:
+		Prerequisite: upgrade.heavy
+
+upgrade.hightech_o:
+	AlwaysVisible:
+	Interactable:
+	ScriptTriggers:
+	Tooltip:
+		Name: Ordos High Tech Factory Upgrade
+	Buildable:
+		BuildPaletteOrder: 50
+		Prerequisites: hightech_o, ~structures.ordos, ~techlevel.superweapons
+		Queue: Support
+		BuildLimit: 1
+		BuildDuration: 720
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Unlocks the Ordos Air Strike superweapon
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: hightech_o
+	ProvidesPrerequisite@upgradename:
+
+construction_yard_h:
+	Inherits: ^Building
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 1000
+		Prerequisites: ~disabled
+		Description: Produces Harkonnen structures.
+		IconPalette: chromedune
+	Building:
+		Footprint: xxxx xxxx xxxx xxxx
+		Dimensions: 4,4
+	LaysTerrain:
+		TerrainTypes: Rock
+		Template: 88
+	Selectable:
+		Bounds: 168,112
+	Health:
+		HP: 3000
+	Armor:
+		Type: cy
+	RevealsShroud:
+		Range: 5c768
+	Exit:
+	Valued:
+		Cost: 2000
+	Production:
+		Produces: Building, Support, Upgrade
+	Tooltip:
+		Name: Harkonnen Construction Yard
+	CustomSellValue:
+		Value: 2000
+	BaseBuilding:
+	Transforms:
+		IntoActor: mcvh
+		Offset: 1,1
+		Facing: 16
+		DeployCursor: undeploy
+	ProductionQueue@Building:
+		Type: Building
+	ProductionQueue@Support:
+		Type: Support
+	ProductionQueue@Upgrade:
+		Type: Upgrade
+	ProductionBar@Building:
+		ProductionType: Building
+	ProductionBar@Support:
+		ProductionType: Support
+	ProductionBar@Upgrade:
+		ProductionType: Upgrade
+	WithBuildingPlacedOverlay:
+		Palette: d2kpal
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	ProvidesPrerequisite:
+		Prerequisite: structures.harkonnen
+	ProvidesPrerequisite@wall:
+		Prerequisite: structures.dune
+	PrimaryBuilding:
+		PrimaryCondition: primary
+		ProductionQueues: Building
+	Power:
+		Amount: 20
+	SpawnActorsOnSell:
+		ActorTypes: light_inf, light_inf, engineer
+	GrantConditionOnPrerequisite:
+		Prerequisites: upgrade.conyard_h
+		Condition: stardecoration
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		RequiresCondition: stardecoration
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		RequiresCondition: primary
+	RevealOnDeath:
+		Radius: 5c768
+
+construction_yard_o:
+	Inherits: ^Building
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 1000
+		Prerequisites: ~disabled
+		Description: Produces Ordos structures.
+		IconPalette: chromedune
+	Building:
+		Footprint: xxxx xxxx xxxx xxxx
+		Dimensions: 4,4
+	LaysTerrain:
+		TerrainTypes: Rock
+		Template: 88
+	Selectable:
+		Bounds: 168,112
+	Health:
+		HP: 3000
+	Armor:
+		Type: cy
+	RevealsShroud:
+		Range: 5c768
+	Exit:
+	Valued:
+		Cost: 2000
+	Production:
+		Produces: Building, Support, Upgrade
+	Tooltip:
+		Name: Ordos Construction Yard
+	CustomSellValue:
+		Value: 2000
+	BaseBuilding:
+	Transforms:
+		IntoActor: mcvo
+		Offset: 1,1
+		Facing: 16
+		DeployCursor: undeploy
+	ProductionQueue@Building:
+		Type: Building
+	ProductionQueue@Support:
+		Type: Support
+	ProductionQueue@Upgrade:
+		Type: Upgrade
+	ProductionBar@Building:
+		ProductionType: Building
+	ProductionBar@Support:
+		ProductionType: Support
+	ProductionBar@Upgrade:
+		ProductionType: Upgrade
+	WithBuildingPlacedOverlay:
+		Palette: d2kpal
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	ProvidesPrerequisite:
+		Prerequisite: structures.ordos
+	ProvidesPrerequisite@wall:
+		Prerequisite: structures.dune
+	PrimaryBuilding:
+		PrimaryCondition: primary
+		ProductionQueues: Building
+	Power:
+		Amount: 20
+	SpawnActorsOnSell:
+		ActorTypes: light_inf, light_inf, engineer
+	GrantConditionOnPrerequisite:
+		Prerequisites: upgrade.conyard_o
+		Condition: stardecoration
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		RequiresCondition: stardecoration
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		RequiresCondition: primary
+	RevealOnDeath:
+		Radius: 5c768
+
+wind_trap_a:
+	Inherits: ^Building
+	Inherits@shape: ^3x4Shape
+	Buildable:
+		Queue: Building
+		Prerequisites: ~structures.atreides
+		BuildPaletteOrder: 10
+		BuildDuration: 180
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 112,112
+	Valued:
+		Cost: 225
+	Tooltip:
+		Name: Atreides Wind Trap
+		Description: Provides power for other structures
+		Palette: d2kpal
+	Building:
+		Footprint: xxxx xxxx xxxx
+		Dimensions: 3,4
+	Health:
+		HP: 3000
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 3c768
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithIdleOverlay@ZAPS:
+		Sequence: idle-zaps
+	ProvidesPrerequisite:
+		Prerequisite: power
+	Power:
+		Amount: 200
+	ScalePowerWithHealth:
+	ProvidesPrerequisite@buildingname:
+
+wind_trap_h:
+	Inherits: ^Building
+	Inherits@shape: ^3x4Shape
+	Buildable:
+		Queue: Building
+		Prerequisites: ~structures.harkonnen
+		BuildPaletteOrder: 10
+		BuildDuration: 180
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 112,112
+	Valued:
+		Cost: 225
+	Tooltip:
+		Name: Harkonnen Wind Trap
+		Description: Provides power for other structures
+		Palette: d2kpal
+	Building:
+		Footprint: xxxx xxxx xxxx
+		Dimensions: 3,4
+	Health:
+		HP: 3000
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 3c768
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithIdleOverlay@ZAPS:
+		Sequence: idle-zaps
+	ProvidesPrerequisite:
+		Prerequisite: power
+	Power:
+		Amount: 200
+	ScalePowerWithHealth:
+	ProvidesPrerequisite@buildingname:
+
+wind_trap_o:
+	Inherits: ^Building
+	Inherits@shape: ^3x4Shape
+	Buildable:
+		Queue: Building
+		Prerequisites: ~structures.ordos
+		BuildPaletteOrder: 10
+		BuildDuration: 180
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 112,112
+	Valued:
+		Cost: 225
+	Tooltip:
+		Name: Ordos Wind Trap
+		Description: Provides power for other structures
+		Palette: d2kpal
+	Building:
+		Footprint: xxxx xxxx xxxx
+		Dimensions: 3,4
+	Health:
+		HP: 3000
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 3c768
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithIdleOverlay@ZAPS:
+		Sequence: idle-zaps
+	ProvidesPrerequisite:
+		Prerequisite: power
+	Power:
+		Amount: 200
+	ScalePowerWithHealth:
+	ProvidesPrerequisite@buildingname:
+
+refinery_a:
+	Inherits: ^Building
+	Inherits@shape: ^4x5Shape
+	Buildable:
+		Prerequisites: power, ~structures.atreides
+		Queue: Building
+		BuildPaletteOrder: 20
+		BuildDuration: 540
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 168,112
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Atreides Spice Refinery
+		Description: Harvesters unload Spice here for processing
+	Building:
+		Footprint: =xx= xxx= xx== xxx= =xx=
+		Dimensions: 4,5
+		Palette: d2kpal
+	Health:
+		HP: 3000
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 4c768
+	TiberianSunRefinery:
+		DockAngle: 160
+		DockOffset: 3,2
+		TickRate: 20
+	StoresResources:
+		PipColor: green
+		PipCount: 10
+		Capacity: 2000
+	CustomSellValue:
+		Value: 500
+	FreeActorWithDelivery:
+		Actor: harvester
+		DeliveryOffset: 3,2
+		DeliveringActor: carryall.reinforce
+		Facing: 160
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithDockedOverlay@SMOKE:
+		Sequence: smoke
+	Power:
+		Amount: -75
+	WithIdleOverlay@TOP:
+		Sequence: idle-top
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite:
+		Prerequisite: refinery
+	ProvidesPrerequisite@default:
+
+refinery_h:
+	Inherits: ^Building
+	Inherits@shape: ^4x5Shape
+	Buildable:
+		Prerequisites: power, ~structures.harkonnen
+		Queue: Building
+		BuildPaletteOrder: 20
+		BuildDuration: 540
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 168,112
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Harkonnen Spice Refinery
+		Description: Harvesters unload Spice here for processing
+	Building:
+		Footprint: =xx= xxx= xx== xxx= =xx=
+		Dimensions: 4,5
+		Palette: d2kpal
+	Health:
+		HP: 3000
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 4c768
+	TiberianSunRefinery:
+		DockAngle: 160
+		DockOffset: 3,2
+		TickRate: 20
+	StoresResources:
+		PipColor: green
+		PipCount: 10
+		Capacity: 2000
+	CustomSellValue:
+		Value: 500
+	FreeActorWithDelivery:
+		Actor: harvester
+		DeliveryOffset: 3,2
+		DeliveringActor: carryall.reinforce
+		Facing: 160
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithDockedOverlay@SMOKE:
+		Sequence: smoke
+	Power:
+		Amount: -75
+	WithIdleOverlay@TOP:
+		Sequence: idle-top
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite:
+		Prerequisite: refinery
+	ProvidesPrerequisite@default:
+
+refinery_o:
+	Inherits: ^Building
+	Inherits@shape: ^4x5Shape
+	Buildable:
+		Prerequisites: power, ~structures.ordos
+		Queue: Building
+		BuildPaletteOrder: 20
+		BuildDuration: 540
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 168,112
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Ordos Spice Refinery
+		Description: Harvesters unload Spice here for processing
+	Building:
+		Footprint: =xx= xxx= xx== xxx= =xx=
+		Dimensions: 4,5
+		Palette: d2kpal
+	Health:
+		HP: 3000
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 4c768
+	TiberianSunRefinery:
+		DockAngle: 160
+		DockOffset: 3,2
+		TickRate: 20
+	StoresResources:
+		PipColor: green
+		PipCount: 10
+		Capacity: 2000
+	CustomSellValue:
+		Value: 500
+	FreeActorWithDelivery:
+		Actor: harvester
+		DeliveryOffset: 3,2
+		DeliveringActor: carryall.reinforce
+		Facing: 160
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithDockedOverlay@SMOKE:
+		Sequence: smoke
+	Power:
+		Amount: -75
+	WithIdleOverlay@TOP:
+		Sequence: idle-top
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite:
+		Prerequisite: refinery
+	ProvidesPrerequisite@default:
+
+barracks_a:
+	Inherits: ^Building
+	Inherits@shape: ^2x3Shape
+	Buildable:
+		Prerequisites: power, ~structures.atreides
+		Queue: Building
+		BuildPaletteOrder: 40
+		BuildDuration: 231
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 112,112
+	Valued:
+		Cost: 225
+	Tooltip:
+		Name: Atreides Barracks
+		Description: Trains infantry
+	Building:
+		Footprint: xx xx xx
+		Dimensions: 2,3
+	Health:
+		HP: 3200
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 3c768
+	RallyPoint:
+		Offset: 4,2
+		Palette: mouse
+		IsPlayerPalette: false
+	Exit@0_n1:
+		SpawnOffset: 170,-810,0
+		ExitCell: 0, 2
+	Exit@0_2:
+		SpawnOffset: -900,220,0
+		ExitCell: 2, -1
+	Exit@2_n1:
+		SpawnOffset: 900,-220,0
+		ExitCell: 2, 3
+	Exit@2_2:
+		SpawnOffset: -170,810,0
+		ExitCell: 3, 1
+	Production:
+		Produces: Infantry, Upgrade
+	PrimaryBuilding:
+	ProductionQueue:
+		Type: Infantry.Atreides
+	ProductionBar:
+		ProductionType: Infantry.Atreides
+	ProvidesPrerequisite@trikes:
+		Prerequisite: dune.barracks
+	Power:
+		Amount: -30
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	ProvidesPrerequisite@buildingname:
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		UpgradeTypes: stardecoration
+		UpgradeMinEnabledLevel: 1
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		UpgradeTypes: primary
+		UpgradeMinEnabledLevel: 1
+
+barracks_h:
+	Inherits: ^Building
+	Inherits@shape: ^2x3Shape
+	Buildable:
+		Prerequisites: power, ~structures.harkonnen
+		Queue: Building
+		BuildPaletteOrder: 40
+		BuildDuration: 231
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 112,112
+	Valued:
+		Cost: 225
+	Tooltip:
+		Name: Harkonnen Barracks
+		Description: Trains infantry
+	Building:
+		Footprint: xx xx xx
+		Dimensions: 2,3
+	Health:
+		HP: 3200
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 3c768
+	RallyPoint:
+		Offset: 4,2
+		Palette: mouse
+		IsPlayerPalette: false
+	Exit@0_n1:
+		SpawnOffset: 170,-810,0
+		ExitCell: 0, 2
+	Exit@0_2:
+		SpawnOffset: -900,220,0
+		ExitCell: 2, -1
+	Exit@2_n1:
+		SpawnOffset: 900,-220,0
+		ExitCell: 2, 3
+	Exit@2_2:
+		SpawnOffset: -170,810,0
+		ExitCell: 3, 1
+	Production:
+		Produces: Infantry
+	PrimaryBuilding:
+	ProductionQueue:
+		Type: Infantry.Harkonnen
+	ProductionBar:
+		ProductionType: Infantry.Harkonnen
+	ProvidesPrerequisite@trikes:
+		Prerequisite: dune.barracks
+	Power:
+		Amount: -30
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	ProvidesPrerequisite@buildingname:
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		UpgradeTypes: stardecoration
+		UpgradeMinEnabledLevel: 1
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		UpgradeTypes: primary
+		UpgradeMinEnabledLevel: 1
+
+barracks_o:
+	Inherits: ^Building
+	Inherits@shape: ^2x3Shape
+	Buildable:
+		Prerequisites: power, ~structures.ordos
+		Queue: Building
+		BuildPaletteOrder: 40
+		BuildDuration: 231
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 112,112
+	Valued:
+		Cost: 225
+	Tooltip:
+		Name: Ordos Barracks
+		Description: Trains infantry
+	Building:
+		Footprint: xx xx xx
+		Dimensions: 2,3
+	Health:
+		HP: 3200
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 3c768
+	RallyPoint:
+		Offset: 4,2
+		Palette: mouse
+		IsPlayerPalette: false
+	Exit@0_n1:
+		SpawnOffset: 170,-810,0
+		ExitCell: 0, 2
+	Exit@0_2:
+		SpawnOffset: -900,220,0
+		ExitCell: 2, -1
+	Exit@2_n1:
+		SpawnOffset: 900,-220,0
+		ExitCell: 2, 3
+	Exit@2_2:
+		SpawnOffset: -170,810,0
+		ExitCell: 3, 1
+	Production:
+		Produces: Infantry
+	PrimaryBuilding:
+	ProductionQueue:
+		Type: Infantry.Ordos
+	ProductionBar:
+		ProductionType: Infantry.Ordos
+	ProvidesPrerequisite@trikes:
+		Prerequisite: dune.barracks
+	Power:
+		Amount: -30
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	ProvidesPrerequisite@buildingname:
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		UpgradeTypes: stardecoration
+		UpgradeMinEnabledLevel: 1
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		UpgradeTypes: primary
+		UpgradeMinEnabledLevel: 1
+
+light_factory_a:
+	Inherits: ^Building
+	Inherits@shape: ^3x5Shape
+	Buildable:
+		Prerequisites: refinery_a, ~structures.atreides
+		Queue: Building
+		BuildPaletteOrder: 70
+		BuildDuration: 277
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Selectable:
+		Bounds: 96,64
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Atreides Light Factory
+		Description: Produces Atreides light vehicles
+	Building:
+		Footprint: xxx xxx xxx xxx xx=
+		Dimensions: 3,5
+	Health:
+		HP: 3300
+	Armor:
+		Type: light
+	RevealsShroud:
+		Range: 4c768
+	RallyPoint:
+		Offset: 5,4
+		Palette: mouse
+		IsPlayerPalette: false
+	Exit@1:
+		SpawnOffset: 544,-224,0
+		ExitCell: 5,3
+	Production:
+		Produces: Vehicle, Upgrade
+	PrimaryBuilding:
+	ProductionQueue:
+		Type: Vehicle.Atreides
+	ProductionBar:
+		ProductionType: Vehicle.Atreides
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@trikes:
+		Prerequisite: light.trike
+	WithProductionOverlay@WELDING:
+		Queues: Vehicle
+		Sequence: production-welding
+	WithIdleOverlay@TOP:
+		Sequence: idle-top
+	Power:
+		Amount: -125
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		UpgradeTypes: stardecoration
+		UpgradeMinEnabledLevel: 1
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		UpgradeTypes: primary
+		UpgradeMinEnabledLevel: 1
+
+light_factory_h:
+	Inherits: ^Building
+	Inherits@shape: ^3x5Shape
+	Buildable:
+		Prerequisites: refinery_h, ~structures.harkonnen
+		Queue: Building
+		BuildPaletteOrder: 70
+		BuildDuration: 277
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Selectable:
+		Bounds: 96,64
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Harkonnen Light Factory
+		Description: Produces Harkonnen light vehicles
+	Building:
+		Footprint: xxx xxx xxx xxx xx=
+		Dimensions: 3,5
+	Health:
+		HP: 3300
+	Armor:
+		Type: light
+	RevealsShroud:
+		Range: 4c768
+	RallyPoint:
+		Offset: 5,4
+		Palette: mouse
+		IsPlayerPalette: false
+	Exit@1:
+		SpawnOffset: 544,-224,0
+		ExitCell: 5,3
+	Production:
+		Produces: Vehicle, Upgrade
+	PrimaryBuilding:
+	ProductionQueue:
+		Type: Vehicle.Harkonnen
+	ProductionBar:
+		ProductionType: Vehicle.Harkonnen
+	ProvidesPrerequisite@buildingname:
+	ProvidesPrerequisite@trikes:
+		Prerequisite: light.trike
+	WithProductionOverlay@WELDING:
+		Sequence: production-welding
+		Queues: Vehicle
+	WithIdleOverlay@TOP:
+		Sequence: idle-top
+	Power:
+		Amount: -125
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		UpgradeTypes: stardecoration
+		UpgradeMinEnabledLevel: 1
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		UpgradeTypes: primary
+		UpgradeMinEnabledLevel: 1
+
+light_factory_o:
+	Inherits: ^Building
+	Inherits@shape: ^3x5Shape
+	Buildable:
+		Prerequisites: refinery_o, ~structures.ordos
+		Queue: Building
+		BuildPaletteOrder: 70
+		BuildDuration: 277
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Selectable:
+		Bounds: 96,64
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Ordos Light Factory
+		Description: Produces Ordos light vehicles
+	Building:
+		Footprint: xxx xxx xxx xxx xx=
+		Dimensions: 3,5
+	Health:
+		HP: 3300
+	Armor:
+		Type: light
+	RevealsShroud:
+		Range: 4c768
+	RallyPoint:
+		Offset: 5,4
+		Palette: mouse
+		IsPlayerPalette: false
+	Exit@1:
+		SpawnOffset: 544,-224,0
+		ExitCell: 5,3
+	Production:
+		Produces: Vehicle, Upgrade
+	PrimaryBuilding:
+	ProductionQueue:
+		Type: Vehicle.Ordos
+	ProductionBar:
+		ProductionType: Vehicle.Ordos
+	ProvidesPrerequisite@buildingname:
+	WithProductionOverlay@WELDING:
+		Sequence: production-welding
+		Queues: Vehicle
+	WithIdleOverlay@TOP:
+		Sequence: idle-top
+	Power:
+		Amount: -125
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		UpgradeTypes: stardecoration
+		UpgradeMinEnabledLevel: 1
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		UpgradeTypes: primary
+		UpgradeMinEnabledLevel: 1
+
+silo_a:
+	Inherits: ^Building
+	Buildable:
+		Prerequisites: refinery_a, ~structures.atreides
+		Queue: Support
+		BuildPaletteOrder: 30
+		BuildDuration: 135
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 32,32
+	Valued:
+		Cost: 120
+	Tooltip:
+		Name: Atreides Silo
+		Description: Stores excess harvested Spice
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	-GivesBuildableArea:
+	Health:
+		HP: 1500
+	Armor:
+		Type: wall
+	RevealsShroud:
+		Range: 2c768
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	-WithSpriteBody:
+	WithResourceLevelSpriteBody:
+		Sequence: stages
+	StoresResources:
+		PipColor: green
+		PipCount: 5
+		Capacity: 2000
+	Power:
+		Amount: -15
+	MustBeDestroyed:
+		RequiredForShortGame: false
+	ThrowsShrapnel:
+		Weapons: Debris, Debris2, Debris3, Debris4
+		Pieces: 3, 5
+		Range: 2c0, 5c0
+
+silo_h:
+	Inherits: ^Building
+	Buildable:
+		Prerequisites: refinery_h, ~structures.harkonnen
+		Queue: Support
+		BuildPaletteOrder: 30
+		BuildDuration: 135
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 32,32
+	Valued:
+		Cost: 120
+	Tooltip:
+		Name: Harkonnen Silo
+		Description: Stores excess harvested Spice
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	-GivesBuildableArea:
+	Health:
+		HP: 1500
+	Armor:
+		Type: wall
+	RevealsShroud:
+		Range: 2c768
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	-WithSpriteBody:
+	WithResourceLevelSpriteBody:
+		Sequence: stages
+	StoresResources:
+		PipColor: green
+		PipCount: 5
+		Capacity: 2000
+	Power:
+		Amount: -15
+	MustBeDestroyed:
+		RequiredForShortGame: false
+	ThrowsShrapnel:
+		Weapons: Debris, Debris2, Debris3, Debris4
+		Pieces: 3, 5
+		Range: 2c0, 5c0
+
+silo_o:
+	Inherits: ^Building
+	Buildable:
+		Prerequisites: refinery_o, ~structures.ordos
+		Queue: Support
+		BuildPaletteOrder: 30
+		BuildDuration: 135
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 32,32
+	Valued:
+		Cost: 120
+	Tooltip:
+		Name: Ordos Silo
+		Description: Stores excess harvested Spice
+	Building:
+		Footprint: xx xx
+		Dimensions: 2,2
+	-GivesBuildableArea:
+	Health:
+		HP: 1500
+	Armor:
+		Type: wall
+	RevealsShroud:
+		Range: 2c768
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	-WithSpriteBody:
+	WithResourceLevelSpriteBody:
+		Sequence: stages
+	StoresResources:
+		PipColor: green
+		PipCount: 5
+		Capacity: 2000
+	Power:
+		Amount: -15
+	MustBeDestroyed:
+		RequiredForShortGame: false
+	ThrowsShrapnel:
+		Weapons: Debris, Debris2, Debris3, Debris4
+		Pieces: 3, 5
+		Range: 2c0, 5c0
+
+heavy_factory_a:
+	Inherits: ^Building
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Prerequisites: refinery_a, ~structures.atreides
+		Queue: Building
+		BuildPaletteOrder: 100
+		BuildDuration: 648
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 96,68,0,12
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Atreides Heavy Factory
+		Description: Produces heavy vehicles
+	Building:
+		Footprint: _xx_ xxxx xxxx =xxx
+		Dimensions: 4,4
+	Health:
+		HP: 3500
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 4c768
+	RallyPoint:
+		Offset: 0,3
+	Exit@1:
+		SpawnOffset: 256,192,0
+		ExitCell: 0,2
+	Production:
+		Produces: Vehicle, Upgrade
+	PrimaryBuilding:
+	ProductionQueue:
+		Type: Vehicle.Atreides
+	ProductionBar:
+		ProductionType: Vehicle.Atreides
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithProductionOverlay@WELDING:
+		Sequence: production-welding
+		Queues: Vehicle
+	WithIdleOverlay@TOP:
+		Sequence: idle-top
+	Power:
+		Amount: -150
+	ProvidesPrerequisite@heavy:
+		Prerequisite: heavy_factory
+	ProvidesPrerequisite@buildingname:
+	SelectionDecorations:
+		VisualBounds: 96,96
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		UpgradeTypes: stardecoration
+		UpgradeMinEnabledLevel: 1
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		UpgradeTypes: primary
+		UpgradeMinEnabledLevel: 1
+
+heavy_factory_h:
+	Inherits: ^Building
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Prerequisites: refinery_h, ~structures.harkonnen
+		Queue: Building
+		BuildPaletteOrder: 100
+		BuildDuration: 648
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 96,68,0,12
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Harkonnen Heavy Factory
+		Description: Produces heavy vehicles
+	Building:
+		Footprint: _xx_ xxxx xxxx =xxx
+		Dimensions: 4,4
+	Health:
+		HP: 3500
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 4c768
+	RallyPoint:
+		Offset: 0,3
+	Exit@1:
+		SpawnOffset: 256,192,0
+		ExitCell: 0,2
+	Production:
+		Produces: Vehicle, Upgrade
+	PrimaryBuilding:
+	ProductionQueue:
+		Type: Vehicle.Harkonnen
+	ProductionBar:
+		ProductionType: Vehicle.Harkonnen
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithProductionOverlay@WELDING:
+		Sequence: production-welding
+		Queues: Vehicle
+	WithIdleOverlay@TOP:
+		Sequence: idle-top
+	Power:
+		Amount: -150
+	ProvidesPrerequisite@heavy:
+		Prerequisite: heavy_factory
+	ProvidesPrerequisite@buildingname:
+	SelectionDecorations:
+		VisualBounds: 96,96
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		UpgradeTypes: stardecoration
+		UpgradeMinEnabledLevel: 1
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		UpgradeTypes: primary
+		UpgradeMinEnabledLevel: 1
+
+heavy_factory_o:
+	Inherits: ^Building
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Prerequisites: refinery_o, ~structures.ordos
+		Queue: Building
+		BuildPaletteOrder: 100
+		BuildDuration: 648
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+	Selectable:
+		Bounds: 96,68,0,12
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Ordos Heavy Factory
+		Description: Produces heavy vehicles
+	Building:
+		Footprint: _xx_ xxxx xxxx =xxx
+		Dimensions: 4,4
+	Health:
+		HP: 3500
+	Armor:
+		Type: wood
+	RevealsShroud:
+		Range: 4c768
+	RallyPoint:
+		Offset: 0,3
+	Exit@1:
+		SpawnOffset: 256,192,0
+		ExitCell: 0,2
+	Production:
+		Produces: Vehicle, Upgrade
+	PrimaryBuilding:
+	ProductionQueue:
+		Type: Vehicle.Ordos
+	ProductionBar:
+		ProductionType: Vehicle.Ordos
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithProductionOverlay@WELDING:
+		Sequence: production-welding
+		Queues: Vehicle
+	WithIdleOverlay@TOP:
+		Sequence: idle-top
+	Power:
+		Amount: -150
+	ProvidesPrerequisite@heavy:
+		Prerequisite: heavy_factory
+	ProvidesPrerequisite@buildingname:
+	SelectionDecorations:
+		VisualBounds: 96,96
+	WithDecoration@upgraded:
+		RequiresSelection: true
+		Image: pips2k
+		Sequence: tag-upgraded
+		ReferencePoint: Top, Right
+		ZOffset: 256
+		UpgradeTypes: stardecoration
+		UpgradeMinEnabledLevel: 1
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		UpgradeTypes: primary
+		UpgradeMinEnabledLevel: 1
+
+outpost_a:
+	Inherits: ^Building
+	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Prerequisites: barracks_a, ~structures.atreides
+		Queue: Building
+		BuildPaletteOrder: 80
+		BuildDuration: 270
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Provides a radar map of the battlefield.\n  Requires power to operate.
+	Selectable:
+		Bounds: 122,90
+	Valued:
+		Cost: 750
+	Tooltip:
+		Name: Atreides Outpost
+	Building:
+		Footprint: xxxx xxxx xxxx ====
+		Dimensions: 4,4
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 35000
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -1024
+			BottomRight: 1536, 1024
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 4c768
+	ProvidesRadar:
+		RequiresCondition: !disabled
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithIdleOverlay@DISH:
+		Sequence: idle-dish
+		PauseOnCondition: disabled
+		RequiresCondition: !severe-damaged
+	GrantConditionOnDamageState@STOPDISH:
+		Condition: severe-damaged
+		ValidDamageState: Medium, Heavy, Critical
+	Power:
+		Amount: -125
+	ProvidesPrerequisite@buildingname:
+
+outpost_h:
+	Inherits: ^Building
+	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Prerequisites: barracks_h, ~structures.harkonnen
+		Queue: Building
+		BuildPaletteOrder: 80
+		BuildDuration: 270
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Provides a radar map of the battlefield.\n  Requires power to operate.
+	Selectable:
+		Bounds: 122,90
+	Valued:
+		Cost: 750
+	Tooltip:
+		Name: Harkonnen Outpost
+	Building:
+		Footprint: xxxx xxxx xxxx ====
+		Dimensions: 4,4
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 35000
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -1024
+			BottomRight: 1536, 1024
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 4c768
+	ProvidesRadar:
+		RequiresCondition: !disabled
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithIdleOverlay@DISH:
+		Sequence: idle-dish
+		PauseOnCondition: disabled
+		RequiresCondition: !severe-damaged
+	GrantConditionOnDamageState@STOPDISH:
+		Condition: severe-damaged
+		ValidDamageState: Medium, Heavy, Critical
+	Power:
+		Amount: -125
+	ProvidesPrerequisite@buildingname:
+
+outpost_o:
+	Inherits: ^Building
+	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
+	Inherits@shape: ^4x4Shape
+	Buildable:
+		Prerequisites: barracks_o, ~structures.ordos
+		Queue: Building
+		BuildPaletteOrder: 80
+		BuildDuration: 270
+		BuildDurationModifier: 40
+		IconPalette: chromedune
+		Description: Provides a radar map of the battlefield.\n  Requires power to operate.
+	Selectable:
+		Bounds: 122,90
+	Valued:
+		Cost: 750
+	Tooltip:
+		Name: Ordos Outpost
+	Building:
+		Footprint: xxxx xxxx xxxx ====
+		Dimensions: 4,4
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 35000
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -1024
+			BottomRight: 1536, 1024
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 4c768
+	ProvidesRadar:
+		RequiresCondition: !disabled
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	WithIdleOverlay@DISH:
+		Sequence: idle-dish
+		PauseOnCondition: disabled
+		RequiresCondition: !severe-damaged
+	GrantConditionOnDamageState@STOPDISH:
+		Condition: severe-damaged
+		ValidDamageState: Medium, Heavy, Critical
+	Power:
+		Amount: -125
+	ProvidesPrerequisite@buildingname:
+
+wall:
+	Inherits@1: ^SpriteActor
+	Interactable:
+	CombatDebugOverlay:
+	FrozenUnderFog:
+	ScriptTriggers:
+	Buildable:
+		Queue: Support
+		Prerequisites: barracks_a, ~structures.dunes
+		BuildPaletteOrder: 130
+		BuildDuration: 54
+		IconPalette: chromedune
+		BuildDurationModifier: 40
+		Description: Stop units and blocks enemy fire.
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Valued:
+		Cost: 20
+	CustomSellValue:
+		Value: 0
+	Tooltip:
+		Name: Concrete Wall
+		GenericName: Structure
+	AppearsOnRadar:
+	Building:
+		BuildSounds: CHUNG.WAV
+		TerrainTypes: Clear, Rough, Road, DirtRoad
+	RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 7
+	Health:
+		HP: 20000
+	Armor:
+		Type: wall
+	RevealsShroud:
+		Range: 2c768
+	Crushable:
+		CrushClasses: wall
+	BlocksProjectiles:
+		Height: 512
+	LineBuild:
+		Range: 5
+		NodeTypes: wall, turret
+	LineBuildNode:
+		Types: wall
+	Targetable:
+		TargetTypes: Ground, Wall
+	WithWallSpriteBody:
+	Sellable:
+		SellSounds: CHUNG.WAV
+	Guardable:
+	Explodes:
+		Weapon: WallExplode
+		EmptyWeapon: WallExplode
+	ThrowsShrapnel:
+		Weapons: Debris2, Debris3
+		Pieces: 1, 1
+		Range: 1c512, 2c768
+	HitShape:
+		Type: Rectangle
+			TopLeft: -512, -512
+			BottomRight: 512, 512
+
+repair_pad_a:
+	Inherits: ^Building
+	Buildable:
+		Queue: Building
+		Prerequisites: power, refinery, ~structures.atreides
+		BuildPaletteOrder: 150
+		BuildDuration: 324
+		BuildDurationModifier: 40
+		Description: Repairs vehicles.\n Allows construction of Atreides MCVs
+		IconPalette: chromedune
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Atreides Repair Pad
+	Building:
+		Footprint: =x= xxx =x=
+		Dimensions: 3,3
+	Health:
+		HP: 30000
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 512
+	HitShape@TOPANDBOTTOM:
+		Type: Rectangle
+			TopLeft: -512, -1536
+			BottomRight: 512, 1536
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 3c768
+	Selectable:
+		Bounds: 96,96
+	Reservable:
+	RepairsUnits:
+		Interval: 10
+		HpPerStep: 800
+		StartRepairingNotification: Repairing
+		FinishRepairingNotification: UnitRepaired
+		PlayerExperience: 15
+	RallyPoint:
+		Offset: 1,3
+	WithRepairOverlay:
+		RequiresCondition: !build-incomplete
+		Palette: effect75alpha
+	Power:
+		Amount: -50
+	ProvidesPrerequisite@buildingname:
+
+repair_pad_h:
+	Inherits: ^Building
+	Buildable:
+		Queue: Building
+		Prerequisites: power, refinery, ~structures.harkonnen
+		BuildPaletteOrder: 150
+		BuildDuration: 324
+		BuildDurationModifier: 40
+		Description: Repairs vehicles.\n Allows construction of Harkonnen MCVs
+		IconPalette: chromedune
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Harkonnen Repair Pad
+	Building:
+		Footprint: =x= xxx =x=
+		Dimensions: 3,3
+	Health:
+		HP: 30000
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 512
+	HitShape@TOPANDBOTTOM:
+		Type: Rectangle
+			TopLeft: -512, -1536
+			BottomRight: 512, 1536
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 3c768
+	Selectable:
+		Bounds: 96,96
+	Reservable:
+	RepairsUnits:
+		Interval: 10
+		HpPerStep: 800
+		StartRepairingNotification: Repairing
+		FinishRepairingNotification: UnitRepaired
+		PlayerExperience: 15
+	RallyPoint:
+		Offset: 1,3
+	WithRepairOverlay:
+		RequiresCondition: !build-incomplete
+		Palette: effect75alpha
+	Power:
+		Amount: -50
+	ProvidesPrerequisite@buildingname:
+
+repair_pad_o:
+	Inherits: ^Building
+	Buildable:
+		Queue: Building
+		Prerequisites: power, refinery, ~structures.ordos
+		BuildPaletteOrder: 150
+		BuildDuration: 324
+		BuildDurationModifier: 40
+		Description: Repairs vehicles.\n Allows construction of Ordos MCVs
+		IconPalette: chromedune
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: Ordos Repair Pad
+	Building:
+		Footprint: =x= xxx =x=
+		Dimensions: 3,3
+	Health:
+		HP: 30000
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -512
+			BottomRight: 1536, 512
+	HitShape@TOPANDBOTTOM:
+		Type: Rectangle
+			TopLeft: -512, -1536
+			BottomRight: 512, 1536
+	Armor:
+		Type: building
+	RevealsShroud:
+		Range: 3c768
+	Selectable:
+		Bounds: 96,96
+	Reservable:
+	RepairsUnits:
+		Interval: 10
+		HpPerStep: 800
+		StartRepairingNotification: Repairing
+		FinishRepairingNotification: UnitRepaired
+		PlayerExperience: 15
+	RallyPoint:
+		Offset: 1,3
+	WithRepairOverlay:
+		RequiresCondition: !build-incomplete
+		Palette: effect75alpha
+	Power:
+		Amount: -50
+	ProvidesPrerequisite@buildingname:
+
+starport_a:
+	Inherits: ^Building
+	Tooltip:
+		Name: Atreides Starport
+	Buildable:
+		Prerequisites: heavy_factory_a, outpost_a, ~structures.atreides, ~techlevel.high
+		Queue: Building
+		BuildPaletteOrder: 70
+		BuildDuration: 540
+		BuildDurationModifier: 40
+		Description: Dropzone for quick reinforcements, at a price.
+		IconPalette: chromedune
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Valued:
+		Cost: 1500
+	Building:
+		Footprint: xxxx x==x =xx= =xx=
+		Dimensions: 4,4
+	Selectable:
+		Bounds: 96,96
+	Health:
+		HP: 35000
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -1536
+			BottomRight: 1536, 512
+	HitShape@BOTTOM:
+		Type: Rectangle
+			TopLeft: -512, 512
+			BottomRight: 512, 1536
+	Armor:
+		Type: heavy
+	RevealsShroud:
+		Range: 3c768
+	RallyPoint:
+		Offset: 1,3
+	Exit@1:
+		SpawnOffset: 0,-480,0
+		ExitCell: 2,2
+	Exit@2:
+		SpawnOffset: 0,-480,0
+		ExitCell: 0,2
+	ProductionAirdrop:
+		Produces: Starport
+		ActorType: frigate
+	WithDeliveryOverlay:
+		RequiresCondition: !build-incomplete
+		Palette: starportlights
+	ProductionBar:
+		ProductionType: Starport
+	PrimaryBuilding:
+		PrimaryCondition: primary
+		ProductionQueues: Starport
+		SelectionNotification: PrimaryBuildingSelected
+	ProvidesPrerequisite@starport:
+		Prerequisite: starport
+	ProvidesPrerequisite@atreides:
+		Prerequisite: starport.atreides
+		Factions: atreides
+	ProvidesPrerequisite@atreides_combat:
+		Prerequisite: starport.atreides_combat
+		Factions: atreides
+	Power:
+		Amount: -150
+	ProvidesPrerequisite@buildingname:
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		RequiresCondition: primary
+
+starport_h:
+	Inherits: ^Building
+	Tooltip:
+		Name: Harkonnen Starport
+	Buildable:
+		Prerequisites: heavy_factory_h, outpost_h, ~structures.harkonnen, ~techlevel.high
+		Queue: Building
+		BuildPaletteOrder: 70
+		BuildDuration: 540
+		BuildDurationModifier: 40
+		Description: Dropzone for quick reinforcements, at a price.
+		IconPalette: chromedune
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Valued:
+		Cost: 1500
+	Building:
+		Footprint: xxxx x==x =xx= =xx=
+		Dimensions: 4,4
+	Selectable:
+		Bounds: 96,96
+	Health:
+		HP: 35000
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -1536
+			BottomRight: 1536, 512
+	HitShape@BOTTOM:
+		Type: Rectangle
+			TopLeft: -512, 512
+			BottomRight: 512, 1536
+	Armor:
+		Type: heavy
+	RevealsShroud:
+		Range: 3c768
+	RallyPoint:
+		Offset: 1,3
+	Exit@1:
+		SpawnOffset: 0,-480,0
+		ExitCell: 2,2
+	Exit@2:
+		SpawnOffset: 0,-480,0
+		ExitCell: 0,2
+	ProductionAirdrop:
+		Produces: Starport
+		ActorType: frigate
+	WithDeliveryOverlay:
+		RequiresCondition: !build-incomplete
+		Palette: starportlights
+	ProductionBar:
+		ProductionType: Starport
+	PrimaryBuilding:
+		PrimaryCondition: primary
+		ProductionQueues: Starport
+		SelectionNotification: PrimaryBuildingSelected
+	ProvidesPrerequisite@starport:
+		Prerequisite: starport
+	ProvidesPrerequisite@harkonnen:
+		Prerequisite: starport.harkonnen
+		Factions: harkonnen
+	ProvidesPrerequisite@harkonnen_combat:
+		Prerequisite: starport.harkonnen_combat
+		Factions: harkonnen
+	Power:
+		Amount: -150
+	ProvidesPrerequisite@buildingname:
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		RequiresCondition: primary
+
+starport_o:
+	Inherits: ^Building
+	Tooltip:
+		Name: Ordos Starport
+	Buildable:
+		Prerequisites: heavy_factory_o, outpost_o, ~structures.ordos, ~techlevel.high
+		Queue: Building
+		BuildPaletteOrder: 70
+		BuildDuration: 540
+		BuildDurationModifier: 40
+		Description: Dropzone for quick reinforcements, at a price.
+		IconPalette: chromedune
+	RenderSprites:
+		PlayerPalette: d2kpal2
+		Scale: 1.4
+	Valued:
+		Cost: 1500
+	Building:
+		Footprint: xxxx x==x =xx= =xx=
+		Dimensions: 4,4
+	Selectable:
+		Bounds: 96,96
+	Health:
+		HP: 35000
+	HitShape:
+		Type: Rectangle
+			TopLeft: -1536, -1536
+			BottomRight: 1536, 512
+	HitShape@BOTTOM:
+		Type: Rectangle
+			TopLeft: -512, 512
+			BottomRight: 512, 1536
+	Armor:
+		Type: heavy
+	RevealsShroud:
+		Range: 3c768
+	RallyPoint:
+		Offset: 1,3
+	Exit@1:
+		SpawnOffset: 0,-480,0
+		ExitCell: 2,2
+	Exit@2:
+		SpawnOffset: 0,-480,0
+		ExitCell: 0,2
+	ProductionAirdrop:
+		Produces: Starport
+		ActorType: frigate
+	WithDeliveryOverlay:
+		RequiresCondition: !build-incomplete
+		Palette: starportlights
+	ProductionBar:
+		ProductionType: Starport
+	PrimaryBuilding:
+		PrimaryCondition: primary
+		ProductionQueues: Starport
+		SelectionNotification: PrimaryBuildingSelected
+	ProvidesPrerequisite@starport:
+		Prerequisite: starport
+	ProvidesPrerequisite@ordos:
+		Prerequisite: starport.ordos
+		Factions: ordos
+	ProvidesPrerequisite@ordos_combat:
+		Prerequisite: starport.ordos_combat
+		Factions: ordos
+	Power:
+		Amount: -150
+	ProvidesPrerequisite@buildingname:
+	WithTextDecoration@primary:
+		RequiresSelection: true
+		Text: PRIMARY
+		ReferencePoint: Top
+		ZOffset: 256
+		RequiresCondition: primary

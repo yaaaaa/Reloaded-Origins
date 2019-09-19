@@ -1,0 +1,262 @@
+lcrf:
+	Inherits: ^Ship
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 10
+		Prerequisites: ~gayard
+		Description: General-purpose naval transport.\nCan carry infantry and vehicles.\n  Unarmed
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: Amphibious Transport
+	Selectable:
+		Bounds: 60, 80, 0, -6
+	Health:
+		HP: 300
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 10
+		Speed: 75
+		Locomotor: lcraft
+		PauseOnCondition: !(!notmobile && !chronodisable)
+	RevealsShroud:
+		Range: 6c0
+	Cargo:
+		Types: Infantry, Vehicle
+		MaxWeight: 12
+		PipCount: 12
+		PassengerFacing: 96
+		UnloadTerrainTypes: Clear, Rough, Rail, Road, DirtRoad, Beach, Ore, Gems
+		UnloadVoice: Move
+		LoadingCondition: notmobile
+	Explodes:
+		Weapon: UnitExplode
+		EmptyWeapon: UnitExplode
+	WithVoxelBody:
+	RenderSprites:
+	Voiced:
+		VoiceSet: HoverAlliedVoice
+	HitShape:
+
+dest:
+	Inherits: ^Ship
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 20
+		Prerequisites: ~gayard
+		Description: Allied Main Battle Ship armed with cannons and\n an Osprey helicopter.\nCan detect submarines and sea animals.\n  Strong vs Naval units\n  Weak vs Ground units, Aircraft
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: Destroyer
+	Health:
+		HP: 600
+	Armor:
+		Type: Heavy
+	Mobile:
+		TurnSpeed: 5
+		Speed: 105
+	RevealsShroud:
+		Range: 7c0
+	Selectable:
+		Bounds: 80, 67, 0, -6
+	Armament@primary:
+		Weapon: 155mm
+		LocalOffset: 768,0,0
+		FireDelay: 2
+		RequiresCondition: !rank-elite
+	Armament@elite:
+		Weapon: 155mmE
+		LocalOffset: 768,0,0
+		FireDelay: 2
+		RequiresCondition: rank-elite
+	AttackFrontal:
+		Voice: Attack
+	DetectCloaked:
+		CloakTypes: Underwater
+		Range: 4c0
+	RenderDetectionCircle:
+	Explodes:
+		Weapon: UnitExplode
+		EmptyWeapon: UnitExplode
+	WithVoxelBody:
+	RenderSprites:
+	Voiced:
+		VoiceSet: AlliedNavalVoice
+	HitShape:
+
+aegis:
+	Inherits: ^Ship
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Inherits@AUTOTARGET: ^AutoTargetAir
+	Inherits@CHAOSGAS: ^Chaosgasable
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 30
+		Prerequisites: radar, ~gayard
+		Description: Anti-Air naval unit.\n  Strong vs Aircraft\n  Grounds units, Ships
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Aegis Cruiser
+	Selectable:
+		Bounds: 88, 58, 0, -6
+	Health:
+		HP: 800
+	Armor:
+		Type: Light
+	Mobile:
+		TurnSpeed: 5
+		Speed: 45
+	RevealsShroud:
+		Range: 8c0
+	Armament:
+		Weapon: Medusa
+	AttackFrontal:
+		Voice: Attack
+	AutoTarget:
+	Explodes:
+		Weapon: UnitExplode
+		EmptyWeapon: UnitExplode
+	WithVoxelBody:
+	RenderSprites:
+	Voiced:
+		VoiceSet: AegisVoice
+	HitShape:
+
+dlph:
+	Inherits@1: ^ExistsInWorld
+	Inherits@2: ^SpriteActor
+	Inherits@3: ^GainsExperience
+	Inherits@5: ^CrateStatModifiers
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 40
+		Prerequisites: gatech, ~gayard
+		Description: Trained dolphin\narmed with sonic beams.\n  Strong vs Ships
+	Valued:
+		Cost: 500
+	Tooltip:
+		Name: Dolphin
+	Armor:
+		Type: Light
+	Health:
+		HP: 200
+	Mobile:
+		TurnSpeed: 6
+		Speed: 90
+		Locomotor: naval
+		Voice: Move
+	SelectionDecorations:
+		Palette: pips
+	Selectable:
+		Bounds: 50, 30, 0, -6
+	Voiced:
+		VoiceSet: DolphinVoice
+	Armament:
+		Weapon: SonicZap
+	AttackFrontal:
+		Voice: Attack
+	AutoTarget:
+	RevealsShroud:
+		Range: 4c0
+	Cloak:
+		CloakTypes: Underwater
+		InitialDelay: 50
+		CloakDelay: 75
+		CloakSound: vnavupa.wav
+		UncloakSound: vnavupa.wav
+		CloakedCondition: underwater
+		UncloakOn: Damage
+		IsPlayerPalette: true
+	Targetable:
+		TargetTypes: Ground, Water
+		RequiresCondition: underwater
+	Targetable@underwater:
+		TargetTypes: Underwater
+		RequiresCondition: underwater
+	DetectCloaked:
+		CloakTypes: Underwater
+		Range: 4c0
+	HiddenUnderFog:
+	ActorLostNotification:
+	Guard:
+		Voice: Attack
+	Guardable:
+	DeathSounds:
+	MustBeDestroyed:
+		RequiredForShortGame: true
+	QuantizeFacingsFromSequence:
+		Sequence: stand
+	Chronoshiftable:
+		ExplodeInstead: true
+	RenderDetectionCircle:
+	RenderSprites:
+	WithInfantryBody:
+		StandSequences: stand
+		DefaultAttackSequence: shoot
+	WithDeathAnimation:
+		UseDeathTypeSuffix: false
+	Repairable:
+		Voice: Attack
+		RepairActors: gayard, nayard
+	HitShape:
+	
+carrier:
+	Inherits: ^Ship
+	Inherits@MC: ^MindControllable
+	Inherits@SMC: ^SuperMindControllable
+	Buildable:
+		Queue: Ship
+		BuildPaletteOrder: 60
+		Prerequisites: gatech, ~gayard
+		Description: Aircraft carrier ship.\n  Strong vs Tanks, Structures\n  Weak vs Infantry
+	Valued:
+		Cost: 2000
+	Tooltip:
+		Name: Aircraft Carrier
+	Health:
+		HP: 800
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 7c0
+		Type: CenterPosition
+	Selectable:
+		Bounds: 112,76,0,-6
+	Mobile:
+		TurnSpeed: 1
+		Speed: 60
+	RevealsShroud:
+		Range: 7c0
+	Turreted:
+		TurnSpeed: 255
+	AttackTurreted:
+		Voice: Attack
+	AutoTarget:
+	Explodes:
+		Weapon: UnitExplode
+		EmptyWeapon: UnitExplode
+	WithVoxelBody:
+	RenderSprites:
+	Voiced:
+		VoiceSet: AircraftCarrierVoice
+	HitShape:
+	CarrierMaster:
+		Actors: hornet, hornet, hornet
+		RespawnTicks: 300
+		SpawnAllAtOnce: true
+	Exit@0:
+		SpawnOffset: 0,0,0
+		Facing: 0
+	Armament:
+		Weapon: HornetLauncher
