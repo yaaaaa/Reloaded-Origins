@@ -11,6 +11,7 @@ Packages:
 	.
 	$yr: yr
 	./mods/common: common
+	./mods/d2k: d2k
 	~ra2.mix
 	~language.mix
 	~cameo.mix
@@ -187,7 +188,7 @@ Assemblies:
 	common|OpenRA.Mods.Common.dll
 	common|OpenRA.Mods.Cnc.dll
 	yr|OpenRA.Mods.YR.dll
-	yr|bits/OpenRA.Mods.D2k.dll
+	d2k|OpenRA.Mods.D2k.dll
 
 ChromeLayout:
 	common|chrome/assetbrowser.yaml
