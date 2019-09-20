@@ -118,26 +118,7 @@ WAITGAME: The Waiting Game
 	Extension: AUD
 UNDERCON: Under Construction
 	Extension: AUD
-
-#SC
-zerg1: zerg1
-	Extension: wav
-zerg2: zerg2
-	Extension: wav
-zerg3: zerg3
-	Extension: wav
-terran1: terran1
-	Extension: wav
-terran2: terran2
-	Extension: wav
-terran3: terran3
-	Extension: wav
-protoss1: protoss1
-	Extension: wav
-protoss2: protoss2
-	Extension: wav
-protoss3: protoss3
-	Extension: wav
+    
 #Tiberian Sun
 introts: Intro TS
 	Extension: aud
