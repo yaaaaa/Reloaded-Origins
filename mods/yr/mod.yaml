@@ -397,8 +397,8 @@ GameSpeeds:
 		OrderLatency: 6
 
 ModContent:
-	InstallPromptMessage: Red Alert 2 Yuri's Revenge requires artwork and audio from the original game.
-	HeaderMessage: The original game content must be copied from an original game disc.
+	InstallPromptMessage: Reloaded Origins requires artwork and audio from the original Red Alert 2, \nRed Alert 2 Yuri's Revenge and Dune 2000 game.
+	HeaderMessage: The original game contents must be copied from an original game disc.
 	Packages:
 		base: Red Alert 2 Files
 			TestFiles: ^Content/yr/ra2.mix, ^Content/yr/language.mix
@@ -430,6 +430,8 @@ ModContent:
 		movies-d2k: Dune 2000 Campaign Briefings
 			TestFiles: ^Content/d2k/v2/Movies/A_BR01_E.VQA
 			Sources: d2k-a, d2k-a-linux, d2k-b, d2k-b-linux, d2k-c, d2k-c-linux, d2k-d, d2k-d-linux, d2k-e, d2k-e-linux
+	Downloads:
+		d2k|installer/downloads.yaml
 	Sources:
 		yr|installer/ra2.yaml
 		yr|installer/yr.yaml
