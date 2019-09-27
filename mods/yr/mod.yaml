@@ -12,6 +12,27 @@ Packages:
 	$yr: yr
 	./mods/common: common
 	./mods/d2k: d2k
+	yr|bits
+	yr|bits/animations
+	yr|bits/audio
+	yr|bits/cameos
+	yr|bits/misc
+	yr|bits/palettes
+	yr|bits/projectiles
+	yr|bits/structures
+	yr|bits/units
+	yr|uibits
+    
+	yr|bits/music/ra2
+	yr|bits/music/d2k
+	yr|bits/music/ts
+	yr|bits/d2k
+	yr|bits/ts
+	yr|bits/sc
+	yr|bits/sc/z
+	yr|bits/sc/p
+	yr|bits/sc/t
+	yr|bits/audio/speach
 	~ra2.mix
 	~language.mix
 	~cameo.mix
@@ -65,29 +86,8 @@ Packages:
 	~audio.bag
 	~thememd.mix
 	~movmd03.mix
-	yr|bits
-	yr|bits/animations
-	yr|bits/audio
-	yr|bits/cameos
-	yr|bits/misc
-	yr|bits/palettes
-	yr|bits/projectiles
-	yr|bits/structures
-	yr|bits/units
-	yr|uibits
-
-	yr|bits/music/ra2
 	~theme.mix
-	yr|bits/music/d2k
-	yr|bits/music/ts
 	~scores.mix
-	yr|bits/d2k
-	yr|bits/ts
-	yr|bits/sc
-	yr|bits/sc/z
-	yr|bits/sc/p
-	yr|bits/sc/t
-	yr|bits/audio/speach
 	~sounds.mix
 	~speech01.mix: speech-gdi
 	~speech02.mix: speech-nod
