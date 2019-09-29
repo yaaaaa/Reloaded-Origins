@@ -1,6 +1,4 @@
 hatchery:
-	Defaults:
-		AddExtension: false
 	idle: bits/sc/z/zh.png
 		AddExtension: false
 		Tick: 200
