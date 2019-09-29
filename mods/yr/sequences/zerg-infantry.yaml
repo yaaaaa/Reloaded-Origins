@@ -1,6 +1,4 @@
 lechinka:
-	Defaults:
-		AddExtension: false
 	stand:
 		Facings: 8
 	run: bits/sc/z/zl.png
@@ -223,8 +221,6 @@ egg:
 		Tick: 120
 
 drone:
-	Defaults:
-		AddExtension: false
 	stand:
 		Combine:
 			zl.png:
