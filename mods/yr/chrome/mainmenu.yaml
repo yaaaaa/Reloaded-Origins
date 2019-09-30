@@ -43,7 +43,7 @@ Container@MAINMENU:
 							Y: 20
 							Width: 200
 							Height: 30
-							Text: OpenRA Yuri's Revenge
+							Text: Reloaded Origins
 							Align: Center
 							Font: Bold
 						Button@SINGLEPLAYER_BUTTON:

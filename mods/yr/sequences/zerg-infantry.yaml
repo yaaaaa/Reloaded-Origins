@@ -1,6 +1,4 @@
 lechinka:
-	Defaults:
-		AddExtension: false
 	stand:
 		Facings: 8
 	run: bits/sc/z/zl.png
@@ -223,187 +221,185 @@ egg:
 		Tick: 120
 
 drone:
-	Defaults:
-		AddExtension: false
-	stand: 
+	stand:
 		Combine:
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 0
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 2
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 4
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 6
-				Length: 2
-			bits/sc/z/zl.png:
+ 				Length: 2
+			zl.png:
 				Start: 8
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 10
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 12
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 14
 				Length: 2
-			bits/sc/z/zl.png:
-				Start: 14
+			zl.png:
+ 				Start: 14
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 12
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 10
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 8
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 6
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 5
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 4
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 2
 				Length: 2
 				FlipX: true
-		Length: 2
+		Frames: 0, 1
 		Facings: -16
-	run: 
+	run:
 		Combine:
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 0
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 2
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 4
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 6
-				Length: 2
-			bits/sc/z/zl.png:
+ 				Length: 2
+			zl.png:
 				Start: 8
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 10
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 12
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 14
 				Length: 2
-			bits/sc/z/zl.png:
-				Start: 14
+			zl.png:
+ 				Start: 14
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 12
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 10
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 8
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 6
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 5
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 4
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 2
 				Length: 2
 				FlipX: true
-		Length: 2
+		Frames: 0, 1
 		Facings: -16
 	idle:
 		Combine:
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 0
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 2
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 4
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 6
-				Length: 2
-			bits/sc/z/zl.png:
+ 				Length: 2
+			zl.png:
 				Start: 8
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 10
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 12
 				Length: 2
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 14
 				Length: 2
-			bits/sc/z/zl.png:
-				Start: 14
+			zl.png:
+ 				Start: 14
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 12
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 10
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 8
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 6
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 5
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 4
 				Length: 2
 				FlipX: true
-			bits/sc/z/zl.png:
+			zl.png:
 				Start: 2
 				Length: 2
 				FlipX: true
-		Length: 2
+		Frames: 0, 1
 		Facings: -16
 	mutation: bits/sc/z/zh.png
 		Tick: 200
